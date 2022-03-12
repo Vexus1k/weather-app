@@ -1,0 +1,82 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+h1
+{
+  text-align: center;
+  font-family: Arial, serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.35rem;
+}
+.header
+{
+  border: 1px black solid;
+  width: 100%;
+  padding: 2.5rem 0;
+  background-color: rgb(255, 255, 255, 0.5);
+}
+.container
+{
+
+  margin: 5em auto;
+  width: 50%;
+
+
+}
+nav
+{
+  width: 100%;
+  background-color: rgb(255, 255, 255, 0.5);
+  padding: 1.5em 0;
+}
+ul
+{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+li {
+  display: inline-block;
+}
+
+a {
+  display: block;
+  padding: 0.5em 1.5em;
+  background-color: rgb(221, 221, 221, 0.55);
+  font-size: 1rem;
+  text-decoration: none;
+}
+img
+{
+  width: 80%;
+  max-height: 140px;
+  opacity: 1;
+  padding: 0.5em 0;
+}
+.navbar-container
+{
+  width: 100%;
+  border: 1px black solid;
+}
+.content
+{
+  background-color: rgb(255, 255, 255, 0.5);
+
+  width: 100%;
+  border: 1px black solid;
+
+}
+.weather
+{
+  width: 100%;
+  padding: 1.5em 0;
+  background-color: rgb(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  border: 1px black solid;
+
+}

@@ -27,9 +27,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/fonts.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "src/assets/script.js"
+
+            ]
           },
           "configurations": {
             "production": {
