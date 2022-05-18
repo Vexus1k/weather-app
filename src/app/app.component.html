@@ -1,31 +1,51 @@
-<!---->
-<!--<div >-->
-<!--  <p>{{weatherInfo$ | async | json}}</p>-->
-<!--  <p>{{weatherInfo$  | async | json}}</p>-->
-<!--</div>-->
-<div class="container">
-  <div class="header">
-    <h1>Weather App</h1>
-  </div>
-  <div class="navbar-container">
-    <nav>
-      <ul>
-        <li>
-          <a routerLink="/news" routerLinkActive="active">News</a>
+<div class="shape__theme"></div>
+<header class="header">
+  <nav class="nav container grid">
+    <div class="logo">
+      <h1 class="logo__title">Weather App</h1>
+    </div>
+    <div class="nav__menu swiper">
+      <ul class="nav__list swiper-wrapper">
+        <li class="swiper-slide nav__item">
+          <a class="nav__link" routerLink="/news" routerLinkActive="active">News</a>
         </li>
-        <li>
-          <a routerLink="/photos" routerLinkActive="active">Photos</a>
+        <li class="swiper-slide nav__item">
+          <a class="nav__link" routerLink="/photos" routerLinkActive="active">Photos</a>
         </li>
-        <li>
-          <a routerLink="/climate-changes" routerLinkActive="active">Climate Changes</a>
+        <li class="swiper-slide nav__item">
+          <a  class="nav__link" routerLink="/climate-changes" routerLinkActive="active">Climate Changes</a>
+        </li>
+        <li class="swiper-slide nav__item">
+          <a class="nav__link" routerLink="/newsletter" routerLinkActive="active">Newsletter</a>
+        </li>
+        <li class="swiper-slide nav__item">
+          <a class="nav__link" routerLink="/contact" routerLinkActive="active">Contact</a>
         </li>
       </ul>
-    </nav>
-  </div>
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
-  <div class="weather">
-    <img [src]="weatherDiagram">
-  </div>
-</div>
+    </div>
+  </nav>
+</header>
+<main>
+
+  <section class="container">
+
+    <div class="content ">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+  <section>
+    <div class="weather container">
+      <img [src]="weatherDiagram">
+    </div>
+  </section>
+</main>
+<footer class="container">
+  <span class="footer__copy">
+    <h6>&#169; Jakub Popiołek. All rigths reserved</h6>
+  </span>
+
+</footer>
+
+
+
+

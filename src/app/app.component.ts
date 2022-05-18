@@ -11,25 +11,19 @@ import {stringify} from "flatted";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-
   title = 'weather-app';
   weatherDiagram: string = "";
-  weatherInfo$: any = [];
+
 
   constructor(private weather: WeatherService) {
-
-
-
   }
 
   ngOnInit() {
     this.weatherDiagram = this.weather.getWeatherDiagram();
-    // this.weatherInfo$ = this.weather.getWeather();
+    this.weather.getWeather();
 
   }
-  cc(){
 
-  }
 }
 
 

@@ -35,13 +35,15 @@ body,
 }
 
 .slide1 {
-  background-image: url("https://www.synevo.pl/wp-content/uploads/2018/09/laboratorium_sosnowiec-1.jpg");
+  background-image: url("src/photos/sosnowiec_photo1.jpg");
+  height: 100%;
+  width: 100%;
 }
 .slide2 {
-  background-image: url("https://s3.eu-central-1.amazonaws.com/pressland-cms/cache/article_show_cover/ey/1.jpeg");
+  background-image: url("src/photos/sosnowiec_photo2.jpeg");
 }
 .slide3 {
-  background-image: url("https://www.plazasosnowiec.pl/_cache/sites/600-0/crop/01_1.jpg");
+  background-image: url("src/photos/sosnowiec_photo3.jpg");
 }
 
 .slide-content {
@@ -68,15 +70,51 @@ body,
 }
 
 #arrow-left {
-  border-width: 30px 40px 30px 0;
+  border-width: 22px 32px 22px 0;
   border-color: transparent #fff transparent transparent;
   left: 0;
   margin-left: 30px;
 }
 
 #arrow-right {
-  border-width: 30px 0 30px 40px;
+  border-width: 22px 0 22px 32px;
   border-color: transparent transparent transparent #fff;
   right: 0;
   margin-right: 30px;
 }
+@media (min-width: 600px){
+  #arrow-left{
+    border-width: 22px 32px 22px 0;
+  }
+  #arrow-right{
+    border-width: 22px 0 22px 32px;
+  }
+}
+@media (min-width: 800px){
+  #arrow-left{
+    border-width: 25px 35px 25px 0;
+  }
+  #arrow-right{
+    border-width: 25px 0 25px 35px;
+  }
+}
+@media (min-width: 1000px){
+  #arrow-left{
+    border-width: 27px 37px 27px 0;
+  }
+  #arrow-right{
+    border-width: 27px 0 27px 37px;
+  }
+
+}
+@media (min-width: 1200px){
+  #arrow-left{
+    border-width: 30px 40px 30px 0;
+  }
+  #arrow-right{
+    border-width: 30px 0 30px 40px;
+  }
+
+}
+
+

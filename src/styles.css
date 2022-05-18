@@ -1,7 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*VARIABLES*/
+:root {
+  --text-color: #F5F5F5;
+  --second-text-color: 	#ADD8E6;
+  --body-font: 'Montserrat', sans-serif;
+}
+/* BASE*/
+*
+{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+ul
+{
+  list-style: none;
+}
+grid{
+  display: grid;
+  gap: 1.5rem;
+}
 body{
   background-image: url("src/photos/heaven-22.jpg");
-  font-family: 'Fredoka', sans-serif;
+  font-family: var(--body-font);
 }
 .active
 {

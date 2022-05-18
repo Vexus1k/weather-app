@@ -1,4 +1,9 @@
+/*=============GOOGLE FONTS==============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+/*===============INSTALLED FONTS===============*/
 @font-face {
   font-family: 'Fredoka', sans-serif;
   src: url("src/fonts/Fredoka-Light.ttf") format("truetype");
 }
+

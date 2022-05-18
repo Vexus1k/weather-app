@@ -8,6 +8,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { NewsComponent } from './pages/news/news.component';
 import { ClimateChangesComponent } from './pages/climate-changes/climate-changes.component';
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.compo
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

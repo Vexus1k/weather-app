@@ -3,24 +3,34 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+
+    "allowSyntheticDefaultImports": true, //dodane opcje wczoraj nic nie dają
+
+
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "esModuleInterop" : true,
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "allowJs": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
-    "module": "es2020",
     "lib": [
       "es2018",
       "dom"
     ]
   },
+
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

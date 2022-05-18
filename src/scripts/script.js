@@ -55,10 +55,6 @@ function slideRight() {
   current++;
 }
 
-function setup(){
-  loadJSON("https://www.7timer.info/bin/astro.php?lon=19.2&lat=50.3&ac=0&unit=metric&output=json&tzshift=0", gotData)
-}
-
 function gotData(data){
   console.log(data)
 }
@@ -78,6 +74,7 @@ function setSwitchesToSetWindSpeed(data) {
   }
 }
 
+
 function setSwitchesToSetCloudy(data) {
   switch (data)
   {
@@ -93,6 +90,27 @@ function setSwitchesToSetCloudy(data) {
 
   }
 }
+
+let swiperPopular = new Swiper('swipe', {
+  loop: true,
+  spaceBetween: 24,
+  slidesPerView: "auto",
+  grabCursor: true,
+
+  pagination: {
+    el: ".swiper-pagination",
+    dynamicBullets: true,
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 1,
+    },
+    1024: {
+      spaceBetween: 48,
+    },
+  },
+});
+
 
 
 

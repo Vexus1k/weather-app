@@ -32,7 +32,8 @@
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "src/assets/script.js"
+              "src/scripts/script.js",
+              "src/scripts/swiper-bundle.min.js"
 
             ]
           },

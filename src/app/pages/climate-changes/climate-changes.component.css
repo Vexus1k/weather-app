@@ -1,15 +1,62 @@
 .climate-changes
 {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  display: block;
 }
 p
 {
-  padding: 6.7em;
+  padding: 0 4em 4em 4em;
   text-align: justify;
-  font-size: 1rem;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   line-height: 130%;
+}
+h1
+{
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: black;
+  padding-top: 2.7em;
+  font-size: 1rem;
+  margin-bottom: 2em;
+  font-weight: 500;
+}
+@media (min-width: 600px){
+  p{
+    font-size: 0.8rem;
+  }
+  h1
+  {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 800px){
+  p{
+    font-size: 0.85rem;
+  }
+  h1
+  {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 1000px){
+  p{
+    font-size: 0.9rem;
+  }
+  h1
+  {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1800px){
+  p{
+    font-size: 1rem;
+  }
+  h1
+  {
+    font-size: 1.55rem;
+  }
 }
