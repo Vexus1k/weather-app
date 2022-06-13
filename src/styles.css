@@ -5,6 +5,13 @@
   --text-color: #F5F5F5;
   --second-text-color: 	#ADD8E6;
   --body-font: 'Montserrat', sans-serif;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  --font-medium:400;
+  --font-light:300;
+  --font-super-light:200;
+
 }
 /* BASE*/
 *
@@ -13,19 +20,41 @@
   padding: 0;
   margin: 0;
 }
-ul
-{
+body{
+  background-image: url("assets/photos/theme_1.jpg");
+  font-family: var(--body-font);
+  font-weight: var(--font-light);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+}
+.grid{
+  display: grid;
+
+}
+.center__flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
   list-style: none;
 }
-grid{
-  display: grid;
-  gap: 1.5rem;
+
+a {
+  text-decoration: none;
 }
-body{
-  background-image: url("src/photos/heaven-22.jpg");
-  font-family: var(--body-font);
+
+img {
+  max-width: 100%;
+  height: auto;
 }
-.active
-{
-  color: green;
+.join__rows{
+  grid-row: span 2;
+}
+.order__rows{
+  order: -1;
 }

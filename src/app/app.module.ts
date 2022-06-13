@@ -3,30 +3,41 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PhotosComponent } from './pages/photos/photos.component';
 
-import { NewsComponent } from './pages/news/news.component';
-import { ClimateChangesComponent } from './pages/climate-changes/climate-changes.component';
-import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {SwiperModule} from "swiper/angular";
+import {HeaderComponent} from "./shared/layout/header/header.component";
+import { LoginCubeSectionComponent } from './shared/layout/login-cube-section/login-cube-section.component';
+import { ForecastWidgetComponent } from './shared/layout/forecast-widget/forecast-widget.component';
+import { WindWidgetComponent } from './shared/layout/wind-widget/wind-widget.component';
+import { PrecipitationsWidgetComponent } from './shared/layout/precipitations-widget/precipitations-widget.component';
+import { SunMoonWidgetComponent } from './shared/layout/sun-moon-widget/sun-moon-widget.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhotosComponent,
-    NewsComponent,
-    ClimateChangesComponent,
-    PageNotFoundComponent
+    HeaderComponent,
+    LoginCubeSectionComponent,
+    ForecastWidgetComponent,
+    WindWidgetComponent,
+    PrecipitationsWidgetComponent,
+    SunMoonWidgetComponent,
 
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SwiperModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

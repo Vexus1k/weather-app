@@ -1,0 +1,477 @@
+/*--------------------------------Login------------------------------------*/
+.parameter__login
+{
+
+  display: grid;
+  background-color: rgb(176,176,176, 0.7);
+  padding: 3.9rem 2.2rem;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1.5rem;
+}
+.login{
+  display: grid;
+  row-gap: 1rem;
+  color: var(--text-color);
+
+  font-weight: var(--font-super-light);
+}
+.registry{
+  display: grid;
+  row-gap: 1rem;
+  color: var(--text-color);
+  font-weight: var(--font-super-light);
+}
+.login h2, .registry h2{
+  font-size: 1rem;
+}
+.login-button{
+  position: relative;
+  height: 46px;
+  width: 148px;
+  border: none;
+  outline: none;
+  color: white;
+  background: rgb(245,255,250, 0.4);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  border-radius: .75rem;
+  font-size: .8rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: var(--font-medium);
+  letter-spacing: 1px;
+}
+.login-button:before{
+  position: absolute;
+  content: '';
+  top: -2px;
+  left: -2px;
+  height: calc(100% + 4px);
+  width: calc(100% + 4px);
+  border-radius: .75rem;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(5px);
+  background: linear-gradient(45deg, #1dccc5, #00ffff, #00ffd5);
+  background-size: 400%;
+  transition: opacity .3s ease-in-out;
+  animation: animate 20s linear infinite;
+}
+.login-button:hover:before{
+  opacity: 1;
+}
+.login-button:hover:active{
+  background: none;
+}
+.login-button:hover:active:before{
+  filter: blur(2px);
+}
+@keyframes animate {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+/*----------------------------Parameter------------------------*/
+.swiper__container{
+  margin: 0 auto;
+  width: 230px;
+  height: 230px;
+}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 0;
+}
+
+.swiper-container-horizontal >>> .swiper-pagination >>> .swiper-pagination-bullet {
+  opacity: 0.45;
+  background: #FFF!important;
+}
+.swiper-container-horizontal >>> .swiper-pagination >>> .swiper-pagination-bullet-active {
+  background: white!important;
+  opacity: 1;
+}
+
+.swiper__cube-img{
+  height: 230px;
+  border-radius: 1.5rem;
+}
+/*Setting for weather icon SVG parameter*/
+.element {
+  height: 32px;
+  width: 32px;
+
+}
+.elements {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+.white {fill:#FFFFFF}
+.gray {fill:#E0E0E0}
+.yellow {fill:#FFEB3B}
+/**/
+.parameter{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 1.8rem;
+  flex-direction: column;
+}
+.parameter__container{
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  justify-content: center;
+  align-items: center;
+  height: 230px;
+  background-color: rgb(176,176,176, 0.7);
+  backdrop-filter: blur(1px);
+  border-radius: 1.5rem;
+
+}
+.parameter__part{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.parameter__status{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: .525rem;
+  font-weight: var(--font-medium);
+  font-size: 1rem;
+}
+.parameter__temperatures
+{
+  display: flex;
+  column-gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+.highest__temperature, .lowest__temperature{
+  display: inline-flex;
+  font-size: 1.2rem;
+}
+
+.highest__temperature i:first-child, .lowest__temperature i:first-child
+{
+  margin-right: 1.2rem;
+  font-size: 1.45rem;
+
+}
+.highest__temperature i:last-child, .lowest__temperature i:last-child
+{
+  margin-left: .1rem;
+  font-size: 1.4rem;
+}
+.parameter__temp
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+  font-size: 5.8rem;
+  font-weight: var(--font-super-light);
+}
+.parameter__temp i
+{
+  margin-left: .5rem;
+}
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+  .login-button{
+    width: 132px;
+    font-size: .7rem;
+    height: 42px;
+  }
+  .login h2, .registry h2{
+    font-size: .9rem;
+  }
+  .swiper__container{
+    width: 210px;
+    height: 210px;
+  }
+  .parameter{
+    row-gap: 2.6rem;
+  }
+  .parameter__login{
+    row-gap: 1rem;
+    padding: 3.5rem 2rem;
+  }
+  .parameter__part{
+    width: 210px;
+    height: 210px;
+  }
+  .parameter__container{
+    height: 210px;
+  }
+  .swiper__cube-img{
+    height: 210px;
+  }
+  .parameter__status{
+    font-size: .95rem;
+  }
+  .highest__temperature, .lowest__temperature{
+    font-size: 1.2rem;
+  }
+  .highest__temperature i:first-child, .lowest__temperature i:first-child{
+    margin-right: .75rem;
+  }
+  .parameter__temp{
+    font-size: 5.55rem;
+  }
+  .element{
+    width: 27px;
+    height: 27px;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .parameter{
+    row-gap: 3.5rem;
+  }
+  .parameter__login{
+    row-gap: 2rem;
+    padding: 4.5rem 3.5rem;
+  }
+  .login-button{
+    width: 155px;
+    height: 52px;
+    font-size: .95rem;
+  }
+  .login h2, .registry h2{
+    font-size: 1.2rem;
+  }
+  .swiper__container{
+    width: 285px;
+    height: 285px;
+  }
+  .swiper__cube-img{
+    width: 285px;
+    height: 285px;
+  }
+  .parameter__container{
+    height: 285px;
+  }
+  .parameter__status{
+    font-size: 1.25rem;
+  }
+  .element{
+    width: 42px;
+    height: 42px;
+  }
+
+  .highest__temperature, .lowest__temperature{
+    font-size: 1.7rem;
+  }
+  .highest__temperature, .lowest__temperature{
+    font-size: 1.65rem;
+  }
+  .highest__temperature i:first-child, .lowest__temperature i:first-child
+  {
+    font-size: 2.1rem;
+  }
+  .parameter__temp{
+    font-size: 6.5rem;
+  }
+}
+@media screen and (min-width: 767px){
+  .parameter{
+    row-gap: 4rem;
+  }
+  .parameter__login{
+    row-gap: 2.5rem;
+    padding: 5rem 4rem;
+  }
+  .login-button{
+    width: 160px;
+    height: 54px;
+    font-size: 1.05rem;
+  }
+  .login h2, .registry h2{
+    font-size: 1.3rem;
+  }
+  .swiper__container{
+    width: 310px;
+    height: 310px;
+  }
+  .swiper__cube-img{
+    width: 310px;
+    height: 310px;
+  }
+  .parameter__container{
+    height: 310px;
+  }
+  .parameter__status{
+    font-size: 1.375rem;
+  }
+  .element{
+    width: 44px;
+    height: 44px;
+  }
+  .highest__temperature, .lowest__temperature{
+    font-size: 1.8rem;
+  }
+  .highest__temperature i:first-child, .lowest__temperature i:first-child
+  {
+    font-size: 2.2rem;
+  }
+  .highest__temperature i:last-child, .lowest__temperature i:last-child
+  {
+    margin-left: .1rem;
+    font-size: 1.8rem;
+  }
+  .parameter__temp{
+    font-size: 6.8rem;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1040px){
+  .parameter{
+    row-gap: 4.15rem;
+  }
+  .parameter__login{
+    row-gap: 2.8rem;
+    padding: 5.5rem 4.25rem;
+  }
+  .login-button{
+    width: 170px;
+    height: 56px;
+    font-size: 1.05rem;
+  }
+  .login h2, .registry h2{
+    font-size: 1.35rem;
+  }
+  .swiper__container{
+    width: 325px;
+    height: 325px;
+  }
+  .swiper__cube-img{
+    width: 325px;
+    height: 325px;
+  }
+  .parameter__container{
+    height: 325px;
+  }
+  .parameter__status{
+    font-size: 1.425rem;
+  }
+  .element{
+    width: 46px;
+    height: 46px;
+  }
+  .highest__temperature, .lowest__temperature{
+    font-size: 2rem;
+  }
+  .highest__temperature i:first-child, .lowest__temperature i:first-child
+  {
+    font-size: 2.4rem;
+  }
+  .highest__temperature i:last-child, .lowest__temperature i:last-child
+  {
+    margin-left: .1rem;
+    font-size: 2rem;
+  }
+  .parameter__temp{
+    font-size: 7.2rem;
+  }
+}
+@media screen and (min-width: 1600px){
+  .parameter__login{
+    padding: 8.021rem 4rem;
+  }
+  .parameter{
+    row-gap: 2.2rem;
+  }
+  .swiper__container{
+    width: 265px;
+    height: 265px;
+  }
+  .swiper__cube-img{
+    width: 265px;
+    height: 265px;
+  }
+  .parameter__container{
+    height: 265px;
+  }
+  .parameter__status{
+    font-size: 1.2rem;
+  }
+
+  .element{
+    width: 36px;
+    height: 36px;
+  }
+  .highest__temperature, .lowest__temperature{
+    font-size: 1.55rem;
+  }
+  .highest__temperature i:first-child, .lowest__temperature i:first-child
+  {
+    font-size: 1.75rem;
+  }
+  .highest__temperature i:last-child, .lowest__temperature i:last-child
+  {
+    margin-left: .1rem;
+    font-size: 1.35rem;
+  }
+  .parameter__temp{
+    font-size: 5.35rem;
+  }
+}
+@media screen and (min-width: 2200px){
+  .parameter__login{
+    padding: 7.642rem 4rem;
+    row-gap: 3.6rem;
+  }
+  .login-button{
+    width: 182px;
+    height: 60px;
+    font-size: 1.1rem;
+  }
+  .login h2, .registry h2{
+    font-size: 1.5rem;
+  }
+  .parameter{
+    row-gap: 2.45rem;
+  }
+  .swiper__container{
+    width: 295px;
+    height: 295px;
+  }
+  .swiper__cube-img{
+    width: 295px;
+    height: 295px;
+  }
+  .parameter__container{
+    height: 295px;
+  }
+  .parameter__status{
+    font-size: 1.4rem;
+  }
+  .element{
+    width: 40px;
+    height: 40px;
+  }
+  .highest__temperature, .lowest__temperature{
+    font-size: 1.75rem;
+  }
+  .highest__temperature i:first-child, .lowest__temperature i:first-child
+  {
+    font-size: 1.9rem;
+  }
+  .highest__temperature i:last-child, .lowest__temperature i:last-child
+  {
+    margin-left: .1rem;
+    font-size: 1.65rem;
+  }
+  .parameter__temp{
+    font-size: 6rem;
+  }
+}
