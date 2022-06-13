@@ -1,0 +1,211 @@
+<article class="forecast__widget">
+  <div class="forecast">
+    <a class="next" (click)="onReachEndNavigationTemp()"></a>
+    <a class="prev"></a>
+    <div class="forecast__title">
+      <h3>Forecast</h3>
+    </div>
+    <div class="forecast__temperature-box">
+      <div class="forecast__container">
+        <swiper
+          #navigationSwiper
+          [config]="navigationConfig"
+          [navigation] = true
+          class="swiper__navigation">
+
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              11PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              12PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              13PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              13PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              13PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              13PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              13PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              13PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="forecast__item ">
+              13PM <i class="wi wi-day-windy"></i>
+              <p>24<i class="wi wi-degrees"></i></p>
+
+            </div>
+          </ng-template>
+        </swiper>
+      </div>
+    </div>
+    <div class="temperature__stages-box">
+      <swiper
+        #mySwiper
+        [config]="temperatureListConfig"
+        class="temperature__stages-swiper"
+        id="temperature__stages-swiper"
+      >
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Monday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Tuesday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Wed. <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Thursday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Friday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Saturday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Sunday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Monday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Tuesday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Wed. <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Thursday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Friday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top">
+            Saturday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="temperature__stages border__top" id="locationForArrow">
+            Sunday <i class="wi wi-day-cloudy-gusts"></i>
+            <div class="temperature__hot-cold">
+              <p>24<i class="wi wi-degrees"></i></p>
+              <p>14<i class="wi wi-degrees"></i></p>
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+  <div class="arrow" id="arrow" (click)="onReachEnd()"><a><i class="ri-arrow-down-line"></i></a></div>
+</article>

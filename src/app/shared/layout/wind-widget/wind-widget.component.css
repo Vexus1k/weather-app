@@ -1,0 +1,226 @@
+/*----------------------------------------WIDGET #1-----------------------------------*/
+.parameter__title
+{
+  border-bottom: 1px solid white;
+  color: var(--text-color);
+  font-weight: var(--font-super-light);
+  letter-spacing: 1px;
+
+}
+.parameter__title h3
+{
+  margin-bottom: .75rem;
+  font-size: 1.17rem;
+}
+.parameter__wind
+{
+  width: 330px;
+  height: 500px;
+  background-color: rgb(88,88,88, 0.35);
+  backdrop-filter: blur(2px);
+  padding: 1.6rem 1.6rem 0 1.6rem;
+
+}
+.parameter__wind-container
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  row-gap: 3rem;
+  padding-top: 1.5rem;
+  width: 100%;
+  flex-direction: column;
+
+}
+.windmill
+{
+
+  width: 125px;
+  height: 130px;
+}
+.wind__box{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5rem;
+}
+.wind__speed-bar
+{
+  display: flex;
+  flex-direction: row;
+  column-gap: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .9rem;
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+
+}
+.wind__speed-img
+{
+  height: 55px;
+}
+.wind__speed-bar p
+{
+  font-size: 1.2rem;
+
+}
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+  .parameter__wind{
+    width:264px;
+    height: 500px;
+    padding: 1.6rem;
+  }
+  .parameter__title h3{
+    font-size: 1rem;
+  }
+  .parameter__wind-container{
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 0;
+    margin-top: 2.5rem;
+    flex-direction: column;
+    height: auto;
+  }
+  .windmill{
+    width: 115px;
+    height: 120px;
+  }
+  .wind__box{
+    display: flex;
+    row-gap: 4rem;
+    flex-direction: column;
+  }
+  .wind__speed-bar
+  {
+    column-gap: 2rem;
+    font-size: .75rem;
+    justify-content: center;
+    flex-direction: row;
+    font-weight: var(--font-light);
+  }
+  .wind__speed-bar p{
+    font-size: 1rem;
+    font-weight: var(--font-medium);
+    margin-top: .2rem;
+  }
+  .wind__speed-img{
+    width: 50px;
+    height: 50px;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .parameter__wind-container{
+    row-gap: 3.5rem;
+  }
+  .parameter__wind{
+    width: 376px;
+    height: 550px;
+  }
+  .parameter__title h3{
+    font-size: 1.27rem;
+  }
+  .windmill{
+    width: 150px;
+    height: 150px;
+  }
+  .wind__speed-bar{
+    font-size: 1rem;
+  }
+  .wind__speed-bar p {
+    font-size: 1.3rem;
+  }
+  .wind__speed-img{
+    height: 60px;
+  }
+}
+@media screen and (min-width: 767px){
+  .parameter__wind-container{
+    row-gap: 4rem;
+  }
+  .parameter__wind{
+    width: 404px;
+    height: 570px;
+  }
+  .parameter__title h3{
+    font-size: 1.34rem;
+  }
+  .windmill{
+    width: 157px;
+    height: 157px;
+  }
+  .wind__speed-bar{
+    font-size: 1.175rem;
+  }
+  .wind__speed-bar p {
+    font-size: 1.5rem;
+  }
+  .wind__speed-img{
+    height: 67px;
+  }
+}
+@media screen and (min-width: 1040px){
+  .parameter__wind-container{
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding-top: .4rem;
+  }
+  .parameter__wind{
+    width: 500px;
+    height: 190px;
+  }
+  .parameter__title h3{
+    font-size: 1.3rem;
+  }
+  .windmill{
+    width: 110px;
+    height: 110px;
+  }
+  .wind__box{
+    row-gap:.35rem;
+  }
+  .wind__speed-bar{
+    font-size: .9rem;
+    justify-content: center;
+  }
+  .wind__speed-bar p {
+    font-size: 1.075rem;
+  }
+  .wind__speed-img{
+    height: 45px;
+  }
+}
+@media screen and (min-width: 2200px){
+  .parameter__wind{
+
+    height: 655px;
+    width: 340px;
+
+  }
+  .parameter__wind-container{
+
+    flex-direction: column;
+    row-gap: 7.5rem;
+    padding-top: 3rem;
+  }
+  .wind__box{
+    row-gap: 3.5rem;
+  }
+  .windmill{
+    width: 158px;
+    height: 164px;
+  }
+  .wind__speed-bar{
+    font-size: 1.12rem;
+  }
+  .wind__speed-bar p {
+    font-size: 1.4rem;
+  }
+  .wind__speed-img{
+    height: 67px;
+  }
+}

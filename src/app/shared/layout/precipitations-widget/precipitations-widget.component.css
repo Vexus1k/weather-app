@@ -1,0 +1,194 @@
+/*----------------------------------------WIDGET #2-----------------------------------*/
+.drop-of-water{
+
+  height: 37px;
+}
+.parameter__precipitation
+{
+  width: 330px;
+  height: 560px;
+  background-color: rgb(88,88,88, 0.35);
+  backdrop-filter: blur(2px);
+  padding: 1.6rem 1.6rem 0 1.6rem;
+
+}
+.parameter__title
+{
+  border-bottom: 1px solid white;
+  color: var(--text-color);
+  font-weight: var(--font-super-light);
+  letter-spacing: 1px;
+
+}
+.parameter__title h3
+{
+  margin-bottom: .75rem;
+  font-size: 1.17rem;
+}
+.parameter__precipitation-container
+{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+  padding-top: 1.2rem;
+  width: 100%;
+  row-gap: .6rem;
+  font-weight: var(--font-medium);
+}
+.parameter__precipitation-item
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  row-gap: .285rem;
+  border-top: 1px dotted white;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1.4rem;
+
+
+}
+
+.parameter__precipitation-item:first-child
+{
+  border-top: 0;
+}
+.parameter__precipitation-item p:first-child{
+  padding-top: .6rem;
+}
+.parameter__precipitation-item p:last-child
+{
+  font-size: 1.1rem;
+}
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+  .parameter__precipitation{
+    width: 264px;
+    height: auto;
+    padding: 1.6rem;
+
+  }
+  .parameter__precipitation-item{
+    border-top: 1px dotted white;
+    border-left: 0;
+    width: 45%;
+    font-size: 1.2rem;
+  }
+  .parameter__precipitation-item:first-child
+  {
+    border-top: 0;
+  }
+  .parameter__precipitation-item p:last-child
+  {
+    font-size: .95rem;
+  }
+  .parameter__precipitation-item p:first-child{
+    padding-top: .55rem
+  }
+  .parameter__precipitation-container{
+    border-left: 0;
+    flex-direction: column;
+    align-items: center;
+    row-gap: .55rem;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .parameter__precipitation-container{
+    row-gap: .65rem;
+  }
+  .parameter__precipitation{
+    width: 376px;
+    height: 600px;
+  }
+  .parameter__precipitation-item{
+    font-size: 1.5rem;
+  }
+  .parameter__precipitation-item p:last-child{
+    font-size: 1.25rem;
+  }
+  .drop-of-water{
+    height: 40px;
+  }
+}
+@media screen and (min-width: 767px){
+  .parameter__precipitation-container{
+    row-gap: .75rem;
+  }
+  .parameter__precipitation{
+    width: 404px;
+    height: 670px;
+  }
+  .parameter__precipitation-item{
+    font-size: 1.6rem;
+  }
+  .parameter__precipitation-item p:last-child{
+    font-size: 1.365rem;
+  }
+  .drop-of-water{
+    height: 46px;
+  }
+}
+@media screen and (min-width: 1040px){
+  .parameter__precipitation-container{
+    padding-top: .8rem;
+    flex-direction: row;
+    row-gap: .75rem;
+  }
+  .parameter__precipitation{
+    width: 500px;
+    height: 175px;
+  }
+  .parameter__precipitation-item{
+    width: 25%;
+    font-size: 1.25rem;
+    border-top: 0;
+    border-left: 1px dotted white;
+  }
+  .parameter__precipitation-item:first-child{
+    border-left: 0;
+  }
+  .parameter__precipitation-item p:first-child{
+    padding-top: 0;
+  }
+  .parameter__precipitation-item p:last-child{
+    font-size: 1rem;
+  }
+  .drop-of-water{
+    height: 32px;
+  }
+}
+@media screen and (min-width: 2200px){
+  .parameter__precipitation{
+
+    width: 550px;
+    height: 220px;
+  }
+  .parameter__precipitation-container{
+    padding-top: 1.4rem;
+    flex-direction: row;
+    row-gap: .75rem;
+  }
+  .parameter__precipitation-item{
+    width: 25%;
+    font-size: 1.325rem;
+    border-top: 0;
+    border-left: 1px dotted white;
+  }
+  .parameter__precipitation-item:first-child{
+    border-left: 0;
+  }
+  .parameter__precipitation-item p:first-child{
+    padding-top: 0;
+  }
+  .parameter__precipitation-item p:last-child{
+    font-size: 1.2rem;
+  }
+  .drop-of-water{
+    height: 38px;
+  }
+}
