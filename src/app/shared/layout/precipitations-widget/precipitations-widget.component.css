@@ -1,11 +1,11 @@
 /*----------------------------------------WIDGET #2-----------------------------------*/
 .drop-of-water{
 
-  height: 37px;
+  height: 36px;
 }
 .parameter__precipitation
 {
-  width: 330px;
+  width: 314px;
   height: 560px;
   background-color: rgb(88,88,88, 0.35);
   backdrop-filter: blur(2px);
@@ -23,7 +23,7 @@
 .parameter__title h3
 {
   margin-bottom: .75rem;
-  font-size: 1.17rem;
+  font-size: 1.125rem;
 }
 .parameter__precipitation-container
 {
@@ -47,7 +47,7 @@
   border-top: 1px dotted white;
   text-align: center;
   color: var(--text-color);
-  font-size: 1.4rem;
+  font-size: 1.325rem;
 
 
 }
@@ -61,7 +61,7 @@
 }
 .parameter__precipitation-item p:last-child
 {
-  font-size: 1.1rem;
+  font-size: 1.075rem;
 }
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
@@ -72,11 +72,14 @@
     padding: 1.6rem;
 
   }
+  .parameter__title h3{
+    font-size: 1.03rem;
+  }
   .parameter__precipitation-item{
     border-top: 1px dotted white;
     border-left: 0;
     width: 45%;
-    font-size: 1.2rem;
+    font-size: 1.175rem;
   }
   .parameter__precipitation-item:first-child
   {
@@ -84,7 +87,7 @@
   }
   .parameter__precipitation-item p:last-child
   {
-    font-size: .95rem;
+    font-size: .925rem;
   }
   .parameter__precipitation-item p:first-child{
     padding-top: .55rem
@@ -95,49 +98,69 @@
     align-items: center;
     row-gap: .55rem;
   }
+  .drop-of-water{
+    height: 34px;
+  }
 }
 /* For medium devices */
 @media screen and (min-width: 576px){
   .parameter__precipitation-container{
-    row-gap: .65rem;
+    row-gap: 1.05rem;
   }
   .parameter__precipitation{
-    width: 376px;
+    width: 365px;
     height: 600px;
+  }
+  .parameter__precipitation-item{
+    font-size: 1.4rem;
+
+  }
+  .parameter__title h3{
+    font-size: 1.215rem;
+  }
+  .parameter__precipitation-item p:first-child{
+    row-gap: 1.05rem;
+  }
+  .parameter__precipitation-item p:last-child{
+    font-size: 1.22rem;
+
+  }
+  .drop-of-water{
+    height: 37px;
+  }
+}
+@media screen and (min-width: 767px){
+  .parameter__precipitation-container {
+    row-gap: 1.2rem;
+  }
+  .parameter__title h3{
+    font-size: 1.325rem;
+  }
+  .parameter__precipitation-item p:first-child{
+    row-gap: 1.2rem;
+  }
+  .parameter__precipitation{
+    width: 396px;
+    height: 650px;
   }
   .parameter__precipitation-item{
     font-size: 1.5rem;
   }
   .parameter__precipitation-item p:last-child{
-    font-size: 1.25rem;
+    font-size: 1.265rem;
   }
   .drop-of-water{
-    height: 40px;
-  }
-}
-@media screen and (min-width: 767px){
-  .parameter__precipitation-container{
-    row-gap: .75rem;
-  }
-  .parameter__precipitation{
-    width: 404px;
-    height: 670px;
-  }
-  .parameter__precipitation-item{
-    font-size: 1.6rem;
-  }
-  .parameter__precipitation-item p:last-child{
-    font-size: 1.365rem;
-  }
-  .drop-of-water{
-    height: 46px;
+    height: 42px;
   }
 }
 @media screen and (min-width: 1040px){
+  .parameter__title h3{
+    font-size: 1.295rem;
+  }
   .parameter__precipitation-container{
     padding-top: .8rem;
     flex-direction: row;
-    row-gap: .75rem;
+    row-gap: .55rem;
   }
   .parameter__precipitation{
     width: 500px;
@@ -145,7 +168,7 @@
   }
   .parameter__precipitation-item{
     width: 25%;
-    font-size: 1.25rem;
+    font-size: 1.225rem;
     border-top: 0;
     border-left: 1px dotted white;
   }
@@ -156,7 +179,7 @@
     padding-top: 0;
   }
   .parameter__precipitation-item p:last-child{
-    font-size: 1rem;
+    font-size: .975rem;
   }
   .drop-of-water{
     height: 32px;
@@ -166,16 +189,16 @@
   .parameter__precipitation{
 
     width: 550px;
-    height: 220px;
+    height: 225px;
   }
   .parameter__precipitation-container{
-    padding-top: 1.4rem;
+    padding-top: 1.5rem;
     flex-direction: row;
     row-gap: .75rem;
   }
   .parameter__precipitation-item{
     width: 25%;
-    font-size: 1.325rem;
+    font-size: 1.425rem;
     border-top: 0;
     border-left: 1px dotted white;
   }
@@ -186,9 +209,12 @@
     padding-top: 0;
   }
   .parameter__precipitation-item p:last-child{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   .drop-of-water{
-    height: 38px;
+    height: 40px;
+  }
+  .parameter__title h3{
+    font-size: 1.31rem;
   }
 }

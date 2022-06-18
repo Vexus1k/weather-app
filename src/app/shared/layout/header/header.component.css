@@ -1,14 +1,19 @@
+
 .header
 {
   width: 100%;
   background-color:rgb(105,105,105, 0.2);
   backdrop-filter: blur(2px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 .nav
 {
   display: flex;
   justify-content: space-between;
-  padding: .75rem 1rem;
+  padding: .95rem .6rem;
   align-items: center;
 }
 .search-box{
@@ -23,14 +28,13 @@
   height: 40px;
   width: 40px;
   border-style: none;
-  padding: 10px;
-  font-size: 1.125rem;
+  padding: 10px 10px 10px 40px;
+  font-size: 1rem;
   letter-spacing: 2px;
   outline: none;
   border-radius: 50%;
   transition: all .5s ease-in-out;
   background-color: transparent;
-  padding-right: 40px;
   color:#fff;
 }
 .input-search::placeholder{
@@ -52,7 +56,7 @@
   cursor: pointer;
   border-radius: 50%;
   position: absolute;
-  right: 0px;
+  left: 0;
   color:#ffffff ;
   background-color:transparent;
   pointer-events: painted;
@@ -99,12 +103,14 @@
   letter-spacing: 2px;
   row-gap: .25rem;
 }
+
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px){
   .nav
   {
-    padding: .65rem .75rem;
+    padding: .9rem .5rem;
   }
   .nav__title
   {
@@ -128,7 +134,7 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-
+    font-size: .95rem;
 
   }
   .input-search::placeholder
@@ -148,6 +154,12 @@
   .nav__title{
     font-size: .825rem;
   }
+  .nav{
+    padding: 1rem .8rem;
+  }
+  .input-search{
+    font-size: 1.12rem;
+  }
   .input-search::placeholder{
     font-size: .87rem;
   }
@@ -163,8 +175,14 @@
   .nav__title{
     font-size: .925rem;
   }
+  .nav{
+    padding: 1.05rem 1rem;
+  }
+  .input-search{
+    font-size: 1.175rem;
+  }
   .input-search::placeholder{
-    font-size: .97rem;
+    font-size: .95rem;
   }
   .btn-search:focus ~ .input-search, .input-search:focus{
     width: 230px;
@@ -176,21 +194,69 @@
 /* For large devices */
 @media screen and (min-width: 1040px) {
   .nav__title{
-    font-size: 1rem;
+    font-size: 1.02rem;
+  }
+  .nav{
+    padding: .995rem 1.2rem;
+  }
+  .input-search{
+    width: 43px;
+    height: 43px;
+    padding-left: 43px;
+    font-size: 1.33rem;
   }
   .input-search::placeholder{
-    font-size: 1rem;
+    font-size: .975rem;
   }
   .btn-search:focus ~ .input-search, .input-search:focus{
     width: 250px;
+  }
+  .nav__item i, .btn-search{
+    font-size: 1.55rem;
+  }
+}
+@media screen and (min-width: 1600px){
+  .nav__title{
+    font-size: 1.07rem;
+  }
+  .nav{
+    padding: 1.1rem 1.4rem;
+  }
+  .input-search{
+    width: 45px;
+    height: 45px;
+    padding-left: 45px;
+    font-size: 1.35rem;
+  }
+  .input-search::placeholder{
+    font-size: 1rem;
   }
   .nav__item i, .btn-search{
     font-size: 1.65rem;
   }
 }
 @media screen and (min-width: 2200px) {
+  .nav{
+    padding: 1.15rem 1.6rem;
+  }
   .nav__title
   {
-    font-size: 1.075rem;
+    font-size: 1.1rem;
   }
+  .input-search{
+    width: 50px;
+    height: 50px;
+    padding-left: 45px;
+    font-size: 1.45rem;
+  }
+  .input-search::placeholder{
+    font-size: 1.1rem;
+  }
+  .btn-search:focus ~ .input-search, .input-search:focus{
+    width: 270px;
+  }
+  .nav__item i, .btn-search{
+    font-size: 1.65rem;
+  }
+
 }

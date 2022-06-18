@@ -10,12 +10,12 @@
 .parameter__title h3
 {
   margin-bottom: .75rem;
-  font-size: 1.17rem;
+  font-size: 1.125rem;
 }
 .parameter__wind
 {
-  width: 330px;
-  height: 500px;
+  width: 314px;
+  height: 480px;
   background-color: rgb(88,88,88, 0.35);
   backdrop-filter: blur(2px);
   padding: 1.6rem 1.6rem 0 1.6rem;
@@ -41,7 +41,7 @@
 .wind__box{
   display: flex;
   flex-direction: column;
-  row-gap: 5rem;
+  row-gap: 3.5rem;
 }
 .wind__speed-bar
 {
@@ -50,31 +50,32 @@
   column-gap: 3rem;
   align-items: center;
   justify-content: space-between;
-  font-size: .9rem;
   color: var(--text-color);
   font-weight: var(--font-medium);
-
 }
 .wind__speed-img
 {
   height: 55px;
 }
-.wind__speed-bar p
+.wind__speed-bar-params{
+  font-size: .95rem;
+}
+.wind__speed-bar-params p
 {
   font-size: 1.2rem;
-
 }
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px){
+  .parameter__title h3{
+    font-size: 1.03rem;
+  }
   .parameter__wind{
     width:264px;
-    height: 500px;
+    height: 470px;
     padding: 1.6rem;
   }
-  .parameter__title h3{
-    font-size: 1rem;
-  }
+
   .parameter__wind-container{
     justify-content: space-between;
     align-items: center;
@@ -85,7 +86,7 @@
     height: auto;
   }
   .windmill{
-    width: 115px;
+    width: 110px;
     height: 120px;
   }
   .wind__box{
@@ -96,73 +97,83 @@
   .wind__speed-bar
   {
     column-gap: 2rem;
-    font-size: .75rem;
     justify-content: center;
     flex-direction: row;
     font-weight: var(--font-light);
   }
-  .wind__speed-bar p{
-    font-size: 1rem;
-    font-weight: var(--font-medium);
-    margin-top: .2rem;
+  .wind__speed-bar-params{
+    font-size: .9rem;
+  }
+  .wind__speed-bar-params p
+  {
+    font-size: 1.15rem;
   }
   .wind__speed-img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 }
 /* For medium devices */
 @media screen and (min-width: 576px){
+  .parameter__title h3{
+    font-size: 1.215rem;
+  }
   .parameter__wind-container{
     row-gap: 3.5rem;
   }
   .parameter__wind{
-    width: 376px;
-    height: 550px;
+    width: 365px;
+    height: 530px;
   }
-  .parameter__title h3{
-    font-size: 1.27rem;
-  }
+
   .windmill{
-    width: 150px;
-    height: 150px;
+    width: 135px;
+    height: 155px;
   }
-  .wind__speed-bar{
+
+  .wind__speed-img{
+    height: 55px;
+  }
+  .wind__speed-bar-params{
     font-size: 1rem;
   }
-  .wind__speed-bar p {
+  .wind__speed-bar-params p
+  {
     font-size: 1.3rem;
+  }
+}
+@media screen and (min-width: 767px){
+  .parameter__title h3{
+    font-size: 1.325rem;
+  }
+  .parameter__wind-container{
+    row-gap: 4rem;
+  }
+  .parameter__wind{
+    width: 396px;
+    height: 570px;
+  }
+
+  .windmill{
+    width: 157px;
+    height: 157px;
+  }
+
+  .wind__speed-bar-params{
+    font-size: 1.175rem;
+  }
+  .wind__speed-bar-params p
+  {
+    font-size: 1.45rem;
   }
   .wind__speed-img{
     height: 60px;
   }
 }
-@media screen and (min-width: 767px){
-  .parameter__wind-container{
-    row-gap: 4rem;
-  }
-  .parameter__wind{
-    width: 404px;
-    height: 570px;
-  }
-  .parameter__title h3{
-    font-size: 1.34rem;
-  }
-  .windmill{
-    width: 157px;
-    height: 157px;
-  }
-  .wind__speed-bar{
-    font-size: 1.175rem;
-  }
-  .wind__speed-bar p {
-    font-size: 1.5rem;
-  }
-  .wind__speed-img{
-    height: 67px;
-  }
-}
 @media screen and (min-width: 1040px){
+  .parameter__title h3{
+    font-size: 1.295rem;
+  }
   .parameter__wind-container{
     justify-content: space-around;
     align-items: center;
@@ -173,9 +184,6 @@
     width: 500px;
     height: 190px;
   }
-  .parameter__title h3{
-    font-size: 1.3rem;
-  }
   .windmill{
     width: 110px;
     height: 110px;
@@ -183,44 +191,51 @@
   .wind__box{
     row-gap:.35rem;
   }
-  .wind__speed-bar{
-    font-size: .9rem;
+
+  .wind__speed-bar-params{
+    font-size: .95rem;
     justify-content: center;
   }
-  .wind__speed-bar p {
-    font-size: 1.075rem;
+  .wind__speed-bar-params p {
+    font-size: 1.1rem;
   }
   .wind__speed-img{
-    height: 45px;
+    height: 43px;
   }
 }
 @media screen and (min-width: 2200px){
+  .parameter__title h3{
+    font-size: 1.3rem;
+  }
   .parameter__wind{
 
-    height: 655px;
-    width: 340px;
+    height: 755px;
+    width: 360px;
 
   }
   .parameter__wind-container{
 
     flex-direction: column;
-    row-gap: 7.5rem;
+    row-gap: 7rem;
     padding-top: 3rem;
   }
   .wind__box{
-    row-gap: 3.5rem;
+    row-gap: 6rem;
   }
   .windmill{
-    width: 158px;
-    height: 164px;
+    width: 178px;
+    height: 200px;
   }
-  .wind__speed-bar{
-    font-size: 1.12rem;
+  .wind__speed-bar-params{
+    font-size: 1.18rem;
   }
-  .wind__speed-bar p {
-    font-size: 1.4rem;
+  .wind__speed-bar-params p {
+    font-size: 1.55rem;
   }
   .wind__speed-img{
-    height: 67px;
+    height: 65px;
+  }
+  .parameter__title h3{
+    font-size: 1.31rem;
   }
 }

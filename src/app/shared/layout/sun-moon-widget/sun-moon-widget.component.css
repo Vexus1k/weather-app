@@ -10,11 +10,11 @@
 .parameter__title h3
 {
   margin-bottom: .75rem;
-  font-size: 1.17rem;
+  font-size: 1.125rem;
 }
 .parameter__soon-moon
 {
-  width: 330px;
+  width: 314px;
   height: 225px;
   background-color: rgb(88,88,88, 0.35);
   backdrop-filter: blur(2px);
@@ -63,6 +63,9 @@
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px){
+  .parameter__title h3{
+    font-size: 1.03rem;
+  }
   #svg__sun-graph{
 
     height: 80px;
@@ -85,8 +88,11 @@
 }
 /* For medium devices */
 @media screen and (min-width: 576px){
+  .parameter__title h3{
+    font-size: 1.215rem;
+  }
   .parameter__soon-moon{
-    width: 376px;
+    width: 365px;
   }
   #svg__sun-graph{
     height: 150px;
@@ -96,8 +102,11 @@
   }
 }
 @media screen and (min-width: 767px){
+  .parameter__title h3{
+    font-size: 1.325rem;
+  }
   .parameter__soon-moon{
-    width: 404px;
+    width: 396px;
 
   }
   #svg__sun-graph{
@@ -109,6 +118,12 @@
   }
 }
 @media screen and (min-width: 1040px){
+  .parameter__title h3{
+    font-size: 1.295rem;
+  }
+  .parameter__title h3{
+    font-size: 1.305rem;
+  }
   .parameter__soon-moon{
     width: 500px;
     height: 200px;
@@ -128,23 +143,29 @@
   }
 }
 @media screen and (min-width: 2200px){
+  .parameter__title h3{
+    font-size: 1.3rem;
+  }
   .parameter__soon-moon{
 
     width: 550px;
-    height: 220px;
+    height: 225px;
 
   }
   #svg__sun-graph{
-    height: 100px;
+    height: 120px;
   }
   .soon-moon-hour-AM, .soon-moon-hour-PM{
     font-size: 1.05rem;
     bottom: -1.5rem;
   }
   .soon-moon-hour-AM{
-    left: 20%;
+    left: 16%;
   }
   .soon-moon-hour-PM{
     left: 48%;
+  }
+  .parameter__title h3{
+    font-size: 1.31rem;
   }
 }

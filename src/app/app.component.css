@@ -10,7 +10,7 @@
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  padding-top: 1.55rem;
+  padding-top: 7rem;
 }
 /*----------------------WIDGETS------------------------*/
 .widgets{
@@ -44,18 +44,60 @@
   align-items: center;
   row-gap: 2.813rem;
 }
+/*=============== SCROLL UP ===============*/
+.scrollup {
+  position: fixed;
+  right: 1rem;
+  bottom: -30%;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  display: inline-flex;
+  padding: .75rem;
+  border-radius: .5rem;
+  font-size: 1.35rem;
+  color: white;
+  z-index: 20;
+  transition: .4s;
+}
 
+.scrollup:hover {
+  transform: translateY(-0.25rem);
+}
+/* Show Scroll Up*/
+.show-scroll {
+  bottom: 3rem;
+}
+/*===================Settings=====================*/
+.style-switchers-container{
+  position: fixed;
+  top: 6.8rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+.settings-theme{
+  font-size: 2rem;
+  color: white;
+
+}
+.settings-theme i{
+  transition: all 0.3s ease;
+}
+.day-night{
+
+  font-size: 2rem;
+  color: white;
+}
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px) {
   .container
   {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     gap: 2.75rem;
-    padding-top: 1.55rem;
+    padding-top: 6rem;
   }
   .widgets{
     padding: 1.8rem .75rem;
@@ -64,24 +106,54 @@
     flex-direction: column;
     gap: 3rem;
   }
+  .scrollup{
+    right: 1rem;
+    padding: .45rem;
+    font-size: 1.15rem;
+  }
+  .show-scroll{
+    bottom: 1.5rem;
+  }
 }
 /* For medium devices */
 @media screen and (min-width: 576px) {
   .container{
     row-gap: 2.65rem;
+    padding-top: 7.5rem;
+  }
+  .scrollup{
+    right: 1.75rem;
+    padding: .875rem;
+    font-size: 1.375rem;
+    border-radius: .7rem;
+  }
+  .show-scroll{
+    bottom: 2.5rem;
   }
 }
 @media screen and (min-width: 767px) {
   .container{
     row-gap: 3rem;
+    padding-top: 8rem;
   }
   .widgets__container{
     row-gap: 3rem;
+  }
+  .scrollup{
+    right: 3rem;
+    padding: .9rem;
+    font-size: 1.42rem;
+    border-radius: .8rem;
+
+  }
+  .show-scroll{
+    bottom: 3rem;
   }
 }
 /* For large devices */
 @media screen and (min-width: 1040px) {
   .container{
+    padding-top: 8.5rem;
     row-gap: 3.2rem;
   }
   .widgets{
@@ -91,18 +163,29 @@
     flex-direction: row;
     column-gap: 5.5rem;
   }
+  .scrollup{
 
+    right: 2rem;
+    padding: .9rem;
+    font-size: 1.42rem;
+    border-radius: .8rem;
+  }
+  .show-scroll{
+    bottom: 2rem;
+  }
 }
 @media screen and (min-width: 1600px) {
   .container{
     flex-direction: row;
+    column-gap: 4rem;
+
   }
   .main{
-    margin-top: 6.5rem;
+    margin-top: 4.2rem;
     width: 1550px;
   }
   .widgets{
-    padding: 4.5rem 0;
+    padding: 5.25rem 0;
   }
   .widgets__container{
     row-gap: 3rem;
@@ -110,18 +193,23 @@
 }
 @media screen and (min-width: 2200px) {
   .main{
-    width: 1950px;
+    width: 2070px;
+    margin-top: 2.5rem;
+  }
+  .container{
+
+    column-gap: 5rem;
   }
   .forecast__parameter-widgets
   {
     display: grid;
-    grid-template-columns: 550px 340px;
+    grid-template-columns: 550px 360px;
     grid-auto-rows: 220px 220px;
     grid-column-gap: 5.5rem;
-    grid-row-gap: 7.2rem;
+    grid-row-gap: 7.75rem;
     grid-auto-flow: dense;
   }
   .widgets{
-    padding: 6rem 0;
+    padding: 7rem 0;
   }
 }

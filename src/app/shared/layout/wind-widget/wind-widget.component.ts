@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import ScrollReveal from "scrollreveal";
 
 @Component({
   selector: 'app-wind-widget',
@@ -10,6 +11,13 @@ export class WindWidgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    ScrollReveal().reveal('.parameter__wind', {
+      distance: '60px',
+      easing: 'ease-in-out',
+      origin: 'right',
+      delay: 300
+    });
   }
 
 }

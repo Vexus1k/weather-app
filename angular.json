@@ -33,12 +33,14 @@
               "src/fonts/weather-icons-master/css/weather-icons.min.css",
               "src/fonts/weather-icons-master/css/weather-icons-wind.min.css",
               "node_modules/swiper/swiper-bundle.min.css"
+
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
               "dist/bundle.js",
               "src/assets/scripts/script.js",
-              "./node_modules/jquery/dist/jquery.min.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/scrollreveal/dist/scrollreveal.js"
 
             ]
           },

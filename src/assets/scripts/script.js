@@ -151,12 +151,13 @@ function tillBackground(){
     points[1].style.fill = '#6495ed'
 
   }
-
 }
 
-document.querySelector('.ri-add-line')?.addEventListener('click', function (){
-  alert("chuj")
-})
+function scrollUp(){
+  const scrollUp = document.getElementById('scroll-up');
+  if(this.scrollY >= 490) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+}
+window.addEventListener('scroll', scrollUp)
 
 
 

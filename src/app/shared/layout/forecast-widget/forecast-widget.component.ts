@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SwiperOptions} from "swiper";
+import ScrollReveal from "scrollreveal";
 
 @Component({
   selector: 'app-forecast-widget',
@@ -12,6 +13,12 @@ export class ForecastWidgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    ScrollReveal().reveal('.forecast__widget', {
+      distance: '60px',
+      easing: 'ease-in-out',
+      origin: 'left',
+      delay: 300
+    });
   }
   navigationConfig: SwiperOptions = {
     slidesPerView: 3,
@@ -32,11 +39,11 @@ export class ForecastWidgetComponent implements OnInit {
     },
     breakpoints: {
       100: {
-        slidesPerView: 3,
+        slidesPerView: 4,
 
       },
       320: {
-        slidesPerView: 4
+        slidesPerView: 5
       },
       576: {
         slidesPerView: 5
@@ -78,20 +85,26 @@ export class ForecastWidgetComponent implements OnInit {
         slidesPerView: 7
       },
       576: {
-        slidesPerView: 8
+        slidesPerView: 6
       },
       767: {
-        slidesPerView: 9
+        slidesPerView: 6
       },
-      1040:{
-        slidesPerView: 10
+      1040: {
+        slidesPerView: 7
+      },
+      1600: {
+        slidesPerView: 7
+      },
+      2200: {
+        slidesPerView: 8
       }
+
     }
 
   }
   onReachEndNavigationTemp(){
     if(this.navigationTempSwiper.swiperRef.isEnd){
-      document.querySelector('.next')?.classList.add('swiper-button-disabled')
       this.navigationTempSwiper.swiperRef.allowSlideNext = false
       this.navigationTempSwiper.swiperRef.slideTo(0)
       setTimeout(() =>this.navigationTempSwiper.swiperRef.slidePrev(), 200)

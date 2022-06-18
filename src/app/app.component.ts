@@ -15,11 +15,12 @@ import {WeatherService} from "./core/services/weather.service";
 import { EventsParams } from 'swiper/angular';
 import {stringify} from "flatted";
 import { SwiperComponent } from "swiper/angular";
-
+import {stylesheetSwitcher} from 'stylesheet-switcher';
 // import Swiper core and required modules
 import SwiperCore, {EffectCube, Navigation, Pagination, SwiperOptions, Mousewheel} from "swiper";
 import Swiper, {Autoplay} from "swiper";
 import {SwiperEvents} from "swiper/types";
+import ScrollReveal from "scrollreveal";
 
 
 // install Swiper modules
@@ -38,22 +39,16 @@ declare function tillBackground(): void;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  arrowSwipingTempList: HTMLElement | null
-  arrowSign:  EventListener | null
+
 
   ngOnInit() {
-    // setProperty()
-    // set()
     tillBackground()
+    ScrollReveal().reveal('.widgets', {
+      scale: 0.85,
+      easing: 'ease-in',
+
+    });
   }
-
-
-
-
-  onSlideChange(){
-
-  }
-
 }
 
 

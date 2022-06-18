@@ -1,14 +1,14 @@
 /*-----------------------------Forecast widget-------------------------------*/
+
 .forecast__widget
 {
-  padding: 1.725rem 2.5rem;
+  padding: 1.75rem 2.175rem 0 2.175rem;
   background-color: rgb(88,88,88, 0.35);
   backdrop-filter: blur(2px);
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 620px;
-
+  height: 610px;
 }
 .forecast
 {
@@ -39,11 +39,11 @@
 .next {
   position: absolute;
   top: 103px;
-  right: 18px;
+  right: 14px;
   border-left: 0.1rem solid #fff;
   border-bottom: 0.1rem solid #fff;
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.65rem;
+  height: 1.65rem;
   transform: rotate(225deg);
 
 }
@@ -51,17 +51,17 @@
 {
   position: absolute;
   top: 103px;
-  left: 18px;
+  left: 14px;
   border-left: 0.1rem solid #fff;
   border-bottom: 0.1rem solid #fff;
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.55rem;
+  height: 1.55rem;
   transform: rotate(45deg);
 }
 .prev:active,
 .next:active {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.35rem;
+  height: 1.35rem;
 }
 .forecast__temperature-box{
   margin-top: .9rem;
@@ -73,7 +73,7 @@
   justify-content: space-around;
   align-items: center;
   font-weight: var(--font-medium);
-  max-width: 250px;
+  max-width: 245px;
 }
 .forecast__item
 {
@@ -94,13 +94,13 @@
 
   margin-top: .75rem;
   display: flex;
-  height: 420px;
+  height: 400px;
 
 }
 .temperature__stages-swiper
 {
   margin: 0;
-  width: 250px;
+  width: 245px;
 }
 .temperature__stages
 {
@@ -108,7 +108,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
   color: var(--text-color);
   padding: .54rem;
   font-weight: var(--font-medium);
@@ -119,22 +118,34 @@
 {
   border-top: 1px dotted rgb(255,255,255, 0.6);
 }
-.temperature__stages i
-{
-  font-size: 1rem;
+.temperature__stages-day-name{
+  width: 45%;
+}
+.temperature__stages-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
 }
 .temperature__hot-cold
 {
   display: flex;
-  column-gap: 2rem;
-  font-size: 1.2rem;
+  column-gap: 1rem;
+
+}
+.temperature__stages-icon, .temperature__stages-day-name
+{
+  font-size: 1rem;
+}
+.temperature__hot-cold{
+  font-size: 1.1rem;
 }
 .arrow
 {
   font-size: 1.55rem;
   position: absolute;
   color: rgb(255,240,245);
-  bottom: .435rem;
+  bottom: .35rem;
 
 }
 .arrow:not(:hover) {
@@ -167,20 +178,27 @@
     max-width: 200px;
   }
   .forecast__title h3{
-    font-size: 1rem;
+    font-size: 1.02rem;
   }
   .next,.prev{
-    top: 90px;
+    top: 92px;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+  .prev:active,
+  .next:active{
+    width: 1.2rem;
+    height: 1.2rem;
   }
   .next{
-    right: 10px;
+    right: 14px;
 
   }
   .prev{
-    left: 12px;
+    left: 14px;
   }
   .temperature__stages-box{
-    height: 320px;
+    height: 330px;
   }
   .temperature__stages-swiper{
     width: 200px;
@@ -188,8 +206,14 @@
   .temperature__stages{
     width: 190px;
   }
+  .temperature__stages-icon, .temperature__stages-day-name
+  {
+    font-size: 0.865rem;
+  }
+
   .temperature__hot-cold{
     column-gap: .75rem;
+    font-size: .92rem;
   }
   .forecast__widget{
     padding: 1.44rem 2rem;
@@ -197,6 +221,9 @@
   }
   .forecast{
     max-height: 520px;
+  }
+  .forecast__item{
+    font-size: .85rem;
   }
   .arrow{
     font-size: 1.45rem;
@@ -209,17 +236,24 @@
 /* For medium devices */
 @media screen and (min-width: 576px) {
   .forecast__widget{
-    padding: 2.15rem 3rem;
+    padding: 2rem 2.65rem 0 2.65rem;
     height: 630px;
   }
   .next, .prev{
-    top: 113px;
+    top: 115px;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .prev:active,
+  .next:active{
+    width: 1.55rem;
+    height: 1.55rem;
   }
   .next{
-    right: 22px;
+    right: 18px;
   }
   .prev{
-    left: 22px;
+    left: 18px;
   }
   .forecast{
     max-height: 550px;
@@ -231,20 +265,26 @@
     max-width: 280px;
   }
   .forecast__item{
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
   .temperature__stages-swiper{
     width: 280px;
   }
+  .temperature__stages-box{
+    height: 400px;
+  }
   .temperature__stages{
     width: 270px;
-    font-size: 1.125rem;
   }
-  .temperature__stages i{
-    font-size: 1.125rem;
+  .temperature__stages-icon{
+    width: 25%;
+  }
+  .temperature__stages-icon, .temperature__stages-day-name
+  {
+    font-size: 1.1rem;
   }
   .temperature__hot-cold{
-    font-size: 1.325rem;
+    font-size: 1.3rem;
   }
   .arrow{
     font-size: 1.65rem;
@@ -256,11 +296,11 @@
 }
 @media screen and (min-width: 767px){
   .forecast__widget{
-    padding: 2.32rem 3.25rem;
-    height: 634px;
+    padding: 2.32rem 3rem 0 3rem;
+    height: 674px;
   }
   .forecast{
-    max-height: 555px;
+    max-height: 615px;
   }
   .forecast__title{
     font-size: 1.24rem;
@@ -269,37 +309,44 @@
     max-width: 300px;
   }
   .forecast__item{
-    font-size: 1.15rem;
+    font-size: 1.21rem;
   }
   .next, .prev{
-    top: 121px;
+    top: 125px;
   }
   .next{
-    right: 24px;
+    right: 22px;
 
   }
   .prev{
-    left: 24px;
+    left: 22px;
   }
   .temperature__stages-swiper{
     width: 300px;
   }
   .temperature__stages-box{
-    height: 580px;
+    height: 422px;
   }
   .temperature__stages{
     width: 290px;
-    font-size: 1.225rem;
+
   }
-  .temperature__stages i{
-    font-size: 1.225rem;
+  .temperature__stages-icon{
+    width: 10%;
+  }
+  .temperature__stages-day-name{
+    width: 40%;
+  }
+  .temperature__stages-icon, .temperature__stages-day-name
+  {
+    font-size: 1.23rem;
   }
   .temperature__hot-cold{
     font-size: 1.425rem;
   }
   .arrow{
-    font-size: 1.75rem;
-    bottom: .4rem;
+    font-size: 1.775rem;
+    bottom: .45rem;
   }
   .arrow:active{
     font-size: 1.55rem;
@@ -311,11 +358,11 @@
     max-height: 585px;
   }
   .forecast__widget{
-    padding: 2rem 3.25rem;
+    padding: 2rem 3.25rem 0 3.25rem;
     height: 655px;
   }
   .next, .prev{
-    top: 115px;
+    top: 116px;
   }
   .next{
     right: 23px;
@@ -325,26 +372,29 @@
     left: 23px;
   }
   .forecast__title{
-    font-size: 1.2rem;
+    font-size: 1.165rem;
   }
   .forecast__container{
     max-width: 270px;
   }
   .forecast__item{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .temperature__stages-swiper{
     width: 270px;
   }
   .temperature__stages-box{
-    height: 580px;
+    height: 420px;
   }
   .temperature__stages{
     width: 260px;
+  }
+  .temperature__stages-icon, .temperature__stages-day-name
+  {
     font-size: 1.2rem;
   }
-  .temperature__stages i{
-    font-size: 1.2rem;
+  .temperature__stages-day-name{
+    width: 45%;
   }
   .temperature__hot-cold{
     font-size: 1.4rem;
@@ -359,11 +409,11 @@
 }
 @media screen and (min-width: 1600px){
   .forecast__widget{
-    padding: 2.35rem 3.25rem;
+    padding: 2.275rem 3.25rem;
     height: 655px;
   }
   .next, .prev{
-    top: 121px;
+    top: 118px;
   }
   .forecast__title{
     font-size: 1.2rem;
@@ -372,26 +422,27 @@
     max-width: 270px;
   }
   .forecast__item{
-    font-size: 1.1rem;
+    font-size: 1.155rem;
   }
   .temperature__stages-swiper{
     width: 270px;
   }
   .temperature__stages-box{
-    height: 580px;
+    height: 420px;
   }
   .temperature__stages{
     width: 260px;
-    font-size: 1.2rem;
+
   }
-  .temperature__stages i{
-    font-size: 1.2rem;
+  .temperature__stages-icon, .temperature__stages-day-name
+  {
+    font-size: 1.175rem;
   }
   .temperature__hot-cold{
-    font-size: 1.4rem;
+    font-size: 1.42rem;
   }
   .arrow{
-    font-size: 1.7rem;
+    font-size: 1.725rem;
     bottom: .25rem;
   }
   .arrow:active{
@@ -400,12 +451,59 @@
 }
 @media screen and (min-width: 2200px){
   .next, .prev{
-    top: 120px;
+    top: 125px;
+    width: 1.825rem;
+    height: 1.825rem;
   }
   .next{
     right: 24px;
+
   }
   .prev{
     left: 24px;
+  }
+  .prev:active,
+  .next:active{
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+  .forecast__widget{
+    padding: 2.275rem 3.25rem 0 3.25rem;
+    height: 755px;
+  }
+  .forecast{
+    max-height:675px;
+  }
+  .forecast__title{
+    font-size: 1.24rem;
+  }
+  .forecast__container{
+    max-width: 290px;
+  }
+  .forecast__item{
+    font-size: 1.22rem;
+  }
+  .temperature__stages-swiper{
+    width: 290px;
+  }
+  .temperature__stages-box{
+    height: 515px;
+  }
+  .temperature__stages{
+    width: 280px;
+  }
+  .temperature__stages-icon, .temperature__stages-day-name
+  {
+    font-size: 1.24rem;
+  }
+  .temperature__hot-cold{
+    font-size: 1.45rem;
+  }
+  .arrow{
+    font-size: 1.75rem;
+    bottom: .3rem;
+  }
+  .arrow:active{
+    font-size: 1.55rem;
   }
 }
