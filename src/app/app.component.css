@@ -49,14 +49,16 @@
   position: fixed;
   right: 1rem;
   bottom: -30%;
-  background-color: rgba(255, 255, 255, 0.1);
+  /*background-color: #74dff5;*/
+  background-color: rgba(136,136,136, 0.3);
+  /*background: radial-gradient(circle, rgba(188,205,209,1) 41%, rgba(116,223,245,1) 100%);*/
   backdrop-filter: blur(16px);
   display: inline-flex;
   padding: .75rem;
   border-radius: .5rem;
   font-size: 1.35rem;
   color: white;
-  z-index: 20;
+  z-index: 101;
   transition: .4s;
 }
 
@@ -69,28 +71,119 @@
 }
 /*===================Settings=====================*/
 .style-switchers-container{
+  background-color: transparent;
   position: fixed;
   top: 6.8rem;
-  right: 1.5rem;
+  right: 0;
+  padding: 15px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   row-gap: .5rem;
   transition: all 0.3s ease;
-  z-index: 100;
+  z-index: 101;
+  transform: translateX(100%);
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(129deg, rgba(188,205,209,1) 41%, rgba(116,223,245,1) 100%) 1;
+
+}
+.style-switchers-container.open{
+  transform: translateX(-8px);
+}
+.style-switchers-container .s-icon{
+  position: absolute;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 100%;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+.style-switchers-container .svg-icon{
+  line-height: 30px;
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: var(--text-color);
+
+}
+.style-switchers-container .spin-animation{
+  animation: spin-animation 1s infinite;
+}
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.style-switchers-container h4{
+  margin: 0 0 6px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.style-switchers-container .options{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.style-switchers-container .option-1{
+  background-image: url("../assets/photos/option-1.jpg");
+  background-position: center;
+  background-size: cover;
+
+}
+.style-switchers-container .option-2{
+  background-image: url("../assets/photos/option-2.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.style-switchers-container .option-3{
+  background-image: url("../assets/photos/option-3.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.style-switchers-container .option-4{
+  background-image: url("../assets/photos/option-4.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.style-switchers-container .option-5{
+  background-image: url("../assets/photos/option-5.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.style-switchers-container .default-option{
+  background-image: url("../assets/photos/theme_1.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.style-switchers-container .options span{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+
 }
 .settings-theme{
-  font-size: 2rem;
-  color: white;
-
+  top: 0;
 }
 .settings-theme i{
   transition: all 0.3s ease;
+
 }
 .day-night{
 
-  font-size: 2rem;
-  color: white;
+  top: 55px;
 }
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px) {

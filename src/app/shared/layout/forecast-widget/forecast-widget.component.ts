@@ -23,7 +23,6 @@ export class ForecastWidgetComponent implements OnInit {
   navigationConfig: SwiperOptions = {
     slidesPerView: 3,
     spaceBetween: 12,
-    grabCursor: true,
     navigation: {
       nextEl: '.next',
       prevEl: '.prev',
