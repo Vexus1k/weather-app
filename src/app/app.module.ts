@@ -23,6 +23,7 @@ import {
   PB_DIRECTION,
   POSITION, SPINNER
 } from "ngx-ui-loader";
+import { ScrollUpThemeSwitcherComponent } from './shared/layout/scroll-up-theme-switcher/scroll-up-theme-switcher.component';
 
 
 
@@ -45,6 +46,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     WindWidgetComponent,
     PrecipitationsWidgetComponent,
     SunMoonWidgetComponent,
+    ScrollUpThemeSwitcherComponent,
 
   ],
   imports: [

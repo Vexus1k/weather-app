@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {SwiperOptions} from "swiper";
 import ScrollReveal from "scrollreveal";
 
@@ -8,7 +8,7 @@ import ScrollReveal from "scrollreveal";
   styleUrls: ['./login-cube-section.component.css']
 })
 export class LoginCubeSectionComponent implements OnInit {
-
+  @ViewChild('cubeSwiper')cubeSwiper: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -33,8 +33,6 @@ export class LoginCubeSectionComponent implements OnInit {
   cubeConfig: SwiperOptions = {
     autoplay: {
       delay: 5000,
-      pauseOnMouseEnter: true,
-      disableOnInteraction: false
     },
     slidesPerView: "auto",
     watchOverflow: true,
@@ -51,4 +49,10 @@ export class LoginCubeSectionComponent implements OnInit {
     },
 
   };
+  stopTuringAround(){
+    this.cubeSwiper.swiperRef.autoplay.stop();
+  }
+  startTuringAround(){
+    this.cubeSwiper.swiperRef.autoplay.start();
+  }
 }

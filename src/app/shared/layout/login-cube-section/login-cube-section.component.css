@@ -132,6 +132,9 @@
   border-radius: 1.5rem;
 
 }
+.parameter__container h2{
+  font-size: 1.42rem;
+}
 .parameter__part{
   display: flex;
   justify-content: center;
@@ -182,6 +185,96 @@
 .parameter__temp i
 {
   margin-left: .5rem;
+}
+/*==========WindMill Cube Part========================*/
+.wind-part{
+  row-gap: .8rem;
+}
+.wind-box{
+  display: flex;
+  column-gap: .65rem;
+}
+.wind-box .windmill{
+  width: 146px;
+  height: 158px;
+}
+.wind-box .wind-img{
+  height: 60px;
+}
+.wind-box .wind-params-icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.wind-box .wind-params-icon .wind-params{
+  font-size: 1.135rem;
+}
+.wind-box .wind-params-icon .wind-params p{
+  font-size: 1.325rem;
+}
+/*==============Precipitations Cube Part=====================*/
+.precipitation-part{
+  row-gap: 1.2rem;
+}
+.precipitation-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: .6rem;
+
+}
+.precipitation-item p:first-child{
+  font-size: 1.5rem;
+}
+.precipitation-item p:last-child{
+  font-size: 1.52rem;
+}
+.precipitation-item .drop-water{
+  width: 50px;
+  height: 50px;
+}
+/*====================Newsletter Part=====================*/
+.newsletter{
+  background-image: url(https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29zbW9zfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
+  background-size: cover;
+  background-position: center;
+  row-gap: 2rem;
+}
+.newsletter h2{
+  font-size: 1.45rem;
+}
+.newsletter-input{
+  background: #fff;
+  color: #060c22;
+  border: 0;
+  outline: none;
+  margin: 0;
+  padding: .75rem 1.2rem;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: var(--font-medium);
+}
+input[type="email"] {
+  width: 235px;
+  padding-right: 58px;
+}
+button[type="submit"] {
+  cursor: pointer;
+  margin-left: -53px;
+  padding: .75rem 1.4rem;
+  background-color: red;
+  border: 0;
+  border-radius: 50px;
+  font-size: 1.05rem;
+
+
+}
+.envelope-icon{
+  width: .9rem;
+  height: .9rem;
+  fill: white;
 }
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
@@ -489,7 +582,7 @@
     height: 38px;
   }
   .highest__temperature, .lowest__temperature{
-    font-size: 1.775rem;
+    font-size: 1.7rem;
   }
   .highest__temperature i:first-child, .lowest__temperature i:first-child
   {
@@ -501,6 +594,6 @@
     font-size: 1.9rem;
   }
   .parameter__temp{
-    font-size: 6.53rem;
+    font-size: 6.3rem;
   }
 }
