@@ -3,7 +3,7 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  ElementRef,
+  ElementRef, HostListener,
   NgZone,
   OnChanges,
   OnInit, QueryList,
@@ -39,6 +39,8 @@ declare function tillBackground(): void;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  screenHeight: number;
+  screenWidth: number;
 
   ngOnInit() {
     tillBackground()
@@ -48,7 +50,18 @@ export class AppComponent implements OnInit{
 
     });
   }
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?: any) {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    if(this.screenWidth > 2199){
+      let windWidget = document.getElementById('wind') as HTMLElement;
+      let precipitationWidget = document.getElementById('precipitation') as HTMLElement;
 
+      windWidget?.classList.add('join__rows')
+      precipitationWidget?.classList.add('order__rows')
+    }
+  }
 }
 
 

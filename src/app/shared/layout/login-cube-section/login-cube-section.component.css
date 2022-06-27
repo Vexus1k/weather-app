@@ -72,7 +72,7 @@
   100% { background-position: 0 0; }
 }
 
-/*----------------------------Parameter------------------------*/
+/*----------------------------Parameter-SwiperCube-Settings------------------------*/
 .swiper__container{
   margin: 0 auto;
   width: 230px;
@@ -97,8 +97,8 @@
 }
 /*Setting for weather icon SVG parameter*/
 .element {
-  height: 30px;
-  width: 30px;
+  height: 27px;
+  width: 27px;
 
 }
 .elements {
@@ -111,8 +111,9 @@
 .white {fill:#FFFFFF}
 .gray {fill:#E0E0E0}
 .yellow {fill:#FFEB3B}
-/**/
+/*------------------------------------------Parameter----------------------------*/
 .parameter{
+  padding-top: 6.3rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -130,7 +131,7 @@
   background-color: rgb(176,176,176, 0.7);
   backdrop-filter: blur(1px);
   border-radius: 1.5rem;
-
+  row-gap: .225rem;
 }
 .parameter__container h2{
   font-size: 1.42rem;
@@ -147,8 +148,10 @@
   align-items: center;
   justify-content: center;
   column-gap: .525rem;
-  font-weight: var(--font-medium);
-  font-size: 1rem;
+
+}
+.parameter__status h2{
+  font-size: 1.1rem;
 }
 .parameter__temperatures
 {
@@ -159,13 +162,13 @@
 }
 .highest__temperature, .lowest__temperature{
   display: inline-flex;
-  font-size: 1.2rem;
+  font-size: 1.345rem;
 }
 
 .highest__temperature i:first-child, .lowest__temperature i:first-child
 {
   margin-right: .8rem;
-  font-size: 1.55rem;
+  font-size: 1.75rem;
 
 }
 .highest__temperature i:last-child, .lowest__temperature i:last-child
@@ -190,16 +193,19 @@
 .wind-part{
   row-gap: .8rem;
 }
+.wind-part h2{
+  font-size: 1.1rem;
+}
 .wind-box{
   display: flex;
   column-gap: .65rem;
 }
 .wind-box .windmill{
-  width: 146px;
-  height: 158px;
+  width: 102px;
+  height: 108px;
 }
 .wind-box .wind-img{
-  height: 60px;
+  height: 44px;
 }
 .wind-box .wind-params-icon{
   display: flex;
@@ -208,14 +214,19 @@
   align-items: center;
 }
 .wind-box .wind-params-icon .wind-params{
-  font-size: 1.135rem;
+  font-size: .95rem;
+  font-weight: var(--font-medium);
 }
 .wind-box .wind-params-icon .wind-params p{
-  font-size: 1.325rem;
+  font-size: 1.125rem;
+  font-weight: var(--font-medium);
 }
 /*==============Precipitations Cube Part=====================*/
 .precipitation-part{
   row-gap: 1.2rem;
+}
+.precipitation-part h2{
+  font-size: 1.1rem;
 }
 .precipitation-item{
   display: flex;
@@ -226,24 +237,34 @@
 
 }
 .precipitation-item p:first-child{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: var(--font-medium);
 }
 .precipitation-item p:last-child{
-  font-size: 1.52rem;
+  font-size: 1.2rem;
+  font-weight: var(--font-medium);
 }
 .precipitation-item .drop-water{
-  width: 50px;
-  height: 50px;
+  width: 37px;
+  height: 37px;
 }
 /*====================Newsletter Part=====================*/
 .newsletter{
   background-image: url(https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29zbW9zfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
   background-size: cover;
   background-position: center;
-  row-gap: 2rem;
+  row-gap: 1.6rem;
 }
 .newsletter h2{
-  font-size: 1.45rem;
+  font-size: 1.275rem;
+  letter-spacing: 4px;
+}
+.newsletter .input-button{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
 }
 .newsletter-input{
   background: #fff;
@@ -251,29 +272,28 @@
   border: 0;
   outline: none;
   margin: 0;
-  padding: .75rem 1.2rem;
+  padding: .6rem .85rem;
   border-radius: 50px;
-  font-size: 1.05rem;
+  font-size: .72rem;
   font-weight: var(--font-medium);
 }
 input[type="email"] {
-  width: 235px;
-  padding-right: 58px;
+  width: 150px;
 }
 button[type="submit"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
-  margin-left: -53px;
-  padding: .75rem 1.4rem;
   background-color: red;
   border: 0;
-  border-radius: 50px;
-  font-size: 1.05rem;
-
-
+  border-radius: 50%;
 }
 .envelope-icon{
-  width: .9rem;
-  height: .9rem;
+  width: .8rem;
+  height: .8rem;
   fill: white;
 }
 /*=============== BREAKPOINTS ===============*/
@@ -292,6 +312,7 @@ button[type="submit"] {
     height: 210px;
   }
   .parameter{
+    padding-top: 6rem;
     row-gap: 2.6rem;
   }
   .parameter__login{
@@ -304,34 +325,108 @@ button[type="submit"] {
   }
   .parameter__container{
     height: 210px;
+    row-gap: .255rem;
   }
   .parameter__temperatures{
-    column-gap: 2rem;
+    column-gap: 1.7rem;
   }
   .swiper__cube-img{
     height: 210px;
   }
   .parameter__status{
-    font-size: .95rem;
+    column-gap: .6rem;
+  }
+  .parameter__status h2{
+    font-size: .97rem;
   }
   .highest__temperature, .lowest__temperature{
     font-size: 1.2rem;
   }
   .highest__temperature i:first-child, .lowest__temperature i:first-child{
     margin-right: .75rem;
+    font-size: 1.55rem;
   }
   .parameter__temp{
     font-size: 4.35rem;
   }
   .element{
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
+  }
+  .wind-part{
+    row-gap: .625rem;
+  }
+  .wind-part h2{
+    font-size: 1.03rem;
+  }
+  .wind-box{
+    column-gap: .55rem;
+  }
+  .wind-box .windmill{
+    width: 96px;
+    height: 102px;
+  }
+  .wind-box .wind-img{
+    height: 34px;
+  }
+  .wind-box .wind-params-icon .wind-params{
+    font-size: .875rem;
+  }
+  .wind-box .wind-params-icon .wind-params p{
+    font-size: 1.03rem;
+  }
+  .precipitation-part{
+    row-gap: 1rem;
+  }
+  .precipitation-part h2{
+    font-size: 1.03rem;
+  }
+  .precipitation-item{
+    row-gap: .45rem;
+  }
+  .precipitation-item p:first-child{
+    font-size: 1.2rem;
+    font-weight: var(--font-medium);
+  }
+  .precipitation-item p:last-child{
+    font-size: 1rem;
+    font-weight: var(--font-medium);
+  }
+  .precipitation-item .drop-water{
+    width: 34px;
+    height: 34px;
+  }
+  .newsletter{
+    row-gap: 1.3rem;
+  }
+  .newsletter h2{
+    letter-spacing: 3px;
+    font-size: 1.15rem;
+  }
+  .newsletter .input-button{
+    row-gap: 1.25rem;
+  }
+  .newsletter-input{
+    padding: .5rem .75rem;
+    font-size: .685rem;
+  }
+  input[type="email"]{
+    width: 130px;
+  }
+  button[type="submit"]{
+    width: 30px;
+    height: 30px;
+  }
+  .envelope-icon{
+    width: .62rem;
+    height: .62rem;
   }
 }
 /* For medium devices */
 @media screen and (min-width: 576px){
   .parameter{
     row-gap: 3.5rem;
+    padding-top: 7.5rem;
   }
   .parameter__login{
     row-gap: 2rem;
@@ -355,16 +450,20 @@ button[type="submit"] {
   }
   .parameter__container{
     height: 285px;
+    row-gap: .375rem;
   }
   .parameter__temperatures{
-    column-gap: 2.9rem;
+    column-gap: 2.5rem;
   }
   .parameter__status{
-    font-size: 1.2rem;
+    column-gap: .85rem;
+  }
+  .parameter__status h2{
+    font-size: 1.25rem;
   }
   .element{
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
   .highest__temperature, .lowest__temperature{
@@ -373,7 +472,7 @@ button[type="submit"] {
 
   .highest__temperature i:first-child, .lowest__temperature i:first-child
   {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   .highest__temperature i:last-child, .lowest__temperature i:last-child
   {
@@ -383,10 +482,79 @@ button[type="submit"] {
   .parameter__temp{
     font-size: 5.7rem;
   }
+  .wind-part{
+    row-gap: .625rem;
+  }
+  .wind-part h2{
+    font-size: 1.4rem;
+  }
+  .wind-box{
+    column-gap: 1rem;
+  }
+  .wind-box .windmill{
+    width: 125px;
+    height: 139px;
+  }
+  .wind-box .wind-img{
+    height: 50px;
+  }
+  .wind-box .wind-params-icon .wind-params{
+    font-size: 1.1rem;
+  }
+  .wind-box .wind-params-icon .wind-params p{
+    font-size: 1.25rem;
+  }
+  .precipitation-part{
+    row-gap: 1.1rem;
+  }
+  .precipitation-part h2{
+    font-size: 1.4rem;
+  }
+  .precipitation-item{
+    row-gap: .65rem;
+  }
+  .precipitation-item p:first-child{
+    font-size: 1.54rem;
+
+  }
+  .precipitation-item p:last-child{
+    font-size: 1.425rem;
+
+  }
+  .precipitation-item .drop-water{
+    width: 44px;
+    height: 44px;
+  }
+  .newsletter{
+    row-gap: 2.05rem;
+  }
+  .newsletter h2{
+    letter-spacing: 5px;
+    font-size: 1.6rem;
+  }
+  .newsletter .input-button{
+    row-gap: 1.9rem;
+  }
+  .newsletter-input{
+    padding: .7rem 1rem;
+    font-size: .875rem;
+  }
+  input[type="email"]{
+    width: 170px;
+  }
+  button[type="submit"]{
+    width: 43px;
+    height: 43px;
+  }
+  .envelope-icon{
+    width: .75rem;
+    height: .75rem;
+  }
 }
 @media screen and (min-width: 767px){
   .parameter{
     row-gap: 4rem;
+    padding-top: 8rem;
   }
   .parameter__login{
     row-gap: 2.5rem;
@@ -413,34 +581,106 @@ button[type="submit"] {
   }
   .parameter__container{
     height: 310px;
+    row-gap: .475rem;
   }
   .parameter__status{
-    font-size: 1.3rem;
+    column-gap: .95rem;
+  }
+  .parameter__status h2{
+    font-size: 1.42rem;
   }
   .element{
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
   .highest__temperature, .lowest__temperature{
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
   .highest__temperature i:first-child, .lowest__temperature i:first-child
   {
-    font-size: 2rem;
+    font-size: 2.175rem;
   }
   .highest__temperature i:last-child, .lowest__temperature i:last-child
   {
     margin-left: .1rem;
-    font-size: 1.9rem;
+    font-size: 2rem;
   }
   .parameter__temp{
     font-size: 6.25rem;
+  }
+  .wind-part{
+    row-gap: .55rem;
+  }
+  .wind-part h2{
+    font-size: 1.5rem;
+  }
+  .wind-box{
+    column-gap: 1rem;
+  }
+  .wind-box .windmill{
+    width: 144px;
+    height: 150px;
+  }
+  .wind-box .wind-img{
+    height: 56px;
+  }
+  .wind-box .wind-params-icon .wind-params{
+    font-size: 1.2rem;
+  }
+  .wind-box .wind-params-icon .wind-params p{
+    font-size: 1.35rem;
+  }
+  .precipitation-part{
+    row-gap: 1.45rem;
+  }
+  .precipitation-part h2{
+    font-size: 1.5rem;
+  }
+  .precipitation-item{
+    row-gap: .75rem;
+  }
+  .precipitation-item p:first-child{
+    font-size: 1.6rem;
+
+  }
+  .precipitation-item p:last-child{
+    font-size: 1.5rem;
+
+  }
+  .precipitation-item .drop-water{
+    width: 46px;
+    height: 46px;
+  }
+  .newsletter{
+    row-gap: 2.4rem;
+  }
+  .newsletter h2{
+    font-size: 1.7rem;
+  }
+  .newsletter .input-button{
+    row-gap: 2.2rem;
+  }
+  .newsletter-input{
+    padding: .735rem 1.1rem;
+    font-size: .95rem;
+  }
+  input[type="email"]{
+    width: 190px;
+  }
+  button[type="submit"]{
+    width: 46px;
+    height: 46px;
+  }
+  .envelope-icon{
+    width: .92rem;
+    height: .92rem;
   }
 }
 /* For large devices */
 @media screen and (min-width: 1040px){
   .parameter{
     row-gap: 4.15rem;
+    padding-top: 8.5rem;
   }
   .parameter__temperatures{
     column-gap: 3.3rem;
@@ -467,29 +707,100 @@ button[type="submit"] {
   }
   .parameter__container{
     height: 320px;
+    row-gap: .645rem;
   }
-
   .parameter__status{
-    font-size: 1.325rem;
+    column-gap: 1.05rem;
+  }
+  .parameter__status h2{
+    font-size: 1.375rem;
   }
   .element{
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
   .highest__temperature, .lowest__temperature{
-    font-size: 1.68rem;
+    font-size: 1.78rem;
   }
   .highest__temperature i:first-child, .lowest__temperature i:first-child
   {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
   .highest__temperature i:last-child, .lowest__temperature i:last-child
   {
     margin-left: .1rem;
-    font-size: 1.9rem;
+    font-size: 2.1rem;
   }
   .parameter__temp{
     font-size: 6.25rem;
+  }
+  .wind-part{
+    row-gap: .875rem;
+  }
+  .wind-part h2{
+    font-size: 1.5rem;
+  }
+  .wind-box{
+    column-gap: 1.1rem;
+  }
+  .wind-box .windmill{
+    width: 144px;
+    height: 155px;
+  }
+  .wind-box .wind-img{
+    height: 54px;
+  }
+  .wind-box .wind-params-icon .wind-params{
+    font-size: 1.24rem;
+  }
+  .wind-box .wind-params-icon .wind-params p{
+    font-size: 1.35rem;
+  }
+  .precipitation-part{
+    row-gap: 1.73rem;
+  }
+  .precipitation-part h2{
+    font-size: 1.5rem;
+  }
+  .precipitation-item{
+    row-gap: .835rem;
+  }
+  .precipitation-item p:first-child{
+    font-size: 1.62rem;
+
+  }
+  .precipitation-item p:last-child{
+    font-size: 1.52rem;
+
+  }
+  .precipitation-item .drop-water{
+    width: 47px;
+    height: 47px;
+  }
+  .newsletter{
+    row-gap: 2.7rem;
+  }
+  .newsletter h2{
+
+    font-size: 1.76rem;
+  }
+  .newsletter .input-button{
+    row-gap: 2.2rem;
+  }
+  .newsletter-input{
+    padding: .7rem 1.1rem;
+    font-size: 1rem;
+  }
+  input[type="email"]{
+    width: 200px;
+  }
+  button[type="submit"]{
+    width: 48px;
+    height: 48px;
+  }
+  .envelope-icon{
+    width: .94rem;
+    height: .94rem;
   }
 }
 @media screen and (min-width: 1600px){
@@ -524,6 +835,9 @@ button[type="submit"] {
     height: 295px;
   }
   .parameter__status{
+    row-gap: .7rem;
+  }
+  .parameter__status h2{
     font-size: 1.32rem;
   }
 
@@ -545,6 +859,74 @@ button[type="submit"] {
   }
   .parameter__temp{
     font-size: 5.925rem;
+  }
+  .wind-part{
+    row-gap: .625rem;
+  }
+  .wind-part h2{
+    font-size: 1.4rem;
+  }
+  .wind-box{
+    column-gap: 1rem;
+  }
+  .wind-box .windmill{
+    width: 125px;
+    height: 139px;
+  }
+  .wind-box .wind-img{
+    height: 50px;
+  }
+  .wind-box .wind-params-icon .wind-params{
+    font-size: 1.1rem;
+  }
+  .wind-box .wind-params-icon .wind-params p{
+    font-size: 1.25rem;
+  }
+  .precipitation-part{
+    row-gap: 1.175rem;
+  }
+  .precipitation-part h2{
+    font-size: 1.4rem;
+  }
+  .precipitation-item{
+    row-gap: .65rem;
+  }
+  .precipitation-item p:first-child{
+    font-size: 1.54rem;
+
+  }
+  .precipitation-item p:last-child{
+    font-size: 1.425rem;
+
+  }
+  .precipitation-item .drop-water{
+    width: 44px;
+    height: 44px;
+  }
+  .newsletter{
+    row-gap: 2.3rem;
+  }
+  .newsletter h2{
+    letter-spacing: 5px;
+    font-size: 1.6rem;
+  }
+  .newsletter .input-button{
+    row-gap: 2rem;
+  }
+  .newsletter-input{
+    padding: .7rem 1rem;
+    font-size: .95rem;
+  }
+  input[type="email"]{
+    width: 185px;
+  }
+  button[type="submit"]{
+    width: 43px;
+    height: 43px;
+  }
+  .envelope-icon{
+    width: .75rem;
+    height: .75rem;
   }
 }
 @media screen and (min-width: 2200px){
@@ -595,5 +977,73 @@ button[type="submit"] {
   }
   .parameter__temp{
     font-size: 6.3rem;
+  }
+  .wind-part{
+    row-gap: .875rem;
+  }
+  .wind-part h2{
+    font-size: 1.5rem;
+  }
+  .wind-box{
+    column-gap: 1.1rem;
+  }
+  .wind-box .windmill{
+    width: 144px;
+    height: 155px;
+  }
+  .wind-box .wind-img{
+    height: 54px;
+  }
+  .wind-box .wind-params-icon .wind-params{
+    font-size: 1.24rem;
+  }
+  .wind-box .wind-params-icon .wind-params p{
+    font-size: 1.35rem;
+  }
+  .precipitation-part{
+    row-gap: 1.73rem;
+  }
+  .precipitation-part h2{
+    font-size: 1.5rem;
+  }
+  .precipitation-item{
+    row-gap: .835rem;
+  }
+  .precipitation-item p:first-child{
+    font-size: 1.62rem;
+
+  }
+  .precipitation-item p:last-child{
+    font-size: 1.52rem;
+
+  }
+  .precipitation-item .drop-water{
+    width: 47px;
+    height: 47px;
+  }
+  .newsletter{
+    row-gap: 2.7rem;
+  }
+  .newsletter h2{
+
+    font-size: 1.76rem;
+  }
+  .newsletter .input-button{
+    row-gap: 2.2rem;
+  }
+  .newsletter-input{
+    padding: .7rem 1.1rem;
+    font-size: 1rem;
+  }
+  input[type="email"]{
+    width: 200px;
+  }
+  button[type="submit"]{
+    width: 48px;
+    height: 48px;
+  }
+  .envelope-icon{
+    width: .94rem;
+    height: .94rem;
   }
 }

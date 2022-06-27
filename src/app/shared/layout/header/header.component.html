@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" id="header">
   <nav class="nav">
     <div class="search-box">
       <button class="btn-search"><i class="ri-search-line"></i></button>
@@ -8,10 +8,32 @@
       <h2>Miami</h2>
       <p>11:37 AM PKT</p>
     </div>
-    <div class="nav__item">
-      <i class="ri-align-justify"></i>
+    <div class="nav__toggle">
+      <button id="menu__btn" [disabled]="isDisabled"  (click)="test()">
+        <i class="ri-align-justify"></i>
+      </button>
     </div>
-
-
   </nav>
 </header>
+<div class="nav__menu" id="nav-menu">
+  <ul class="nav__list">
+    <li class="nav__item" >
+      <a href="#home" class="nav__link active-link" (click)="closeMenu()">Home</a>
+    </li>
+    <li class="nav__item">
+      <a href="#forecast" class="nav__link" (click)="closeMenu()">Forecast</a>
+    </li>
+    <li class="nav__item">
+      <a href="#wind" class="nav__link" (click)="closeMenu()">Wind</a>
+    </li>
+    <li class="nav__item">
+      <a href="#precipitation" class="nav__link" (click)="closeMenu()">Precipitation</a>
+    </li>
+    <li class="nav__item">
+      <a href="#sun-moon" class="nav__link" (click)="closeMenu()">Sun-Moon</a>
+    </li>
+  </ul>
+  <div class="nav__close" id="nav-close" (click)="closeMenu()">
+    <i class="ri-close-line"></i>
+  </div>
+</div>

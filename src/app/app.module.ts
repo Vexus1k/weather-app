@@ -24,6 +24,8 @@ import {
   POSITION, SPINNER
 } from "ngx-ui-loader";
 import { ScrollUpThemeSwitcherComponent } from './shared/layout/scroll-up-theme-switcher/scroll-up-theme-switcher.component';
+import {FormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -57,6 +59,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SwiperModule,
     NgxUiLoaderModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    FormsModule,
+    RouterModule,
 
   ],
   providers: [],

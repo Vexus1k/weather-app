@@ -10,7 +10,7 @@
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  padding-top: 7rem;
+
 }
 /*----------------------WIDGETS------------------------*/
 .widgets{
@@ -18,7 +18,6 @@
   height: auto;
   position:relative;
   background-color: rgb(176,176,176, 0.65);
-  padding: 1.8rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,11 +51,9 @@
   .container
   {
     gap: 2.75rem;
-    padding-top: 6rem;
+
   }
-  .widgets{
-    padding: 1.8rem .75rem;
-  }
+
   .widgets__container{
     flex-direction: column;
     gap: 3rem;
@@ -66,14 +63,14 @@
 @media screen and (min-width: 576px) {
   .container{
     row-gap: 2.65rem;
-    padding-top: 7.5rem;
+
   }
 
 }
 @media screen and (min-width: 767px) {
   .container{
     row-gap: 3rem;
-    padding-top: 8rem;
+
   }
   .widgets__container{
     row-gap: 3rem;
@@ -83,7 +80,7 @@
 /* For large devices */
 @media screen and (min-width: 1040px) {
   .container{
-    padding-top: 8.5rem;
+
     row-gap: 3.2rem;
   }
   .widgets{

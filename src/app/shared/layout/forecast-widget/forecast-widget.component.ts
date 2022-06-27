@@ -81,13 +81,13 @@ export class ForecastWidgetComponent implements OnInit {
 
       },
       320: {
-        slidesPerView: 7
+        slidesPerView: 6
       },
       576: {
         slidesPerView: 6
       },
       767: {
-        slidesPerView: 6
+        slidesPerView: 7
       },
       1040: {
         slidesPerView: 7

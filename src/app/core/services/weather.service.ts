@@ -11,12 +11,13 @@ export class WeatherService {
   constructor(private http: HttpClient) {
 
   }
-  private mailURL = 'http://localhost:3080/sendgrid';
+  private mailURL = 'http://localhost:3000/sendgrid';
   rootURL = '/api';
 
-  sendMail(){
-    console.log('hurra')
-    return this.http.get(this.mailURL + '/mail')
+  sendMail(email: any){
+    const headers = {'Content-Type': "application/json"}
+    console.log("email sent")
+    return this.http.post(this.mailURL, JSON.stringify(email), {headers})
   }
 
   getUsers() {

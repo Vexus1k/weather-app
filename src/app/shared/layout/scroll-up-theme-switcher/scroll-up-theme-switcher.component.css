@@ -25,47 +25,48 @@
 }
 /*===================Settings=====================*/
 .style-switchers-container{
-  background-color: transparent;
   position: fixed;
-  top: 6.8rem;
+  top: 5.8rem;
   right: 0;
-  padding: 15px;
-  width: 200px;
+  padding: .45rem;
+  width: 115px;
   display: flex;
   flex-direction: column;
-  row-gap: .5rem;
+  row-gap: .35rem;
   transition: all 0.3s ease;
-  z-index: 101;
+  z-index: 100;
   transform: translateX(100%);
   border-width: 1px;
   border-style: solid;
   border-image: linear-gradient(129deg, rgba(188,205,209,1) 41%, rgba(116,223,245,1) 100%) 1;
-
+  background-color: rgb(208,208,208, 0.3);
+  backdrop-filter: blur(16px);
 }
 .style-switchers-container.open{
   transform: translateX(-8px);
 }
 .style-switchers-container .s-icon{
   position: absolute;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 1.7rem;
+  width: 1.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
   right: 100%;
-  margin-right: 1rem;
+  margin-right: .725rem;
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 50%;
+  z-index: 100;
 }
 .style-switchers-container .svg-icon{
-  line-height: 30px;
-  width: 1.75rem;
-  height: 1.75rem;
-  fill: var(--text-color);
+  width: 1.55rem;
+  height: 1.55rem;
+  fill: yellow;
 }
 .style-switchers-container .spin-animation{
   animation: spin-animation 1s infinite;
+  fill: rgb(224,224,224);
 }
 @keyframes spin-animation {
   0% {
@@ -78,14 +79,15 @@
 .style-switchers-container h4{
   margin: 0 0 6px;
   color: white;
-  font-size: 1rem;
+  font-size: .775rem;
   font-weight: 600;
   text-transform: capitalize;
 }
 .style-switchers-container .options{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: .55rem;
 }
 .style-switchers-container .option-1{
   background-image: url("../../../../assets/photos/option-1.jpg");
@@ -120,20 +122,18 @@
 }
 .style-switchers-container .options span{
   display: inline-block;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
-
 }
 .settings-theme{
   top: 0;
 }
 .settings-theme i{
   transition: all 0.3s ease;
-
 }
 .day-night{
-  top: 55px;
+  top: 44px;
 }
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
@@ -147,10 +147,33 @@
     bottom: 1.5rem;
   }
   .style-switchers-container{
-    top: 5rem;
+    top: 5.5rem;
     width: 100px;
     padding: .3rem;
     row-gap: .2rem;
+  }
+  .style-switchers-container .s-icon{
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: .65rem;
+  }
+  .style-switchers-container .svg-icon{
+    width: 1.45rem;
+    height: 1.45rem;
+  }
+  .style-switchers-container h4{
+    font-size: .725rem;
+  }
+  .style-switchers-container .options{
+    gap: .5rem;
+    justify-content: flex-start;
+  }
+  .style-switchers-container .options span{
+    width: 23px;
+    height: 23px;
+  }
+  .day-night{
+    top: 42px;
   }
 }
 /* For medium devices */
@@ -164,6 +187,34 @@
   .show-scroll{
     bottom: 2.5rem;
   }
+  .style-switchers-container{
+    top: 6.3rem;
+    width: 150px;
+    padding: .75rem;
+  }
+  .style-switchers-container .s-icon{
+    height: 2rem;
+    width: 2rem;
+    margin-right: .85rem;
+  }
+  .style-switchers-container .svg-icon{
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+  .style-switchers-container h4{
+    font-size: 1rem;
+  }
+  .style-switchers-container .options{
+    gap: .65rem;
+    justify-content: flex-start;
+  }
+  .style-switchers-container .options span{
+    width: 30px;
+    height: 30px;
+  }
+  .day-night{
+    top: 50px;
+  }
 }
 @media screen and (min-width: 767px) {
   .scrollUp{
@@ -175,6 +226,34 @@
   }
   .show-scroll{
     bottom: 3rem;
+  }
+  .style-switchers-container{
+    top: 6.5rem;
+    width: 185px;
+    padding: 1rem;
+  }
+  .style-switchers-container .s-icon{
+    height: 2.2rem;
+    width: 2.2rem;
+    margin-right: .85rem;
+  }
+  .style-switchers-container .svg-icon{
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+  .style-switchers-container h4{
+    font-size: 1.1rem;
+  }
+  .style-switchers-container .options{
+    gap: .85rem;
+    justify-content: flex-start;
+  }
+  .style-switchers-container .options span{
+    width: 32px;
+    height: 32px;
+  }
+  .day-night{
+    top: 52px;
   }
 }
 /* For large devices */
@@ -189,6 +268,60 @@
   .show-scroll{
     bottom: 2rem;
   }
+  .style-switchers-container{
+    top: 6.8rem;
+    width: 200px;
+
+  }
+  .style-switchers-container .s-icon{
+    height: 2.3rem;
+    width: 2.3rem;
+    margin-right: .95rem;
+  }
+  .style-switchers-container .svg-icon{
+    width: 2rem;
+    height: 2rem;
+  }
+  .style-switchers-container h4{
+    font-size: 1.125rem;
+  }
+  .style-switchers-container .options{
+    gap: .9rem;
+    justify-content: flex-start;
+  }
+  .day-night{
+    top: 54px;
+  }
 }
-@media screen and (min-width: 1600px) {}
-@media screen and (min-width: 2200px) {}
+@media screen and (min-width: 1600px) {
+  .style-switchers-container{
+    top: 7rem;
+    width: 215px;
+
+  }
+  .style-switchers-container .options{
+    justify-content: center;
+  }
+  .style-switchers-container h4{
+    font-size: 1.175rem;
+  }
+  .style-switchers-container .options span{
+    width: 33px;
+    height: 33px;
+  }
+}
+@media screen and (min-width: 2200px) {
+  .style-switchers-container{
+    top: 7.2rem;
+  }
+  .style-switchers-container h4{
+    font-size: 1.2rem;
+  }
+  .style-switchers-container .options span{
+    width: 34px;
+    height: 34px;
+  }
+  .day-night{
+    top: 56px;
+  }
+}

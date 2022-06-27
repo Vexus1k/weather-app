@@ -32,7 +32,24 @@ body{
 }
 .grid{
   display: grid;
-
+}
+.article{
+  padding: 5rem 0 2rem;
+}
+@media screen and (min-width: 1040px) {
+  .article{
+    padding: 0;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .article{
+    padding: 0;
+  }
+}
+@media screen and (min-width: 2200px) {
+  .article{
+    padding: 0;
+  }
 }
 .center__flex{
   display: flex;

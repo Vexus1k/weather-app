@@ -9,6 +9,58 @@
   left: 0;
   z-index: 100;
 }
+/* Change background header */
+.scroll-header {
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 2px 4px #909090;
+}
+.nav__menu {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.1);
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(96px);
+  transition: .3s;
+  z-index: 101;
+}
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 3rem;
+  padding-top: 9rem;
+}
+
+.nav__link {
+  text-transform: uppercase;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  font-weight: var(--font-medium);
+  transition: .3s;
+}
+
+.nav__link:hover {
+  color: aquamarine;
+}
+
+.nav__close {
+  font-size: 2rem;
+  color: var(--text-color);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+/* Show menu */
+.show-menu {
+  right: 0;
+}
+/* Active link */
+.active-link {
+  color: aquamarine;
+}
 .nav
 {
   display: flex;
@@ -77,8 +129,7 @@
   transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
-.nav__item{
-  cursor: pointer;
+.nav__toggle{
   display:flex;
   align-items: center;
   justify-content: center;
@@ -87,12 +138,15 @@
   border-radius: 50%;
   background-color: transparent;
 }
-.nav__item i {
+.nav__toggle button i {
   font-size: 1.25rem;
   color:#fff;
-
 }
-
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 .nav__title
 {
   display: flex;
@@ -116,12 +170,11 @@
   {
     font-size: .625rem;
   }
-  .nav__item{
+  .nav__toggle{
     width: 50px;
     height: 35px;
-
   }
-  .nav__item i, .btn-search i {
+  .nav__toggle button i, .btn-search i {
     font-size: 1.12rem;
   }
   .btn-search{
@@ -166,7 +219,7 @@
   .btn-search:focus ~ .input-search, .input-search:focus{
     width: 215px;
   }
-  .nav__item i, .btn-search{
+  .nav__toggle button i, .btn-search{
     font-size: 1.375rem;
   }
 
@@ -187,7 +240,7 @@
   .btn-search:focus ~ .input-search, .input-search:focus{
     width: 230px;
   }
-  .nav__item i, .btn-search{
+  .nav__toggle button i, .btn-search{
     font-size: 1.5rem;
   }
 }
@@ -211,7 +264,7 @@
   .btn-search:focus ~ .input-search, .input-search:focus{
     width: 250px;
   }
-  .nav__item i, .btn-search{
+  .nav__toggle button i, .btn-search{
     font-size: 1.55rem;
   }
 }
@@ -231,7 +284,7 @@
   .input-search::placeholder{
     font-size: 1rem;
   }
-  .nav__item i, .btn-search{
+  .nav__toggle button i, .btn-search{
     font-size: 1.65rem;
   }
 }
@@ -255,7 +308,7 @@
   .btn-search:focus ~ .input-search, .input-search:focus{
     width: 270px;
   }
-  .nav__item i, .btn-search{
+  .nav__toggle button i, .btn-search{
     font-size: 1.65rem;
   }
 

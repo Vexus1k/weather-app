@@ -127,7 +127,7 @@ function tillBackground(){
   let percentsForAddToMoonGraph = (differenceBetweenFirstAndSecondPoint / 100) * moonPositionInPercentsForGraph
   let number2 = firstPoint + percentsForAddToMoonGraph;
 
-  if(number < secondPoint){
+  if(actuallyTime >= sunSetHour && actuallyTime <= sunOver){
     element.style.x = (number) + '%'
     setInterval(function () {
       number += percentWhichIsAddedPerMinute
@@ -163,7 +163,6 @@ window.addEventListener('scroll', scrollUp)
 setTimeout(() => {
   const styleSwitcherToggle = document.querySelector(".settings-theme");
   if(styleSwitcherToggle){
-
     styleSwitcherToggle.addEventListener("click", () => {
       document.querySelector('.style-switchers-container').classList.toggle('open')
     })
@@ -173,12 +172,9 @@ setTimeout(() => {
       document.querySelector('.style-switchers-container').classList.remove("open")
     }
   })
-  // const options = document.querySelectorAll(".opt")
-  // options[0].addEventListener("click", () => {
-  //
-  // })
-  // console.log(options)
-}, 300)
+
+}, 100)
+
 
 
 
