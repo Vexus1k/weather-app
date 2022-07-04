@@ -32,15 +32,23 @@
               "src/fonts/remix-icon/remixicon.css",
               "src/fonts/weather-icons-master/css/weather-icons.min.css",
               "src/fonts/weather-icons-master/css/weather-icons-wind.min.css",
-              "node_modules/swiper/swiper-bundle.min.css"
-
+              "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "node_modules/animate.css/animate.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
               "dist/bundle.js",
               "src/assets/scripts/script.js",
               "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/scrollreveal/dist/scrollreveal.js"
+              "./node_modules/scrollreveal/dist/scrollreveal.js",
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
 
             ]
           },
@@ -49,13 +57,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "145kb"
                 }
               ],
               "fileReplacements": [

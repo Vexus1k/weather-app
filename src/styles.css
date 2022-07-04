@@ -30,11 +30,49 @@ body{
   background-attachment: fixed;
 
 }
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+p{
+  font-weight: 300;
+}
 .grid{
   display: grid;
 }
 .article{
   padding: 5rem 0 2rem;
+}
+.text-danger{
+  color: red;
+  font-size: .85rem;
+}
+.login-register-form-inputs{
+  padding: .5rem;
+  font-size: 1rem;
+}
+.button-login-register{
+  margin-top: .7rem;
+  align-items: center;
+  background: #FFFFFF;
+  border: 0 solid #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  color: #1A202C;
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 50px;
+  justify-content: center;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  padding: 24px 32px;
+  text-decoration: none;
+  width: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 @media screen and (min-width: 1040px) {
   .article{
@@ -76,20 +114,7 @@ img {
   order: -1;
 }
 /*=============== SCROLL BAR ===============*/
-/*::-webkit-scrollbar {*/
-/*  width: .6rem;*/
-/*  background-color: #27282a;*/
-/*  border-radius: 1rem;*/
-/*}*/
 
-/*::-webkit-scrollbar-thumb {*/
-/*  background-color: #3b3c40;*/
-/*  border-radius: 1rem;*/
-/*}*/
-
-/*::-webkit-scrollbar-thumb:hover {*/
-/*  background-color: #4e5155;*/
-/*}*/
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

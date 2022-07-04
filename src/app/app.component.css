@@ -12,6 +12,16 @@
   gap: 2rem;
 
 }
+/*----------------------------Login Swiper Cube Section Settings---------------*/
+.login__swiper
+{
+  padding-top: 6.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 1.8rem;
+  flex-direction: column;
+}
 /*----------------------WIDGETS------------------------*/
 .widgets{
   width: 100%;
@@ -53,7 +63,10 @@
     gap: 2.75rem;
 
   }
-
+  .login__swiper{
+    padding-top: 6rem;
+    row-gap: 2.6rem;
+  }
   .widgets__container{
     flex-direction: column;
     gap: 3rem;
@@ -63,25 +76,32 @@
 @media screen and (min-width: 576px) {
   .container{
     row-gap: 2.65rem;
-
   }
-
+  .login__swiper{
+    row-gap: 3.5rem;
+    padding-top: 7.5rem;
+  }
 }
 @media screen and (min-width: 767px) {
   .container{
     row-gap: 3rem;
-
+  }
+  .login__swiper{
+    row-gap: 4rem;
+    padding-top: 8rem;
   }
   .widgets__container{
     row-gap: 3rem;
   }
-
 }
 /* For large devices */
 @media screen and (min-width: 1040px) {
   .container{
-
     row-gap: 3.2rem;
+  }
+  .login__swiper{
+    row-gap: 4.15rem;
+    padding-top: 8.5rem;
   }
   .widgets{
     padding: 2.5rem 0;
@@ -90,17 +110,19 @@
     flex-direction: row;
     column-gap: 5.5rem;
   }
-
 }
 @media screen and (min-width: 1600px) {
   .container{
     flex-direction: row;
     column-gap: 4rem;
-
+    padding-top: 11rem;
   }
   .main{
-    margin-top: 4.2rem;
     width: 1550px;
+  }
+  .login__swiper{
+    row-gap: 2.65rem;
+    padding-top: 0;
   }
   .widgets{
     padding: 5.25rem 0;
@@ -112,11 +134,12 @@
 @media screen and (min-width: 2200px) {
   .main{
     width: 2070px;
-    margin-top: 2.5rem;
   }
   .container{
-
     column-gap: 5rem;
+  }
+  .login__swiper{
+    row-gap: 2.45rem;
   }
   .forecast__parameter-widgets
   {

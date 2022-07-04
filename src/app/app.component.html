@@ -3,13 +3,16 @@
 <app-header></app-header>
 <main class="main">
   <div class="container">
-    <app-login-cube-section  id="home"></app-login-cube-section>
+    <section class="login__swiper">
+      <app-login-register></app-login-register>
+      <app-cube-swiper  id="home"></app-cube-swiper>
+    </section>
     <section class="widgets">
       <div class="widgets__container">
         <app-forecast-widget id="forecast"></app-forecast-widget>
         <section class="forecast__parameter-widgets">
-          <app-wind-widget id="wind"></app-wind-widget>
-          <app-precipitations-widget id="precipitation"></app-precipitations-widget>
+          <app-wind-widget class="join__rows" id="wind"></app-wind-widget>
+          <app-precipitations-widget class="order__rows" id="precipitation"></app-precipitations-widget>
           <app-sun-moon-widget id="sun-moon"></app-sun-moon-widget>
         </section>
       </div>

@@ -1,77 +1,3 @@
-/*--------------------------------Login------------------------------------*/
-.parameter__login
-{
-
-  display: grid;
-  background-color: rgb(176,176,176, 0.7);
-  padding: 3.9rem 2.2rem;
-  align-items: center;
-  justify-content: center;
-  row-gap: 1.5rem;
-}
-.login{
-  display: grid;
-  row-gap: 1rem;
-  color: var(--text-color);
-
-  font-weight: var(--font-super-light);
-}
-.registry{
-  display: grid;
-  row-gap: 1rem;
-  color: var(--text-color);
-  font-weight: var(--font-super-light);
-}
-.login h2, .registry h2{
-  font-size: 1.05rem;
-}
-.login-button{
-  position: relative;
-  height: 44px;
-  width: 140px;
-  border: none;
-  outline: none;
-  color: white;
-  background: rgb(245,255,250, 0.4);
-  backdrop-filter: blur(2px);
-  cursor: pointer;
-  border-radius: .75rem;
-  font-size: .825rem;
-  font-family: 'Raleway', sans-serif;
-  font-weight: var(--font-medium);
-  letter-spacing: 1px;
-}
-.login-button:before{
-  position: absolute;
-  content: '';
-  top: -2px;
-  left: -2px;
-  height: calc(100% + 4px);
-  width: calc(100% + 4px);
-  border-radius: .75rem;
-  z-index: -1;
-  opacity: 0;
-  filter: blur(5px);
-  background: linear-gradient(45deg, #1dccc5, #00ffff, #00ffd5);
-  background-size: 400%;
-  transition: opacity .3s ease-in-out;
-  animation: animate 20s linear infinite;
-}
-.login-button:hover:before{
-  opacity: 1;
-}
-.login-button:hover:active{
-  background: none;
-}
-.login-button:hover:active:before{
-  filter: blur(2px);
-}
-@keyframes animate {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
-}
-
 /*----------------------------Parameter-SwiperCube-Settings------------------------*/
 .swiper__container{
   margin: 0 auto;
@@ -112,14 +38,7 @@
 .gray {fill:#E0E0E0}
 .yellow {fill:#FFEB3B}
 /*------------------------------------------Parameter----------------------------*/
-.parameter{
-  padding-top: 6.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  row-gap: 1.8rem;
-  flex-direction: column;
-}
+
 .parameter__container{
   display: flex;
   flex-direction: column;
@@ -259,7 +178,7 @@
   font-size: 1.275rem;
   letter-spacing: 4px;
 }
-.newsletter .input-button{
+.newsletter .newsletter__form{
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
@@ -280,16 +199,29 @@
 input[type="email"] {
   width: 150px;
 }
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  row-gap: .4rem;
+  flex-direction: column;
+}
+
+
 button[type="submit"] {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 35px;
   height: 35px;
-  cursor: pointer;
-  background-color: red;
+  cursor: not-allowed;
   border: 0;
+  background-color: gray;
   border-radius: 50%;
+}
+.btnColor{
+  background-color: red!important;
+  cursor: pointer!important;
 }
 .envelope-icon{
   width: .8rem;
@@ -299,25 +231,9 @@ button[type="submit"] {
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px){
-  .login-button{
-    width: 126px;
-    font-size: .7rem;
-    height: 38px;
-  }
-  .login h2, .registry h2{
-    font-size: .95rem;
-  }
   .swiper__container{
     width: 210px;
     height: 210px;
-  }
-  .parameter{
-    padding-top: 6rem;
-    row-gap: 2.6rem;
-  }
-  .parameter__login{
-    row-gap: 1rem;
-    padding: 3.5rem 2rem;
   }
   .parameter__part{
     width: 210px;
@@ -403,7 +319,7 @@ button[type="submit"] {
     letter-spacing: 3px;
     font-size: 1.15rem;
   }
-  .newsletter .input-button{
+  .newsletter .newsletter__form{
     row-gap: 1.25rem;
   }
   .newsletter-input{
@@ -424,22 +340,6 @@ button[type="submit"] {
 }
 /* For medium devices */
 @media screen and (min-width: 576px){
-  .parameter{
-    row-gap: 3.5rem;
-    padding-top: 7.5rem;
-  }
-  .parameter__login{
-    row-gap: 2rem;
-    padding: 4.75rem 3.275rem;
-  }
-  .login-button{
-    width: 148px;
-    height: 48px;
-    font-size: .925rem;
-  }
-  .login h2, .registry h2{
-    font-size: 1.25rem;
-  }
   .swiper__container{
     width: 285px;
     height: 285px;
@@ -532,7 +432,7 @@ button[type="submit"] {
     letter-spacing: 5px;
     font-size: 1.6rem;
   }
-  .newsletter .input-button{
+  .newsletter .newsletter__form{
     row-gap: 1.9rem;
   }
   .newsletter-input{
@@ -552,24 +452,8 @@ button[type="submit"] {
   }
 }
 @media screen and (min-width: 767px){
-  .parameter{
-    row-gap: 4rem;
-    padding-top: 8rem;
-  }
-  .parameter__login{
-    row-gap: 2.5rem;
-    padding: 5.35rem 3.7rem;
-  }
   .parameter__temperatures{
     column-gap: 3.225rem;
-  }
-  .login-button{
-    width: 154px;
-    height: 50px;
-    font-size: 1rem;
-  }
-  .login h2, .registry h2{
-    font-size: 1.35rem;
   }
   .swiper__container{
     width: 310px;
@@ -657,7 +541,7 @@ button[type="submit"] {
   .newsletter h2{
     font-size: 1.7rem;
   }
-  .newsletter .input-button{
+  .newsletter .newsletter__form{
     row-gap: 2.2rem;
   }
   .newsletter-input{
@@ -678,24 +562,8 @@ button[type="submit"] {
 }
 /* For large devices */
 @media screen and (min-width: 1040px){
-  .parameter{
-    row-gap: 4.15rem;
-    padding-top: 8.5rem;
-  }
   .parameter__temperatures{
     column-gap: 3.3rem;
-  }
-  .parameter__login{
-    row-gap: 2.8rem;
-    padding: 5.62rem 3.95rem;
-  }
-  .login-button{
-    width: 166px;
-    height: 52px;
-    font-size: 1.05rem;
-  }
-  .login h2, .registry h2{
-    font-size: 1.425rem;
   }
   .swiper__container{
     width: 320px;
@@ -784,7 +652,7 @@ button[type="submit"] {
 
     font-size: 1.76rem;
   }
-  .newsletter .input-button{
+  .newsletter .newsletter__form{
     row-gap: 2.2rem;
   }
   .newsletter-input{
@@ -804,24 +672,8 @@ button[type="submit"] {
   }
 }
 @media screen and (min-width: 1600px){
-  .parameter__login{
-    padding: 7.7rem 4.5rem;
-    row-gap: 2.7rem;
-
-  }
   .parameter__temperatures{
     column-gap: 3.25rem;
-  }
-  .login h2, .registry h2{
-    font-size: 1.5rem;
-  }
-  .login-button{
-    width: 170px;
-    height: 56px;
-    font-size: 1.1rem;
-  }
-  .parameter{
-    row-gap: 2.65rem;
   }
   .swiper__container{
     width: 295px;
@@ -840,7 +692,6 @@ button[type="submit"] {
   .parameter__status h2{
     font-size: 1.32rem;
   }
-
   .element{
     width: 36px;
     height: 36px;
@@ -910,7 +761,7 @@ button[type="submit"] {
     letter-spacing: 5px;
     font-size: 1.6rem;
   }
-  .newsletter .input-button{
+  .newsletter .newsletter__form{
     row-gap: 2rem;
   }
   .newsletter-input{
@@ -930,21 +781,6 @@ button[type="submit"] {
   }
 }
 @media screen and (min-width: 2200px){
-  .parameter__login{
-    padding: 9.975rem 5.4rem;
-    row-gap: 4.85rem;
-  }
-  .login-button{
-    width: 190px;
-    height: 62px;
-    font-size: 1.2rem;
-  }
-  .login h2, .registry h2{
-    font-size: 1.725rem;
-  }
-  .parameter{
-    row-gap: 2.45rem;
-  }
   .swiper__container{
     width: 320px;
     height: 320px;
@@ -1028,7 +864,7 @@ button[type="submit"] {
 
     font-size: 1.76rem;
   }
-  .newsletter .input-button{
+  .newsletter .newsletter__form{
     row-gap: 2.2rem;
   }
   .newsletter-input{

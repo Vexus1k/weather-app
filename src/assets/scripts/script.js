@@ -127,7 +127,7 @@ function tillBackground(){
   let percentsForAddToMoonGraph = (differenceBetweenFirstAndSecondPoint / 100) * moonPositionInPercentsForGraph
   let number2 = firstPoint + percentsForAddToMoonGraph;
 
-  if(actuallyTime >= sunSetHour && actuallyTime <= sunOver){
+  if(actuallyTime >= sunSetHour && sunOver <= actuallyTime){
     element.style.x = (number) + '%'
     setInterval(function () {
       number += percentWhichIsAddedPerMinute
