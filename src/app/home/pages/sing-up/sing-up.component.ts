@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -9,19 +9,19 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 })
 export class SingUpComponent implements OnInit {
-  registerFormGroup: FormGroup
+  registerFormGroup: UntypedFormGroup
 
   constructor() { }
 
   ngOnInit(): void {
-    this.registerFormGroup = new FormGroup({
-      accountLogin: new FormControl('',[
+    this.registerFormGroup = new UntypedFormGroup({
+      accountLogin: new UntypedFormControl('',[
         Validators.required,
        ]),
-      accountEmail: new FormControl('',[
+      accountEmail: new UntypedFormControl('',[
         Validators.required,
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      accountPassword: new FormControl('',[
+      accountPassword: new UntypedFormControl('',[
         Validators.required,
       ]),
     });
