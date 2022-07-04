@@ -2,7 +2,7 @@ import {AfterViewInit, Component, DoCheck, OnInit, ViewChild} from '@angular/cor
 import {SwiperOptions} from "swiper";
 import ScrollReveal from "scrollreveal";
 import { WeatherService } from 'src/app/core/services/weather.service';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-cube-swiper',
@@ -12,15 +12,15 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class CubeSwiperComponent implements OnInit{
   disableSendButton: boolean = true;
   button: HTMLElement | null;
-  emailFormGroup: FormGroup;
+  emailFormGroup: UntypedFormGroup;
 
   @ViewChild('cubeSwiper')cubeSwiper: any;
-  constructor(private weatherService: WeatherService, private formBuilder: FormBuilder) { }
+  constructor(private weatherService: WeatherService, private formBuilder: UntypedFormBuilder) { }
 
 
   ngOnInit(): void {
-    this.emailFormGroup = new FormGroup({
-      newsletterEmail: new FormControl('',[
+    this.emailFormGroup = new UntypedFormGroup({
+      newsletterEmail: new UntypedFormControl('',[
         Validators.required,
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     });
