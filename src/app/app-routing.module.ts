@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './home/pages/login/login.component';
-import {LoginRegisterComponent} from "./shared/layout/login-register/login-register.component";
+import { LoginFormsComponent } from './home/pages/login-module/login-forms/login-forms.component';
+
 import * as path from "path";
-import {LoginRegisterButtonsComponent} from "./home/pages/login-register-buttons/login-register-buttons.component";
-import {SingUpComponent} from "./home/pages/sing-up/sing-up.component";
+import {LoginRegisterButtonsComponent} from "./home/pages/login-module/login-register-buttons/login-register-buttons.component";
+import {RegisterFormsComponent} from "./home/pages/login-module/register-forms/register-forms.component";
 import { HeaderComponent } from './shared/layout/header/header.component';
+import { LoginAvatarComponent } from './home/pages/login-module/login-avatar/login-avatar.component';
 
 
 const routes: Routes = [
   {path: '', component: LoginRegisterButtonsComponent, pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: SingUpComponent},
+  {path: 'login-forms', component: LoginFormsComponent},
+  {path: 'register-forms', component: RegisterFormsComponent},
+  {path: 'login-avatar', component: LoginAvatarComponent},
   {path: '**', component: LoginRegisterButtonsComponent}
 ];
 

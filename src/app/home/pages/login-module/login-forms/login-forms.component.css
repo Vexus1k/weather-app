@@ -1,0 +1,282 @@
+.login__container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.svg__icon {
+  width: 75px;
+  height: 75px;
+}
+.form-group{
+  margin-bottom: .75rem!important;
+}
+label{
+  font-size: .8rem!important;
+  margin-bottom: .5rem!important;
+  color: var(--text-color);
+}
+.form-control, input{
+  width: 95px!important;
+  height: 24px!important;
+  font-size: .575rem!important;
+  border-radius: .7rem!important;
+}
+.svg__arrow{
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+.login__form{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 0;
+}
+/*Icons*/
+.wrapper {
+  display: inline-flex;
+  list-style: none;
+  margin: .8rem 0 0;
+}
+.wrapper .icon {
+  position: relative;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 6px 10px 0;
+  width: 24px;
+  height: 24px;
+  font-size: .7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: .52rem;
+  background: #ffffff;
+  color: #ffffff;
+  padding: 2px 5px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.wrapper .icon:hover .tooltip {
+  top: -23px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #1877F2;
+  color: #ffffff;
+}
+.wrapper .google:hover,
+.wrapper .google:hover .tooltip,
+.wrapper .google:hover .tooltip::before {
+  background: #ea4335;
+}
+.fa-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+  .svg__icon {
+    width: 64px;
+    height: 64px;
+  }
+  label{
+    font-size: .7rem!important;
+    margin-bottom: .45rem!important;
+  }
+  .form-group{
+    margin-bottom: .63rem!important;
+  }
+  .form-control, input{
+    width: 85px!important;
+    height: 22px!important;
+    font-size: .54rem!important;
+  }
+  .svg__arrow{
+    width: 28px;
+    height: 28px;
+  }
+  .wrapper .icon {
+    padding: 13px;
+    margin: 5px 10px 0;
+    width: 18px;
+    height: 18px;
+  }
+  .wrapper .tooltip {
+    font-size: .5rem;
+  }
+  .wrapper .icon:hover .tooltip {
+    top: -20px;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .svg__icon {
+    width: 80px;
+    height: 80px;
+  }
+  label{
+    font-size: .9rem!important;
+    margin-bottom: .55rem!important;
+  }
+  .form-group{
+    margin-bottom: .9rem!important;
+  }
+  .form-control, input{
+    width: 100px!important;
+    height: 25px!important;
+    font-size: .6rem!important;
+  }
+  .svg__arrow{
+    width: 36px;
+    height: 36px;
+  }
+  .wrapper .icon {
+    margin: 7px 10px 0;
+    width: 26px;
+    height: 26px;
+    font-size: .75rem;
+  }
+  .wrapper .tooltip {
+    font-size: .553rem;
+  }
+  .wrapper .icon:hover .tooltip {
+    top: -25px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .svg__icon {
+    width: 85px;
+    height: 85px;
+  }
+  label{
+    font-size: .95rem!important;
+    margin-bottom: .6rem!important;
+  }
+  .form-control, input{
+    width: 110px!important;
+    height: 27px!important;
+    font-size: .65rem!important;
+  }
+  .svg__arrow{
+    width: 38px;
+    height: 38px;
+  }
+  .wrapper .icon {
+    margin: 10px 10px 0;
+    width: 30px;
+    height: 30px;
+    font-size: .8rem;
+  }
+  .wrapper .tooltip {
+    font-size: .55rem;
+    padding: 3px 7px;
+  }
+  .wrapper .icon:hover .tooltip {
+    top: -28px;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1040px) {
+  .svg__icon {
+    width: 90px;
+    height: 90px;
+  }
+  label{
+    font-size: 1rem!important;
+    margin-bottom: .65rem!important;
+  }
+  .form-group{
+    margin-bottom: 1.1rem!important;
+  }
+  .form-control, input{
+    width: 115px!important;
+    height: 28px!important;
+    font-size: .7rem!important;
+  }
+  .svg__arrow{
+    width: 42px;
+    height: 42px;
+  }
+
+  .wrapper .icon {
+    width: 34px;
+    height: 34px;
+    font-size: .9rem;
+  }
+  .wrapper .tooltip {
+    font-size: .6rem;
+    padding: 4px 8px;
+  }
+  .wrapper .icon:hover .tooltip {
+    top: -30px;
+  }
+}
+@media screen and (min-width: 1600px){
+  .svg__icon {
+    width: 100px;
+    height: 100px;
+  }
+  label{
+    font-size: 1.1rem!important;
+    margin-bottom: .7rem!important;
+  }
+  .form-group{
+    margin-bottom: 1.17rem!important;
+  }
+  .form-control, input{
+    width: 120px!important;
+    height: 30px!important;
+    font-size: .75rem!important;
+  }
+  .wrapper .icon {
+    margin: 12px 12px 0;
+    width: 36px;
+    height: 36px;
+  }
+}
+

@@ -1,0 +1,40 @@
+<div class="registration__container">
+  <h2 class="title">Registration</h2>
+  <form class="registration__form" [formGroup]="registerFormGroup" (ngSubmit)="registerUser()" >
+    <div class="form-group">
+      <label class="font-weight-normal" for="loginInput">Username:</label>
+      <input type="text" class="form-control"
+             formControlName="accountUsername" id="loginInput" placeholder="Username">
+      <div class="center__alert" *ngIf="(registerFormGroup.controls['accountUsername'].invalid &&
+      registerFormGroup.controls['accountUsername'].touched) || registerFormGroup.controls['accountUsername'].dirty">
+        <small *ngIf="registerFormGroup.controls['accountUsername'].errors?.required" class="text-danger">Username is required</small>
+        <small *ngIf="registerFormGroup.controls['accountUsername'].errors?.pattern" class="text-danger">Username is empty</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-normal" for="InputEmail">Email:</label>
+      <input type="email" class="form-control" aria-describedby="emailHelp"
+             id="InputEmail" placeholder="Enter email" formControlName="accountEmail"
+      >
+      <div class="center__alert" *ngIf="(registerFormGroup.controls['accountEmail'].invalid &&
+       registerFormGroup.controls['accountEmail'].touched) || registerFormGroup.controls['accountEmail'].dirty">
+        <small *ngIf="registerFormGroup.controls['accountEmail'].errors?.required" class="text-danger">Email is required</small>
+        <small *ngIf="registerFormGroup.controls['accountEmail'].errors?.pattern" class="text-danger">Invalid email address</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-normal" for="InputPassword">Password:</label>
+      <input type="password" class="form-control"
+             id="InputPassword" placeholder="Password" formControlName="accountPassword"
+             (input)="validationPasswordMessage = checkPasswordValidation(registerFormGroup.controls['accountPassword'].value)"
+      >
+      <div class="center__alert absolute__position" *ngIf="(registerFormGroup.controls['accountPassword'].invalid &&
+        registerFormGroup.controls['accountPassword'].touched) || registerFormGroup.controls['accountPassword'].dirty">
+        <small *ngIf="registerFormGroup.controls['accountPassword'].errors?.required" class="text-danger">Password is required</small>
+        <small *ngIf="registerFormGroup.controls['accountPassword'].errors?.pattern" class="text-danger">{{ validationPasswordMessage }}</small>
+      </div>
+    </div>
+    <button type="submit" class="button-login-register" [disabled]="!registerFormGroup.valid" >Register</button>
+  </form>
+</div>
+<svg [routerLink]="['/']" class="svg__arrow" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="white" d="m12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8l-8-8z"/></g></svg>

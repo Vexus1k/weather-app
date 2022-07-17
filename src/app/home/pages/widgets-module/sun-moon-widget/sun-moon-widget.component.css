@@ -1,0 +1,141 @@
+/*----------------------------------------WIDGET #3-----------------------------------*/
+.article{
+  padding-bottom: 5rem;
+}
+
+.parameter__sun-moon
+{
+  width: 290px;
+  height: 215px;
+  background-color: rgb(88,88,88, 0.35);
+  backdrop-filter: blur(4px);
+  padding: 1.6rem 1.6rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 27% 73%;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-items: center;
+
+}
+.title{
+  border-bottom: 1px solid white;
+  color: var(--text-color);
+  letter-spacing: 2px;
+  font-size: 1.05rem;
+  padding-bottom: .75rem;
+  grid-area: 1 / 1 / 2 / 2;
+}
+.sun__graph-box{
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#svg__sun-graph{
+  width: 100%;
+  grid-area: 2 / 1 / 3 / 2;
+}
+#moon-icon
+{
+  display:none;
+}
+.sun__moon__sunrise-hour
+{
+  position: absolute;
+  bottom: 1.2rem;
+  left: 16%;
+  color: var(--text-color);
+  font-size: .77rem;
+}
+.sun__moon__sunset-hour
+{
+  position: absolute;
+  bottom: 1.2rem;
+  left: 48%;
+  color: var(--text-color);
+  font-size: .75rem;
+}
+#chuj{
+
+  x: -83.165%;
+
+}
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+  .parameter__sun-moon{
+    width: 264px;
+    height: 180px;
+  }
+  .title{
+    font-size: 1.02rem;
+  }
+  #svg__sun-graph{
+    width: 100%;
+  }
+  .sun__moon__sunrise-hour, .sun__moon__sunset-hour{
+    font-size: .7rem;
+    bottom: .65rem;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .parameter__sun-moon{
+    width: 310px;
+  }
+  .title{
+    font-size: 1.1rem;
+  }
+  #svg__sun-graph{
+    width: 100%;
+  }
+  .sun__moon__sunrise-hour, .sun__moon__sunset-hour{
+    font-size: .77rem;
+    bottom: 1rem;
+  }
+}
+@media screen and (min-width: 767px){
+  .parameter__sun-moon{
+    width: 325px;
+    height: 200px;
+  }
+  .title{
+    font-size: 1.2rem;
+  }
+  #svg__sun-graph{
+    width: 100%;
+  }
+  .sun__moon__sunrise-hour, .sun__moon__sunset-hour{
+    font-size: .8rem;
+    bottom: .5rem;
+  }
+}
+@media screen and (min-width: 1040px){
+  .article{
+    padding-bottom: 2rem;
+  }
+  .parameter__sun-moon{
+    width: 480px;
+    height: 170px;
+  }
+  .title{
+    font-size: 1.265rem;
+  }
+  #svg__sun-graph{
+    width: 250px;
+  }
+  .sun__moon__sunrise-hour, .sun__moon__sunset-hour{
+    font-size: .75rem;
+    bottom: .17rem;
+  }
+  .sun__moon__sunrise-hour{
+    left: 28%;
+  }
+  .sun__moon__sunset-hour{
+    left: 48%;
+  }
+}
+@media screen and (min-width: 1600px) {
+
+}

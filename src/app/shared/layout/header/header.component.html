@@ -2,14 +2,14 @@
   <nav class="nav">
     <div class="search-box">
       <button class="btn-search"><i class="ri-search-line"></i></button>
-      <input type="text" class="input-search" placeholder="Type to Search...">
+      <input type="text" class="input-search" placeholder="Type city...">
     </div>
     <div class="nav__title">
       <h2>Miami</h2>
       <p>11:37 AM PKT</p>
     </div>
     <div class="nav__toggle">
-      <button id="menu__btn" [disabled]="isDisabled"  (click)="test()">
+      <button id="menu__btn" [disabled]="isDisabled"  (click)="test()" [title]="resolutionAlert">
         <i class="ri-align-justify"></i>
       </button>
     </div>

@@ -3,6 +3,8 @@ import {SwiperOptions} from "swiper";
 import ScrollReveal from "scrollreveal";
 import { WeatherService } from 'src/app/core/services/weather.service';
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
+import {Subscription} from "rxjs";
+import {WeatherInfoDays} from "../../../core/models/global-interfaces";
 
 @Component({
   selector: 'app-cube-swiper',
@@ -10,6 +12,8 @@ import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} fr
   styleUrls: ['./cube-swiper.component.css']
 })
 export class CubeSwiperComponent implements OnInit{
+  weatherInfo: any;
+  weatherStatusTitle: string;
   disableSendButton: boolean = true;
   button: HTMLElement | null;
   emailFormGroup: UntypedFormGroup;
@@ -19,6 +23,10 @@ export class CubeSwiperComponent implements OnInit{
 
 
   ngOnInit(): void {
+    // this.weatherService.getWeatherInfo().subscribe(result =>
+    //   { this.weatherInfo = result; this.weatherStatusTitle = this.weatherInfo[0].weather[0].description }
+    // )
+
     this.emailFormGroup = new UntypedFormGroup({
       newsletterEmail: new UntypedFormControl('',[
         Validators.required,
@@ -85,7 +93,11 @@ export class CubeSwiperComponent implements OnInit{
     }
   }
   sendEmail(){
-    this.weatherService.sendMail(this.primEmail?.value).subscribe()
+    let email = this.primEmail?.value
+    this.weatherService.sendMail(email).subscribe(data => {
+      console.log(data);
+    })
+    // this.weatherService.getWeatherInfo().subscribe()
     this.emailFormGroup.reset()
   }
 }

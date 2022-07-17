@@ -1,23 +1,19 @@
-<ngx-ui-loader>
-</ngx-ui-loader>
 <app-header></app-header>
-<main class="main">
-  <div class="container">
-    <section class="login__swiper">
-      <app-login-register></app-login-register>
-      <app-cube-swiper  id="home"></app-cube-swiper>
-    </section>
-    <section class="widgets">
-      <div class="widgets__container">
-        <app-forecast-widget id="forecast"></app-forecast-widget>
-        <section class="forecast__parameter-widgets">
-          <app-wind-widget class="join__rows" id="wind"></app-wind-widget>
-          <app-precipitations-widget class="order__rows" id="precipitation"></app-precipitations-widget>
-          <app-sun-moon-widget id="sun-moon"></app-sun-moon-widget>
-        </section>
+<main class="main" >
+  <section class="login__section" id="home">
+    <article class="center__flex-box">
+      <div class="login__part">
+        <router-outlet></router-outlet>
       </div>
-    </section>
-  </div>
+    </article>
+    <app-cube-swiper></app-cube-swiper>
+  </section>
+  <section class="widgets__section">
+    <app-forecast-widget id="forecast" class="forecast__widget"></app-forecast-widget>
+    <app-wind-widget class="windSpeed__widget" id="wind"></app-wind-widget>
+    <app-precipitations-widget class="precipitations__widget" id="precipitation"></app-precipitations-widget>
+    <app-sun-moon-widget id="sun-moon" class="sun-moon__widget"></app-sun-moon-widget>
+  </section>
 </main>
 <app-scroll-up-theme-switcher></app-scroll-up-theme-switcher>
 

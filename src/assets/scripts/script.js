@@ -91,89 +91,85 @@ function setSwitchesToSetCloudy(data) {
 
   }
 }
-function millisToMinutes(millis) {
-  var minutes = millis / 60000;
-  var seconds = ((millis % 60000) / 1000).toFixed(0);
-  return (
-    seconds == 60 ?
-      minutes+1 :
-      minutes
-  );
-}
-
-const date = new Date();
-const sunSetHour = date.setHours(6);
-const sunOver = date.setHours(18);
-const millisTimeConvertedToMinutes = millisToMinutes(sunOver - sunSetHour);
-let firstPoint = -83.165;
-let secondPoint = -46.86;
-const differenceBetweenFirstAndSecondPoint = Math.abs(firstPoint - secondPoint);
-const percentWhichIsAddedPerMinute = (differenceBetweenFirstAndSecondPoint / millisTimeConvertedToMinutes);
-
-
-function tillBackground(){
-  const element = document.getElementById('chuj');
-  let actuallyTime = new Date().getTime();
-  //SunSetSettings
-  let timeSinceSunSetMillis = actuallyTime - sunSetHour;
-  let timeSinceSunSetConvertedToMinutes = millisToMinutes(timeSinceSunSetMillis)
-  let sunPositionInPercentsForGraph = (timeSinceSunSetConvertedToMinutes / millisTimeConvertedToMinutes) * 100
-  let percentsForAddToSunGraph = (differenceBetweenFirstAndSecondPoint / 100) * sunPositionInPercentsForGraph
-  let number = firstPoint + percentsForAddToSunGraph;
-  //MoonSettings
-  let timeSinceSunOverMillis = actuallyTime - sunOver;
-  let timeSinceSunOverConvertedToMinutes = millisToMinutes(timeSinceSunOverMillis)
-  let moonPositionInPercentsForGraph = (timeSinceSunOverConvertedToMinutes / millisTimeConvertedToMinutes) * 100
-  let percentsForAddToMoonGraph = (differenceBetweenFirstAndSecondPoint / 100) * moonPositionInPercentsForGraph
-  let number2 = firstPoint + percentsForAddToMoonGraph;
-
-  if(actuallyTime >= sunSetHour && sunOver <= actuallyTime){
-    element.style.x = (number) + '%'
-    setInterval(function () {
-      number += percentWhichIsAddedPerMinute
-      element.style.x = (number) + '%'
-      console.log('partAddedToTheGraph-Sun', number)
-    }, 60000)
-  }
-  else{
-    element.style.x = (number2) + '%'
-    setInterval(function () {
-      number2 += percentWhichIsAddedPerMinute
-      element.style.x = (number2) + '%'
-      console.log('partAddedToTheGraph-Moon', number2)
-    }, 60000)
-    document.getElementById('moon-icon').style.setProperty('display', 'block')
-    document.getElementById('Sun').style.setProperty('display', 'none')
-    document.getElementById('Bg-path').style.setProperty('fill', 'purple')
-
-    const points = document.querySelectorAll('.Points')
-    points[0].style.fill = '#6495ed'
-    points[1].style.fill = '#6495ed'
-
-  }
-}
-
-function scrollUp(){
-  const scrollUp = document.getElementById('scroll-up');
-  if(this.scrollY >= 490) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
-
-
-setTimeout(() => {
-  const styleSwitcherToggle = document.querySelector(".settings-theme");
-  if(styleSwitcherToggle){
-    styleSwitcherToggle.addEventListener("click", () => {
-      document.querySelector('.style-switchers-container').classList.toggle('open')
-    })
-  }
-  window.addEventListener("scroll", () => {
-    if(document.querySelector('.style-switchers-container').classList.contains("open")){
-      document.querySelector('.style-switchers-container').classList.remove("open")
-    }
-  })
-
-}, 100)
+// function millisToMinutes(millis) {
+//   var minutes = millis / 60000;
+//   var seconds = ((millis % 60000) / 1000).toFixed(0);
+//   return (
+//     seconds == 60 ?
+//       minutes+1 :
+//       minutes
+//   );
+// }
+//
+// const date = new Date();
+// const sunSetHour = date.setHours(6);
+// const sunOver = date.setHours(18);
+// const millisTimeConvertedToMinutes = millisToMinutes(sunOver - sunSetHour);
+// let firstPoint = -83.165;
+// let secondPoint = -46.86;
+// const differenceBetweenFirstAndSecondPoint = Math.abs(firstPoint - secondPoint);
+// const percentWhichIsAddedPerMinute = (differenceBetweenFirstAndSecondPoint / millisTimeConvertedToMinutes);
+//
+//
+// function tillBackground(){
+//   const element = document.getElementById('chuj');
+//   let actuallyTime = new Date().getTime();
+//   //SunSetSettings
+//   let timeSinceSunSetMillis = actuallyTime - sunSetHour;
+//   let timeSinceSunSetConvertedToMinutes = millisToMinutes(timeSinceSunSetMillis)
+//   let sunPositionInPercentsForGraph = (timeSinceSunSetConvertedToMinutes / millisTimeConvertedToMinutes) * 100
+//   let percentsForAddToSunGraph = (differenceBetweenFirstAndSecondPoint / 100) * sunPositionInPercentsForGraph
+//   let number = firstPoint + percentsForAddToSunGraph;
+//   //MoonSettings
+//   let timeSinceSunOverMillis = actuallyTime - sunOver;
+//   let timeSinceSunOverConvertedToMinutes = millisToMinutes(timeSinceSunOverMillis)
+//   let moonPositionInPercentsForGraph = (timeSinceSunOverConvertedToMinutes / millisTimeConvertedToMinutes) * 100
+//   let percentsForAddToMoonGraph = (differenceBetweenFirstAndSecondPoint / 100) * moonPositionInPercentsForGraph
+//   let number2 = firstPoint + percentsForAddToMoonGraph;
+//
+//   if(actuallyTime >= sunSetHour && sunOver <= actuallyTime){
+//     element.style.x = (number) + '%'
+//     setInterval(function () {
+//       number += percentWhichIsAddedPerMinute
+//       element.style.x = (number) + '%'
+//       console.log('partAddedToTheGraph-Sun', number)
+//     }, 60000)
+//   }
+//   else{
+//     element.style.x = (number2) + '%'
+//     setInterval(function () {
+//       number2 += percentWhichIsAddedPerMinute
+//       element.style.x = (number2) + '%'
+//       console.log('partAddedToTheGraph-Moon', number2)
+//     }, 60000)
+//     document.getElementById('moon-icon').style.setProperty('display', 'block')
+//     document.getElementById('Sun').style.setProperty('display', 'none')
+//     document.getElementById('Bg-path').style.setProperty('fill', 'purple')
+//
+//     const points = document.querySelectorAll('.Points')
+//     points[0].style.fill = '#6495ed'
+//     points[1].style.fill = '#6495ed'
+//
+//   }
+// }
+//
+//
+//
+//
+// setTimeout(() => {
+//   const styleSwitcherToggle = document.querySelector(".settings-theme");
+//   if(styleSwitcherToggle){
+//     styleSwitcherToggle.addEventListener("click", () => {
+//       document.querySelector('.style-switchers-container').classList.toggle('open')
+//     })
+//   }
+//   window.addEventListener("scroll", () => {
+//     if(document.querySelector('.style-switchers-container').classList.contains("open")){
+//       document.querySelector('.style-switchers-container').classList.remove("open")
+//     }
+//   })
+//
+// }, 100)
 
 
 

@@ -1,156 +1,174 @@
 .main
 {
-  margin: 0 auto;
-}
-/*------------------------------CONTAINER-----------------------------------------------*/
-.container
-{
-  display:flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: 60px;
+  align-content: center;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 2rem;
-
 }
+
 /*----------------------------Login Swiper Cube Section Settings---------------*/
-.login__swiper
+.login__section
 {
-  padding-top: 6.3rem;
+  padding-top: 6.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: 2.8rem;
+  grid-area: 1 / 1 / 2 / 2;
+}
+.login__part
+{
   display: flex;
+  background-color: rgb(88,88,88, 0.55);
+  backdrop-filter: blur(4px);
+  width: 205px;
+  height: 320px;
   align-items: center;
-  justify-content: flex-start;
-  row-gap: 1.8rem;
-  flex-direction: column;
+  justify-content: center;
 }
 /*----------------------WIDGETS------------------------*/
-.widgets{
+.widgets__section{
+  background-color: rgb(88,88,88, 0.65);
   width: 100%;
   height: auto;
-  position:relative;
-  background-color: rgb(176,176,176, 0.65);
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, auto);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-content: center;
   justify-content: center;
-
-
+  grid-area: 2 / 1 / 3 / 2;
 }
-.widgets__container
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  row-gap: 2rem;
-}
+/*Footer*/
 
-/*-------------------------------Parameters part of widgets-------------------------------------*/
-.forecast__parameter-widgets
-{
-  height: auto;
+.footer{
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 2.813rem;
+  background-color: white;
 }
-
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px) {
-  .container
-  {
-    gap: 2.75rem;
-
-  }
-  .login__swiper{
-    padding-top: 6rem;
+  .login__section{
     row-gap: 2.6rem;
+    padding-top: 6rem;
   }
-  .widgets__container{
-    flex-direction: column;
-    gap: 3rem;
+  .login__part{
+    width: 185px;
+    height: 290px;
+  }
+  .widgets__section{
+    height: auto;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+    align-content: center;
+    justify-content: center;
+    grid-area: 2 / 1 / 3 / 2;
   }
 }
 /* For medium devices */
 @media screen and (min-width: 576px) {
-  .container{
-    row-gap: 2.65rem;
+  .login__section{
+    row-gap: 3rem;
+    padding-top: 7rem;
   }
-  .login__swiper{
-    row-gap: 3.5rem;
-    padding-top: 7.5rem;
+  .login__part{
+    width: 230px;
+    height: 345px;
+  }
+  .widgets__section{
+    height: auto;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+    align-content: center;
+    justify-content: center;
+    grid-area: 2 / 1 / 3 / 2;
   }
 }
 @media screen and (min-width: 767px) {
-  .container{
-    row-gap: 3rem;
+  .login__section{
+    row-gap: 3.2rem;
   }
-  .login__swiper{
-    row-gap: 4rem;
-    padding-top: 8rem;
+  .login__part{
+    width: 250px;
+    height: 365px;
   }
-  .widgets__container{
-    row-gap: 3rem;
+  .widgets__section{
+    height: auto;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-content: center;
+    justify-content: center;
+    grid-area: 2 / 1 / 3 / 2;
   }
 }
 /* For large devices */
 @media screen and (min-width: 1040px) {
-  .container{
-    row-gap: 3.2rem;
+  .login__section{
+    row-gap: 3.4rem;
+    padding-top: 7rem;
   }
-  .login__swiper{
-    row-gap: 4.15rem;
-    padding-top: 8.5rem;
+  .login__part{
+    width: 270px;
+    height: 400px;
   }
-  .widgets{
-    padding: 2.5rem 0;
+  .widgets__section{
+    height: 700px;
+    display: grid;
+    grid-template-columns: 360px 480px;
+    grid-template-rows: 170px 170px 170px;
+    grid-column-gap: 80px;
+    grid-row-gap: 45px;
+    align-content: center;
+    justify-content: center;
+    grid-area: 2 / 1 / 3 / 2;
   }
-  .widgets__container{
-    flex-direction: row;
-    column-gap: 5.5rem;
+  .main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 60px;
+    align-content: center;
+    justify-content: center;
   }
+  .forecast__widget { grid-area: 1 / 1 / 4 / 2; }
+  .windSpeed__widget { grid-area: 1 / 2 / 2 / 3; }
+  .precipitations__widget { grid-area: 2 / 2 / 3 / 3; }
+  .sun-moon__widget { grid-area: 3 / 2 / 4 / 3; }
 }
 @media screen and (min-width: 1600px) {
-  .container{
-    flex-direction: row;
-    column-gap: 4rem;
-    padding-top: 11rem;
-  }
-  .main{
-    width: 1550px;
-  }
-  .login__swiper{
-    row-gap: 2.65rem;
-    padding-top: 0;
-  }
-  .widgets{
-    padding: 5.25rem 0;
-  }
-  .widgets__container{
-    row-gap: 3rem;
-  }
-}
-@media screen and (min-width: 2200px) {
-  .main{
-    width: 2070px;
-  }
-  .container{
-    column-gap: 5rem;
-  }
-  .login__swiper{
-    row-gap: 2.45rem;
-  }
-  .forecast__parameter-widgets
+  .main
   {
     display: grid;
-    grid-template-columns: 550px 360px;
-    grid-auto-rows: 220px 220px;
-    grid-column-gap: 5.5rem;
-    grid-row-gap: 7.75rem;
-    grid-auto-flow: dense;
+    grid-template-columns: 1fr 65%;
+    grid-template-rows: 100%;
+    grid-auto-flow: column;
   }
-  .widgets{
-    padding: 7rem 0;
+  .login__section
+  {
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 1.25rem;
+  }
+  .login__part{
+    width: 270px;
+    height: 420px;
+  }
+  .widgets__section{
+    height: 937px;
+    grid-column-gap: 100px;
+    grid-area: 1 / 2 / 2 / 3;
   }
 }

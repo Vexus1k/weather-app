@@ -43,37 +43,14 @@ export class AppComponent implements OnInit{
   screenWidth: number;
 
   ngOnInit() {
-    tillBackground()
     ScrollReveal().reveal('.widgets', {
       scale: 0.85,
       easing: 'ease-in',
     });
-    if(this.screenWidth > 2199){
-      let windWidget = document.getElementById('wind') as HTMLElement;
-      let precipitationWidget = document.getElementById('precipitation') as HTMLElement;
-      windWidget?.classList.add('join__rows')
-      precipitationWidget?.classList.add('order__rows')
-    }
-  }
-  @HostListener('window:resize', ['$event'])
-  getScreenSize(event?: any) {
-    this.screenHeight = window.innerHeight;
-    this.screenWidth = window.innerWidth;
-    if(this.screenWidth > 2199){
-      let windWidget = document.getElementById('wind') as HTMLElement;
-      let precipitationWidget = document.getElementById('precipitation') as HTMLElement;
-
-      windWidget?.classList.add('join__rows')
-      precipitationWidget?.classList.add('order__rows')
-    }
-    else{
-      let windWidget = document.getElementById('wind') as HTMLElement;
-      let precipitationWidget = document.getElementById('precipitation') as HTMLElement;
-      windWidget?.classList.remove('join__rows')
-      precipitationWidget?.classList.remove('order__rows')
-    }
   }
 }
+
+
 
 
 
