@@ -35,7 +35,7 @@ export class ScrollUpThemeSwitcherComponent implements OnInit {
     window.scrollTo(0,0)
   }
   showHideThemeSwitcher(){
-    this.styleSwitchersContainer?.classList.toggle('.open')
+    this.styleSwitchersContainer?.classList.toggle('open')
   }
   changeDayStatusForBackground(){
     this.darkStatus = !this.darkStatus

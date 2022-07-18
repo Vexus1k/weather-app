@@ -46,7 +46,6 @@ export class SunMoonWidgetComponent implements OnInit {
         amountToAddToFirstPoint += partToAddPerMinute;
         // @ts-ignore
         sunGraphMask!.style.x = this.percentSignPipe.transform(amountToAddToFirstPoint);
-        console.log("3")
       } ,60000)
     }
     if(this.actuallyTime.getTime() < this.sunrise.getTime() || this.actuallyTime.getTime() > this.sunset.getTime()){
@@ -63,13 +62,10 @@ export class SunMoonWidgetComponent implements OnInit {
         let partAddPerMinute = ((firstPoint * timeToMidNightInPercents) / 100) / (nightTime * (timeToMidNightInPercents / 100)) / 2
         // @ts-ignore
         sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
-        console.log(partAddPerMinute)
         setInterval(() => {
           setGraphStatus += partAddPerMinute;
           // @ts-ignore
           sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
-          console.log("chuj2")
-          console.log(this.actuallyTime)
         } ,60000)
       }
       if(this.actuallyTime < this.sunrise){
@@ -84,7 +80,6 @@ export class SunMoonWidgetComponent implements OnInit {
           setGraphStatus += partAddPerMinute;
           // @ts-ignore
           sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
-          console.log("chuj")
         } ,60000)
       }
     }

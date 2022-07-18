@@ -56,11 +56,6 @@
   color: var(--text-color);
   font-size: .75rem;
 }
-#chuj{
-
-  x: -83.165%;
-
-}
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px){

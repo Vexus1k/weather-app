@@ -119,7 +119,7 @@
 }
 @media screen and (min-width: 1040px){
   .parameter__precipitation{
-    width: 490px;
+    width: 480px;
     height: 170px;
     padding: 1.6rem 1.6rem 0;
     grid-template-rows: 27% 73%;

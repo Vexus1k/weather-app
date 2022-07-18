@@ -32,8 +32,8 @@
   align-items: center;
 }
 .windmill__img{
-  width: 134px;
-  height: 134px;
+  width: 132px;
+  height: 132px;
 }
 .wind__box{
   display: flex;
@@ -124,7 +124,7 @@
 @media screen and (min-width: 1040px){
   .parameter__wind{
     padding: 1.6rem 1.6rem 0;
-    width: 500px;
+    width: 480px;
     height: 170px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

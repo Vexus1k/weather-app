@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
-import {UsersService} from "../../../../core/services/users.service";
+import {UserService} from "../../../../core/services/user.service";
 import {Router} from "@angular/router";
 
 
@@ -16,7 +16,7 @@ export class RegisterFormsComponent implements OnInit {
   registerFormGroup: FormGroup
   validationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private usersService: UsersService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private usersService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {

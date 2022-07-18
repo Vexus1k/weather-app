@@ -3,10 +3,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-
-    "allowSyntheticDefaultImports": true, //dodane opcje wczoraj nic nie dają
-
-
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "strictPropertyInitialization": false,

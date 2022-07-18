@@ -40,7 +40,6 @@
               "src/assets/scripts/script.js",
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/scrollreveal/dist/scrollreveal.js"
-
             ]
           },
           "configurations": {
