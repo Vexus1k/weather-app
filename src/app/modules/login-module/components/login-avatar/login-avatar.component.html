@@ -1,0 +1,25 @@
+<div class="login__avatar-part">
+  <div class="menu__icons">
+    <div class="icon__choice-box" (click)="changeAvatar(iconAstronaut.src, astronautBox)" #astronautBox>
+      <img class="icon__choice" [src]="astronautIconPath" #iconAstronaut>
+    </div>
+    <div class="icon__choice-box" (click)="changeAvatar(iconBuilder.src, builderBox)" #builderBox>
+      <img class="icon__choice" [src]="builderIconPath" #iconBuilder>
+    </div>
+    <div class="icon__choice-box active__box" (click)="changeAvatar(iconDeveloper.src, developerBox)" #developerBox>
+      <img class="icon__choice" [src]="developerIconPath" #iconDeveloper>
+    </div>
+    <div class="icon__choice-box" (click)="changeAvatar(iconBusinessman.src, businessmanBox)" #businessmanBox>
+      <img class="icon__choice" [src]="businessmanIconPath" #iconBusinessman>
+    </div>
+  </div>
+  <img class="avatar__icon" [src]="avatarIconPath">
+  <div class="user__greeting-box">
+    <h2>Hello</h2>
+    <p>{{ username }}</p>
+  </div>
+  <button (click)="logout()" class="button-login-register">Logout</button>
+  <img (click)="showHideMenu()" class="edit__icon" [src]="editIconPath">
+</div>
+
+

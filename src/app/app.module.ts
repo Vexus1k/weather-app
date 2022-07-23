@@ -1,26 +1,29 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SwiperModule} from "swiper/angular";
 import {HeaderComponent} from "./shared/layout/header/header.component";
-import { CubeSwiperComponent } from './shared/layout/cube-swiper/cube-swiper.component';
-import { ScrollUpThemeSwitcherComponent } from './shared/layout/scroll-up-theme-switcher/scroll-up-theme-switcher.component';
+import { CubeSwiperComponent } from './modules/widgets-module/components/cube-swiper/cube-swiper.component';
+import { ScrollUpThemeSwitcherComponent } from './modules/widgets-module/components/scroll-up-theme-switcher/scroll-up-theme-switcher.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-import {LoginModule} from "./home/pages/login-module/login.module";
-import {WidgetModule} from "./home/pages/widgets-module/widget.module";
+import {LoginModule} from "./modules/login-module/login.module";
+import {WidgetModule} from "./modules/widgets-module/widget.module";
 
 
+import { HttpErrorInterceptor } from './core/services/http-error.interceptor'
+import { LoginArticleComponent } from './modules/login-module/components/login-article/login-article.component';
+
+
+export let AppInjector: Injector;
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CubeSwiperComponent,
-    ScrollUpThemeSwitcherComponent
   ],
   imports: [
     LoginModule,
@@ -30,12 +33,21 @@ import {WidgetModule} from "./home/pages/widgets-module/widget.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-    SwiperModule,
+    RouterModule
   ],
-  providers: [],
+  exports: [
+
+  ],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+    AppInjector = this.injector;
+  }
+}

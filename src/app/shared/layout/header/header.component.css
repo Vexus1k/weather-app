@@ -33,7 +33,7 @@
   justify-content: center;
   align-items: center;
 }
-.input-search{
+.input__search{
   height: 40px;
   width: 40px;
   border-style: none;
@@ -46,13 +46,13 @@
   background-color: transparent;
   color:#fff;
 }
-.input-search::placeholder{
+.input__search::placeholder{
   color:rgba(255,255,255,.5);
-  font-size: .75rem;
+  font-size: .67rem;
   letter-spacing: 2px;
   font-weight: 100;
 }
-.btn-search{
+.search__btn{
   width: 40px;
   height: 40px;
   border-style: none;
@@ -69,15 +69,15 @@
   background-color:transparent;
   pointer-events: painted;
 }
-.btn-search:focus ~ .input-search{
-  width: 165px;
+.search__btn:focus ~ .input__search{
+  width: 142px;
   border-radius: 0px;
   background-color: transparent;
   border-bottom:1px solid rgba(255,255,255,.5);
   transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
-.input-search:focus{
-  width: 165px;
+.input__search:focus{
+  width: 142px;
   border-radius: 0px;
   background-color: transparent;
   border-bottom:1px solid rgba(255,255,255,.5);
@@ -124,7 +124,6 @@ button{
   row-gap: 3rem;
   padding-top: 9rem;
 }
-
 .nav__link {
   text-transform: uppercase;
   color: var(--text-color);
@@ -132,11 +131,9 @@ button{
   font-weight: var(--font-medium);
   transition: .3s;
 }
-
 .nav__link:hover {
   color: aquamarine;
 }
-
 .nav__close {
   font-size: 2rem;
   color: var(--text-color);
@@ -167,19 +164,19 @@ button{
   {
     font-size: .625rem;
   }
-  .input-search{
+  .input__search{
     height: 40px;
     width: 40px;
     padding-left: 40px;
     font-size: .725rem;
   }
-  .btn-search:focus ~ .input-search, .input-search:focus{
-    width: 125px;
+  .search__btn:focus ~ .input__search, .input__search:focus{
+    width: 115px;
   }
-  .input-search::placeholder{
-    font-size: .65rem;
+  .input__search::placeholder{
+    font-size: .645rem;
   }
-  .nav__toggle button i, .btn-search{
+  .nav__toggle button i, .search__btn{
     font-size: 1.02rem;
   }
 }
@@ -191,13 +188,17 @@ button{
   .nav__title{
     font-size: .75rem;
   }
-  .input-search{
-    font-size: .95rem;
+  .input__search{
+    font-size: .85rem;
+    font-weight: var(--font-light);
   }
-  .btn-search:focus ~ .input-search, .input-search:focus{
-    width: 200px;
+  .input__search::placeholder{
+    font-size: .675rem;
   }
-  .nav__toggle button i, .btn-search{
+  .search__btn:focus ~ .input__search, .input__search:focus{
+    width: 145px;
+  }
+  .nav__toggle button i, .search__btn{
     font-size: 1.1rem;
   }
 
@@ -209,7 +210,17 @@ button{
   .nav__title{
     font-size: .77rem;
   }
-  .nav__toggle button i, .btn-search{
+  .input__search{
+    font-size: .875rem;
+    font-weight: var(--font-light);
+  }
+  .input__search::placeholder{
+    font-size: .675rem;
+  }
+  .search__btn:focus ~ .input__search, .input__search:focus{
+    width: 155px;
+  }
+  .nav__toggle button i, .search__btn{
     font-size: 1.15rem;
   }
 }
@@ -221,7 +232,17 @@ button{
   .nav__title{
     font-size: .8rem;
   }
-  .nav__toggle button i, .btn-search{
+  .input__search{
+    font-size: .925rem;
+    font-weight: var(--font-light);
+  }
+  .input__search::placeholder{
+    font-size: .725rem;
+  }
+  .search__btn:focus ~ .input__search, .input__search:focus{
+    width: 160px;
+  }
+  .nav__toggle button i, .search__btn{
     font-size: 1.2rem;
   }
 }
@@ -231,6 +252,16 @@ button{
   }
   .nav__title{
     font-size: .85rem;
+  }
+  .input__search{
+    font-size: .935rem;
+    font-weight: var(--font-light);
+  }
+  .input__search::placeholder{
+    font-size: .735rem;
+  }
+  .search__btn:focus ~ .input__search, .input__search:focus{
+    width: 162px;
   }
 }
 

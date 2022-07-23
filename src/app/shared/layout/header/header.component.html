@@ -1,15 +1,17 @@
 <header class="header" id="header">
   <nav class="nav">
     <div class="search-box">
-      <button class="btn-search"><i class="ri-search-line"></i></button>
-      <input type="text" class="input-search" placeholder="Type city...">
+      <button class="search__btn" [disabled]="isDisabledInputSearch">
+        <i class="ri-search-line"></i>
+      </button>
+      <input type="text" class="input__search" placeholder="Type city..." [disabled]="isDisabledInputSearch">
     </div>
     <div class="nav__title">
       <h2>Miami</h2>
       <p>11:37 AM PKT</p>
     </div>
     <div class="nav__toggle">
-      <button id="menu__btn" [disabled]="isDisabled"  (click)="test()" [title]="resolutionAlert">
+      <button id="menu__btn" [disabled]="isDisabledMenuBTN"  (click)="showMenu()">
         <i class="ri-align-justify"></i>
       </button>
     </div>

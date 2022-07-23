@@ -21,6 +21,7 @@ import SwiperCore, {EffectCube, Navigation, Pagination, SwiperOptions, Mousewhee
 import Swiper, {Autoplay} from "swiper";
 import {SwiperEvents} from "swiper/types";
 import ScrollReveal from "scrollreveal";
+import { ErrorService } from './core/services/error.service';
 
 
 // install Swiper modules
@@ -39,10 +40,25 @@ declare function tillBackground(): void;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  screenHeight: number;
-  screenWidth: number;
+  message: string;
+  success: boolean;
+  error: boolean;
+  constructor(private errorService: ErrorService){
+
+  }
 
   ngOnInit() {
+    this.errorService.errorStatusAndMessage.subscribe( (res: {message: string, status: any}) => {
+      this.message = res.message;
+      if(res.status === true){
+        this.success = res.status;
+        setTimeout(() => this.success = false, 3500)
+      }
+      else if(res.status === false){
+        this.error = true;
+        setTimeout(() => this.error = false, 3500)
+      }
+    });
     ScrollReveal().reveal('.widgets', {
       scale: 0.85,
       easing: 'ease-in',

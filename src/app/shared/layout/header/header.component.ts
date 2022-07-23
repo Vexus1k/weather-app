@@ -1,5 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import ScrollReveal from "scrollreveal";
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
   resolutionAlert: string;
   screenHeight: number;
   screenWidth: number;
-  isDisabled: boolean;
+  isDisabledMenuBTN: boolean;
+  isDisabledInputSearch: boolean;
 
   ngOnInit() {
     this.getScreenSize();
@@ -21,21 +23,30 @@ export class HeaderComponent implements OnInit {
       delay: 300
     });
   }
-  constructor() {
+  constructor(private auth: AuthService) {
 
   }
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?: any) {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
-    this.isDisabled = this.screenWidth > 1039;
-    if(this.screenWidth > 1039 ){
-      document.getElementById('menu__btn')?.classList.add('disabled')
-      this.resolutionAlert = 'This option is not allowed for this resolution.'
+    if(!this.auth.isLoggedIn()){
+      this.isDisabledInputSearch = true
+      document.querySelector('.search__btn')?.classList.add('disabled')
+      this.isDisabledMenuBTN = true
+      document.querySelector('#menu__btn')?.classList.add('disabled')
+    }
+    else if(this.auth.isLoggedIn()){
+      this.isDisabledInputSearch = false
+      document.querySelector('.search__btn')?.classList.remove('disabled')
+    }
+    else if(this.screenWidth < 1039){
+      this.isDisabledMenuBTN = false
+      document.querySelector('#menu__btn')?.classList.remove('disabled')
     }
     else{
-      this.resolutionAlert = '';
-      document.getElementById('menu__btn')?.classList.remove('disabled')
+      this.isDisabledMenuBTN = true
+      document.querySelector('#menu__btn')?.classList.add('disabled')
     }
   }
   @HostListener('window:scroll', ['$event'])
@@ -76,7 +87,7 @@ export class HeaderComponent implements OnInit {
     })
 
   }
-  test(){
+  showMenu(){
     const navMenu = document.getElementById('nav-menu');
     const switchersIcons = document.querySelectorAll<HTMLTableElement>('.s-icon');
     Array.from(switchersIcons).forEach((el) => { el.style.display = 'none'});

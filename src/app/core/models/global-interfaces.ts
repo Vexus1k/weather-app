@@ -1,4 +1,6 @@
-export interface WeatherInfoDays {
-  [key: string]: number | object;
+export interface User {
+  username: string,
+  email: string,
+  password: string
 }
 

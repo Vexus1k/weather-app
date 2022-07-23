@@ -7,8 +7,6 @@
   align-content: center;
   justify-content: center;
 }
-
-/*----------------------------Login Swiper Cube Section Settings---------------*/
 .login__section
 {
   padding-top: 6.5rem;
@@ -20,14 +18,6 @@
   align-items: center;
   justify-items: center;
 }
-.login__part
-{
-  background-color: rgb(88,88,88, 0.55);
-  backdrop-filter: blur(4px);
-  width: 205px;
-  height: 320px;
-}
-/*----------------------WIDGETS------------------------*/
 .widgets__section{
   background-color: rgb(88,88,88, 0.65);
   width: 100%;
@@ -41,25 +31,45 @@
   justify-content: center;
   grid-area: 2 / 1 / 3 / 2;
 }
-/*Footer*/
-
-.footer{
+/*=======================Error Container=========*/
+.error__container{
+  position: fixed;
+  left: 50%;
+  bottom: 5%;
+  transform: translate(-50%, 0);
+  width: 200px;
+  height: 50px;
+}
+.success, .error {
+  border: 1px solid;
   display: flex;
+  padding: 0 10px 0 45px;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  font-size: .75rem;
 }
-
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image: url('https://i.imgur.com/Q9BGTuy.png');
+  width: 100%;
+  height: 100%;
+}
+.error{
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+  width: 100%;
+  height: 100%;
+}
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 320px) {
   .login__section{
     row-gap: 2.6rem;
     padding-top: 6rem;
-  }
-  .login__part{
-    width: 185px;
-    height: 290px;
   }
   .widgets__section{
     height: auto;
@@ -77,10 +87,6 @@
     row-gap: 3rem;
     padding-top: 7rem;
   }
-  .login__part{
-    width: 230px;
-    height: 345px;
-  }
   .widgets__section{
     height: auto;
     display: grid;
@@ -94,10 +100,6 @@
 @media screen and (min-width: 767px) {
   .login__section{
     row-gap: 3.2rem;
-  }
-  .login__part{
-    width: 250px;
-    height: 365px;
   }
   .widgets__section{
     height: auto;
@@ -113,13 +115,17 @@
 }
 /* For large devices */
 @media screen and (min-width: 1040px) {
+  .main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 60px;
+    align-content: center;
+    justify-content: center;
+  }
   .login__section{
     row-gap: 3.4rem;
     padding-top: 7rem;
-  }
-  .login__part{
-    width: 270px;
-    height: 400px;
   }
   .widgets__section{
     height: 700px;
@@ -131,14 +137,6 @@
     align-content: center;
     justify-content: center;
     grid-area: 2 / 1 / 3 / 2;
-  }
-  .main{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, auto);
-    grid-row-gap: 60px;
-    align-content: center;
-    justify-content: center;
   }
   .forecast__widget { grid-area: 1 / 1 / 4 / 2; }
   .windSpeed__widget { grid-area: 1 / 2 / 2 / 3; }
@@ -153,20 +151,13 @@
     grid-template-rows: 100%;
     grid-auto-flow: column;
   }
-  .login__article{
-    overflow: hidden;
-  }
   .login__section
   {
-    padding-top: 4.3rem;
+    padding-top: 6.65rem;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, auto);
-    grid-row-gap: 0;
-  }
-  .login__part{
-    width: 270px;
-    height: 420px;
+    grid-template-rows: 420px 295px;
+    grid-row-gap: 3rem;
   }
   .widgets__section{
     height: 937px;
