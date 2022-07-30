@@ -152,13 +152,12 @@ export class HeaderComponent implements OnInit, DoCheck {
             this.localTimeForCurrentCity[14] + this.localTimeForCurrentCity[15] + this.localTimeForCurrentCity[16];
           hour = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13]
         }
-      if(Number(hour) > 12){
+      if(Number(hour) > 12 && Number(hour) < 24){
         this.isAmHour = false;
       }
         this.localTimeForCurrentCity = value as string
       }
     )
-
   }
   hideAndShowSearchBox(){
     document.addEventListener('click', event => {
