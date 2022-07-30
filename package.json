@@ -33,7 +33,7 @@
     "bind.mjs": "^1.1.0",
     "bootstrap": "^3.4.1",
     "bootstrap-daterangepicker": "^3.1.0",
-    "chart.js": "^2.5.0",
+    "chart.js": "^2.9.4",
     "clean-webpack-plugin": "^4.0.0",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
