@@ -1,22 +1,28 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, DoCheck, HostListener, OnInit} from '@angular/core';
 import ScrollReveal from "scrollreveal";
+import { AuthService } from 'src/app/core/services/auth.service';
+import { ErrorService } from 'src/app/core/services/error.service';
 
 @Component({
   selector: 'app-scroll-up-theme-switcher',
   templateUrl: './scroll-up-theme-switcher.component.html',
   styleUrls: ['./scroll-up-theme-switcher.component.css']
 })
-export class ScrollUpThemeSwitcherComponent implements OnInit {
+export class ScrollUpThemeSwitcherComponent implements OnInit, DoCheck {
   darkStatus: boolean = true;
   optionStatus: string = "theme_1";
   actuallyTime = new Date().getHours();
   pageBody: HTMLElement | null;
   scrollUp: HTMLElement | null;
   styleSwitchersContainer: HTMLElement | null;
+  isLoggedIn: boolean;
 
-  constructor() { }
-
+  constructor(private auth: AuthService, private errorService: ErrorService) { }
+  ngDoCheck() {
+    this.isLoggedIn = this.auth.isLoggedIn();
+  }
   ngOnInit(): void {
+    this.isLoggedIn = this.auth.isLoggedIn();
     this.scrollUp = document.getElementById('scroll-up');
     this.pageBody = document.getElementById('body');
     this.styleSwitchersContainer = document.querySelector('.style-switchers-container');
@@ -91,5 +97,7 @@ export class ScrollUpThemeSwitcherComponent implements OnInit {
       console.log("4")
     }
   }
-
+  showError(){
+    this.errorService.setErrorStatusAndMessage("Login to use this function", false)
+  }
 }

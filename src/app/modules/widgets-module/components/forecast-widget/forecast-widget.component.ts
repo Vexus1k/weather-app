@@ -24,6 +24,7 @@ export class ForecastWidgetComponent implements OnInit {
       origin: 'left',
       delay: 300
     });
+    this.weatherService.getWeatherForTwoWeeks().subscribe(res => console.log(res))
     // this.weatherService.getWeatherInfo().subscribe(result =>
     //   { this.weatherInfo = result; this.w = this.weatherInfo[0].weather[0] }
     // )

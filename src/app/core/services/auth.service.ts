@@ -8,6 +8,13 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private router: Router) {}
 
+  setUsername(username: string): void{
+    localStorage.setItem('username', username);
+  }
+  getUsername(): string | null{
+    return localStorage.getItem('username')
+  }
+
   setToken(token: string): void {
     localStorage.setItem('token', token);
   }
@@ -22,14 +29,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    localStorage.removeItem('username')
+    this.router.navigate(['/login/forms']);
   }
 
-  login({ email, password }: any): Observable<any> {
-    if (email === 'admin@gmail.com' && password === 'admin123') {
-      this.setToken('abcdefghijklmnopqrstuvwxyz');
-      return of({ name: 'Tarique Akhtar', email: 'admin@gmail.com' });
-    }
-    return throwError(new Error('Failed to login'));
-  }
 }

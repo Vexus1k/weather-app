@@ -35,12 +35,12 @@ export class RegisterFormsComponent implements OnInit {
   registerUser(){
     let user: User = this.registerFormGroup.value
     this.usersService.registerUser(user).subscribe(
-  () => {},
+  (user) => { console.log(user) },
   () => {},
   () => {
     this.errorService.setErrorStatusAndMessage('Account has been created.', true)
     this.registerFormGroup.reset()
-    this.router.navigate(['/home/login-forms'])
+    this.router.navigate(['/login/forms'])
   })}
   checkPasswordValidation(value: string) {
     const isWhitespace = /^(?=.*\s)/;

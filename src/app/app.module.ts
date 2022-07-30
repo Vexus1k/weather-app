@@ -15,7 +15,7 @@ import {WidgetModule} from "./modules/widgets-module/widget.module";
 
 
 import { HttpErrorInterceptor } from './core/services/http-error.interceptor'
-import { LoginArticleComponent } from './modules/login-module/components/login-article/login-article.component';
+import { LoginArticleBoxComponent } from './modules/login-module/components/login-article-box/login-article-box.component';
 
 
 export let AppInjector: Injector;

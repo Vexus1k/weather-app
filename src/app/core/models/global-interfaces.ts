@@ -3,4 +3,6 @@ export interface User {
   email: string,
   password: string
 }
-
+export type getDataFromObject = {
+  [key: string]: any;
+};

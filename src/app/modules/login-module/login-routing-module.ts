@@ -3,20 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 import {RegisterFormsComponent} from "./components/register-forms/register-forms.component";
 import {LoginFormsComponent} from "./components/login-forms/login-forms.component";
 import {LoginRegisterButtonsComponent} from "./components/login-register-buttons/login-register-buttons.component";
-import {LoginArticleComponent} from "./components/login-article/login-article.component";
-import { LoginAvatarComponent } from './components/login-avatar/login-avatar.component';
+import {LoginArticleBoxComponent} from "./components/login-article-box/login-article-box.component";
+import { LoginUserComponent } from './components/login-user/login-user.component';
+import {AuthGuard} from "../../core/guards/auth.guard";
 
 
 
 const routes: Routes = [
-  {path: 'home', component: LoginArticleComponent, children: [
-      {path: '', component: LoginRegisterButtonsComponent},
-      {path: 'login-forms', component: LoginFormsComponent},
-      {path: 'register-forms', component: RegisterFormsComponent},
-      {path: 'login-avatar', component: LoginAvatarComponent},
-      { path: "**", redirectTo: '' }
+  {path: 'login', component: LoginArticleBoxComponent,  children: [
+      {path: '', redirectTo: '/login/buttons', pathMatch: 'full'},
+      {path: 'user', canActivate: [AuthGuard], component: LoginUserComponent},
+      {path: 'buttons', component: LoginRegisterButtonsComponent},
+      {path: 'forms', component: LoginFormsComponent},
+      {path: '**', redirectTo: '/login/buttons'}
     ]},
-
+  {path: 'register',component: LoginArticleBoxComponent, children: [
+      {path: '', redirectTo: '/login/buttons', pathMatch: 'full'},
+      {path: 'forms', component: RegisterFormsComponent},
+      {path: '**', redirectTo: '/login/buttons'}
+    ]}
 ];
 
 @NgModule({

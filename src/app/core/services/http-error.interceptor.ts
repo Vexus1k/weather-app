@@ -25,8 +25,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           }else if(error.status === 409){
             this.errorService.setErrorStatusAndMessage("User already exists.", false)
           }
-          else if(error.status === 204){
-            this.errorService.setErrorStatusAndMessage("User does not exist.", false)
+          else if(error.status === 401){
+            this.errorService.setErrorStatusAndMessage("Incorrect login or password. Try again", false)
           }
           else {
             this.errorService.setErrorStatusAndMessage('Something went wrong.', false)

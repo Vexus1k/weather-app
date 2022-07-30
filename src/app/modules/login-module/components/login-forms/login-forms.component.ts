@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import ScrollReveal from "scrollreveal";
 import {ErrorService} from "../../../../core/services/error.service";
 import {User} from "../../../../core/models/global-interfaces";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login-forms',
@@ -17,9 +18,8 @@ export class LoginFormsComponent implements OnInit {
   constructor(private errorService: ErrorService, private formBuilder: FormBuilder, private userService: UserService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
-
     if(this.auth.isLoggedIn()){
-      this.router.navigate(['/home/login-avatar'])
+      this.router.navigate(['/login/user'])
     }
     this.loginFormGroup = this.formBuilder.group({
       username: ['', Validators.required],
@@ -29,14 +29,14 @@ export class LoginFormsComponent implements OnInit {
   loginUser(){
     let user: User = this.loginFormGroup.value
     this.userService.loginUser(user).subscribe(
-      () => {},
+      (user) => { console.log(user) },
       () => {},
       () => {
       this.auth.setToken(Math.random().toString(36).substr(2));
-      this.userService.setCurrentlyUserUsername(this.loginFormGroup.controls['username'].value)
+      this.auth.setUsername(this.loginFormGroup.controls['username'].value)
       this.errorService.setErrorStatusAndMessage('Login Successfully.', true)
-      this.router.navigate(['/home/login-avatar'])
-
+      this.router.navigate(['/login/user'])
+        console.log("chuj")
     })
   }
 }

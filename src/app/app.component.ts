@@ -22,6 +22,7 @@ import Swiper, {Autoplay} from "swiper";
 import {SwiperEvents} from "swiper/types";
 import ScrollReveal from "scrollreveal";
 import { ErrorService } from './core/services/error.service';
+import {first} from "rxjs";
 
 
 // install Swiper modules
@@ -40,24 +41,37 @@ declare function tillBackground(): void;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  message: string;
+  messageSuccess: string;
+  messageError: string;
   success: boolean;
   error: boolean;
+  sub: any;
   constructor(private errorService: ErrorService){
 
   }
 
   ngOnInit() {
-    this.errorService.errorStatusAndMessage.subscribe( (res: {message: string, status: any}) => {
-      this.message = res.message;
+    this.sub = this.errorService.errorStatusAndMessage.subscribe( (res: {message: string, status: any}) => {
       if(res.status === true){
+        this.messageSuccess = res.message;
         this.success = res.status;
-        setTimeout(() => this.success = false, 3500)
+        setTimeout(() => {
+          this.success = false
+        }, 3500)
       }
       else if(res.status === false){
+        this.messageError = res.message;
         this.error = true;
-        setTimeout(() => this.error = false, 3500)
+        setTimeout(() =>  {
+          this.error = false
+        }, 3500)
       }
+    });
+    ScrollReveal().reveal('#login__article', {
+      delay: 300,
+      scale: 1.4,
+      origin: "left",
+      distance: "60px"
     });
     ScrollReveal().reveal('.widgets', {
       scale: 0.85,

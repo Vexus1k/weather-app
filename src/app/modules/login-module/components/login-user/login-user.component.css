@@ -3,7 +3,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 17% 36% repeat(2, 17%);
+  grid-template-rows: 14% 40% repeat(2, 18%);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   justify-items: center;
@@ -67,7 +67,7 @@
 .edit__icon{
   position: absolute;
   right: 11px;
-  top: 14px;
+  top: 10px;
   cursor: pointer;
   height: 25px;
 }
@@ -96,7 +96,7 @@
   .edit__icon{
     height: 23px;
     right: 10px;
-    top: 13px;
+    top: 9px;
   }
 }
 /* For medium devices */
@@ -126,8 +126,8 @@
   }
   .edit__icon{
     height: 28px;
-    right: 10px;
-    top: 14px;
+    right: 11px;
+    top: 10px;
   }
 }
 @media screen and (min-width: 767px){
@@ -153,8 +153,6 @@
   }
   .edit__icon{
     height: 30px;
-    right: 12px;
-    top: 16px;
   }
 }
 /* For large devices */
@@ -185,7 +183,7 @@
   .edit__icon{
     height: 33px;
     right: 13px;
-    top: 17px;
+    top: 11px;
   }
 }
 @media screen and (min-width: 1600px){
@@ -215,6 +213,6 @@
   .edit__icon{
     height: 35px;
     right: 14px;
-    top: 18px;
+    top: 11px;
   }
 }

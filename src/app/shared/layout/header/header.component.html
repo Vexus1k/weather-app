@@ -1,18 +1,19 @@
 <header class="header" id="header">
   <nav class="nav">
-    <div class="search-box">
-      <button class="search__btn" [disabled]="isDisabledInputSearch">
-        <i class="ri-search-line"></i>
+    <div class="search-box" [style.cursor]="'auto'">
+      <button class="search__btn" [disabled]="!isLoggedIn" [style.cursor]="'auto'">
+        <i class="ri-search-line" (click)="!isLoggedIn ? showError() : null" [style.cursor]="!isLoggedIn ? 'not-allowed' : 'pointer'"></i>
       </button>
-      <input type="text" class="input__search" placeholder="Type city..." [disabled]="isDisabledInputSearch">
+      <input type="text" class="input__search"  placeholder="Type city..." [(ngModel)]="inputValueCity" [disabled]="!isLoggedIn" [style.cursor]="'auto'" (keydown.enter)="getLocalization()">
+      <img class="location__icon" [src]="locationIconPath" (mousedown)="test($event)" (mouseup)="test($event)">
     </div>
     <div class="nav__title">
-      <h2>Miami</h2>
-      <p>11:37 AM PKT</p>
+      <h2>{{ locationInfo?.name || 'Katowice' }}</h2>
+      <p>{{this.localTimeForCurrentCity + ' ' + (isAmHour ? 'AM' : 'PM')}}</p>
     </div>
     <div class="nav__toggle">
-      <button id="menu__btn" [disabled]="isDisabledMenuBTN"  (click)="showMenu()">
-        <i class="ri-align-justify"></i>
+      <button id="menu__btn" [style.cursor]="'auto'">
+        <i class="ri-align-justify" [ngClass]="alertCondition ? 'disabled' : 'enabled'"  (click)="alertCondition ? showError() : showMenu()"></i>
       </button>
     </div>
   </nav>

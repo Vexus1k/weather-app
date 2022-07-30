@@ -1,15 +1,15 @@
 <div class="login__avatar-part">
   <div class="menu__icons">
-    <div class="icon__choice-box" (click)="changeAvatar(iconAstronaut.src, astronautBox)" #astronautBox>
+    <div class="icon__choice-box" [style.cursor]="showMenu ? 'pointer' : 'auto'" (click)="showMenu ? changeAvatar(iconAstronaut.src, astronautBox) : null" #astronautBox>
       <img class="icon__choice" [src]="astronautIconPath" #iconAstronaut>
     </div>
-    <div class="icon__choice-box" (click)="changeAvatar(iconBuilder.src, builderBox)" #builderBox>
+    <div class="icon__choice-box" [style.cursor]="showMenu ? 'pointer' : 'auto'" (click)="showMenu ? changeAvatar(iconBuilder.src, builderBox) : null" #builderBox>
       <img class="icon__choice" [src]="builderIconPath" #iconBuilder>
     </div>
-    <div class="icon__choice-box active__box" (click)="changeAvatar(iconDeveloper.src, developerBox)" #developerBox>
+    <div class="icon__choice-box active__box" [style.cursor]="showMenu ? 'pointer' : 'auto'" (click)="showMenu ? changeAvatar(iconDeveloper.src, developerBox) : null" #developerBox>
       <img class="icon__choice" [src]="developerIconPath" #iconDeveloper>
     </div>
-    <div class="icon__choice-box" (click)="changeAvatar(iconBusinessman.src, businessmanBox)" #businessmanBox>
+    <div class="icon__choice-box" [style.cursor]="showMenu ? 'pointer' : 'auto'" (click)="showMenu ? changeAvatar(iconBusinessman.src, businessmanBox) : null" #businessmanBox>
       <img class="icon__choice" [src]="businessmanIconPath" #iconBusinessman>
     </div>
   </div>

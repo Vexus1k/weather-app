@@ -14,21 +14,15 @@ export class UserService {
   rootUrl: string = "http://localhost:3000"
   constructor(private http: HttpClient, private errorService: ErrorService) {
   }
-  private usernameBehavior = new BehaviorSubject<string>('Initial Value');
-  usernameCurrentlyLoginUser: Observable<string> = this.usernameBehavior.asObservable();
 
-  setCurrentlyUserUsername(data: string) {
-    this.usernameBehavior.next(data);
-  }
-
-  registerUser(user: User){
+  registerUser(user: User):Observable<Observable<User>> {
     const headers = {'Content-Type': "application/json"}
-    return this.http.post(this.rootUrl + "/registerUser", JSON.stringify(user), {headers})
-  }
-  loginUser(user: User){
-    const headers = {'Content-Type': "application/json"}
-    return this.http.post(this.rootUrl + "/loginUser", JSON.stringify(user), {headers})
+    return this.http.post<Observable<User>>(this.rootUrl + "/registerUser", JSON.stringify(user), {headers})
   }
 
+  loginUser(user: User):Observable<Observable<User>>{
+    const headers = {'Content-Type': "application/json"}
+    return this.http.post<Observable<User>>(this.rootUrl + "/loginUser", JSON.stringify(user), {headers})
+  }
 }
 

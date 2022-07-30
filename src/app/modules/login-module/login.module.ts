@@ -8,9 +8,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {SwiperModule} from "swiper/angular";
 
 import {NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER} from "ngx-ui-loader";
-import {LoginAvatarComponent} from "./components/login-avatar/login-avatar.component";
+import {LoginUserComponent} from "./components/login-user/login-user.component";
 import {LoginRoutingModule} from "./login-routing-module";
-import {LoginArticleComponent} from "./components/login-article/login-article.component";
+import {LoginArticleBoxComponent} from "./components/login-article-box/login-article-box.component";
 import {WidgetModule} from "../widgets-module/widget.module";
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -28,15 +28,14 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     LoginFormsComponent,
     RegisterFormsComponent,
     LoginRegisterButtonsComponent,
-    LoginAvatarComponent,
-    LoginArticleComponent
+    LoginUserComponent,
+    LoginArticleBoxComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     SwiperModule,
-    RouterModule,
     NgxUiLoaderModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     LoginRoutingModule,
@@ -44,7 +43,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   ],
   exports: [
     LoginRegisterButtonsComponent,
-    LoginArticleComponent
+    LoginArticleBoxComponent
   ]
 })
 export class LoginModule { }

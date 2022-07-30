@@ -4,18 +4,19 @@ import {UserService} from "src/app/core/services/user.service";
 import ScrollReveal from "scrollreveal";
 
 @Component({
-  selector: 'app-login-avatar',
-  templateUrl: './login-avatar.component.html',
-  styleUrls: ['./login-avatar.component.css', "../../../../../../node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss"]
+  selector: 'app-login-user',
+  templateUrl: './login-user.component.html',
+  styleUrls: ['./login-user.component.css', "../../../../../../node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss"]
 })
-export class LoginAvatarComponent implements OnInit {
+export class LoginUserComponent implements OnInit {
   editIconPath: string = '../../../../../assets/photos/edit-icon.svg';
   avatarIconPath: string = '../../../../../assets/photos/developer-icon.svg';
   astronautIconPath: string = '../../../../../assets/photos/astronaut-icon.svg';
   builderIconPath: string = '../../../../../assets/photos/builder-icon.svg';
   developerIconPath: string = '../../../../../assets/photos/developer-icon.svg';
   businessmanIconPath: string = '../../../../../assets/photos/businessman-icon.svg';
-  username: string;
+  username: string | null;
+  showMenu: boolean = false;
   iconChoiceBoxes: NodeListOf<HTMLElement>
 
   constructor(private userService: UserService, private auth: AuthService) {
@@ -23,16 +24,16 @@ export class LoginAvatarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.usernameCurrentlyLoginUser.subscribe((res: string) => this.username = res)
+    this.username = this.auth.getUsername()
     if(this.username){
       console.log(this.username)
     }
-
   }
   showHideMenu() {
     let menuIcons = document.querySelector(".menu__icons");
     console.log(menuIcons)
     menuIcons?.classList.toggle('show')
+    this.showMenu =! this.showMenu
   }
   changeAvatar(path: string, element: HTMLElement){
     let menuIcons = document.querySelector(".menu__icons");

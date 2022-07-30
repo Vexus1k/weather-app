@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main class="main">
   <section class="login__section" id="home">
-    <app-login-article></app-login-article>
+    <app-login-article-box id="login__article"></app-login-article-box>
     <app-cube-swiper></app-cube-swiper>
   </section>
   <section class="widgets__section">
@@ -10,12 +10,9 @@
     <app-precipitations-widget class="precipitations__widget" id="precipitation"></app-precipitations-widget>
     <app-sun-moon-widget id="sun-moon" class="sun-moon__widget"></app-sun-moon-widget>
   </section>
-
 </main>
 <app-scroll-up-theme-switcher></app-scroll-up-theme-switcher>
 <div class="error__container">
-  <div class="success" *ngIf="success">{{ message }}</div>
-  <div class="error" *ngIf="error">{{ message }}</div>
+  <div class="success" *ngIf="success">{{ messageSuccess }}</div>
+  <div class="error" *ngIf="error">{{ messageError }}</div>
 </div>
-
-

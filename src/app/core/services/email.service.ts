@@ -16,13 +16,5 @@ export class EmailService {
     console.log("email sent")
     return this.http.post(this.rootUrl + '/sendgrid', JSON.stringify(email), {headers})
   }
-  // handleError(err: any){
-  //   if(err instanceof HttpErrorResponse){
-  //     return err.name
-  //   }
-  //   else{
-  //     return err.name + ": " + err.message
-  //   }
-  //   return throwError(err)
-  // }
+
 }
