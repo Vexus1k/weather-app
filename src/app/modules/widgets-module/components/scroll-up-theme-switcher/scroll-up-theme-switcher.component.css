@@ -12,6 +12,7 @@
   color: white;
   z-index: 101;
   transition: .4s;
+  cursor: pointer;
 }
 
 .scrollUp:hover {

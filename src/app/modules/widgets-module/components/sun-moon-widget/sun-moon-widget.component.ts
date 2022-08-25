@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import ScrollReveal from "scrollreveal";
 import { PercentSignAddPipePipe } from 'src/app/core/pipes/percent-sign-add-pipe.pipe';
+import {readDataFromObject} from "../../../../core/models/global-interfaces";
+import {WeatherService} from "../../../../core/services/weather.service";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-sun-moon-widget',
@@ -8,15 +11,26 @@ import { PercentSignAddPipePipe } from 'src/app/core/pipes/percent-sign-add-pipe
   styleUrls: ['./sun-moon-widget.component.css']
 })
 export class SunMoonWidgetComponent implements OnInit {
-  moonGraph: HTMLElement | null;
+  sunriseHour: string;
+  sunsetHour: string;
   sunrise: Date = new Date();
   sunset: Date = new Date();
   actuallyTime: Date = new Date();
   midNightHourNight: Date = new Date();
   midNightHourDay: Date = new Date();
-  constructor(private percentSignPipe: PercentSignAddPipePipe) { }
+  advancedWeatherInfoObject: readDataFromObject;
+  actuallyIdCity: string | null;
+
+
+  constructor(private percentSignPipe: PercentSignAddPipePipe, private weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    this.weatherService.cityId.subscribe(cityId => {
+      if (cityId != this.actuallyIdCity) {
+        this.getAdvancedWeatherInfo()
+      }
+    })
     ScrollReveal().reveal('.parameter__sun-moon', {
       distance: '60px',
       easing: 'ease-in-out',
@@ -25,9 +39,26 @@ export class SunMoonWidgetComponent implements OnInit {
     });
     this.midNightHourDay.setHours(0, 0, 0)
     this.midNightHourNight.setHours(24, 0, 0)
-    this.sunrise.setHours(6, 0, 0)
-    this.sunset.setHours(18, 0, 0)
-    this.sunGraphStatusChanged()
+    this.getAdvancedWeatherInfo()
+
+  }
+  getAdvancedWeatherInfo(){
+    this.weatherService.getAdvancedWeatherInfo().pipe(take(1)).subscribe((res) => {
+      console.log(res)
+      this.advancedWeatherInfoObject = res.forecast[0];
+      this.initializeSunriseAndSunsetHours()
+      this.sunGraphStatusChanged()
+    });
+  }
+  initializeSunriseAndSunsetHours(){
+    console.log(typeof this.advancedWeatherInfoObject.sunrise, typeof this.advancedWeatherInfoObject.sunset)
+    this.sunriseHour = this.advancedWeatherInfoObject.sunrise
+    this.sunsetHour = this.advancedWeatherInfoObject.sunset
+    console.log(this.sunriseHour, this.sunsetHour)
+    // @ts-ignore
+    this.sunrise.setHours(this.sunriseHour[0] + this.sunriseHour[1], this.sunriseHour[3] + this.sunriseHour[4], this.sunriseHour[6] + this.sunriseHour[7])
+    // @ts-ignore
+    this.sunset.setHours(this.sunriseHour[0] + this.sunriseHour[1], this.sunriseHour[3] + this.sunriseHour[4], this.sunriseHour[6] + this.sunriseHour[7])
   }
   sunGraphStatusChanged(){
     let sunGraphMask = document.getElementById('sunGraphMask')

@@ -1,15 +1,15 @@
 <header class="header" id="header">
   <nav class="nav">
     <div class="search-box" [style.cursor]="'auto'">
-      <button class="search__btn" [disabled]="!isLoggedIn" [style.cursor]="'auto'">
+      <button class="search__btn" [disabled]="!isLoggedIn" [style.cursor]="'auto'" >
         <i class="ri-search-line" (click)="!isLoggedIn ? showError() : null" [style.cursor]="!isLoggedIn ? 'not-allowed' : 'pointer'"></i>
       </button>
       <input type="text" class="input__search"  placeholder="Type city..." [(ngModel)]="inputValueCity" [disabled]="!isLoggedIn" [style.cursor]="'auto'" (keydown.enter)="getLocalization()">
-      <img class="location__icon" [src]="locationIconPath" (mousedown)="test($event)" (mouseup)="test($event)">
+      <img alt="" class="location__icon" [src]="locationIconPath" (mousedown)="holdElementOnView($event)" (click)="getCityFromCoords()">
     </div>
     <div class="nav__title">
       <h2>{{ locationInfo?.name || 'Katowice' }}</h2>
-      <p>{{this.localTimeForCurrentCity + ' ' + (isAmHour ? 'AM' : 'PM')}}</p>
+      <p>{{this.localTimeForCurrentCity + ' ' + (isAmHour ? 'AM' : '')}}</p>
     </div>
     <div class="nav__toggle">
       <button id="menu__btn" [style.cursor]="'auto'">
@@ -20,20 +20,20 @@
 </header>
 <div class="nav__menu" id="nav-menu">
   <ul class="nav__list">
-    <li class="nav__item" >
-      <a href="#home" class="nav__link active-link" (click)="closeMenu()">Home</a>
+    <li class="nav__item">
+      <a id="home__option" class="nav__link active-link" (click)="scrollToElement('home', home)" #home>Home</a>
     </li>
     <li class="nav__item">
-      <a href="#forecast" class="nav__link" (click)="closeMenu()">Forecast</a>
+      <a id="forecast__option" class="nav__link" (click)="scrollToElement('forecast', forecast)" #forecast>Forecast</a>
     </li>
     <li class="nav__item">
-      <a href="#wind" class="nav__link" (click)="closeMenu()">Wind</a>
+      <a id="wind__option" class="nav__link" (click)="scrollToElement('wind', wind)" #wind>Wind</a>
     </li>
     <li class="nav__item">
-      <a href="#precipitation" class="nav__link" (click)="closeMenu()">Precipitation</a>
+      <a id="precipitation__option" class="nav__link" (click)="scrollToElement('precipitation', precipitation)" #precipitation>Precipitation</a>
     </li>
     <li class="nav__item">
-      <a href="#sun-moon" class="nav__link" (click)="closeMenu()">Sun-Moon</a>
+      <a id="sun-moon__option" class="nav__link" (click)="scrollToElement('sun-moon', sunMoon)" #sunMoon>Sun-Moon</a>
     </li>
   </ul>
   <div class="nav__close" id="nav-close" (click)="closeMenu()">

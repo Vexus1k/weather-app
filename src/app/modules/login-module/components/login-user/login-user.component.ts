@@ -17,17 +17,12 @@ export class LoginUserComponent implements OnInit {
   businessmanIconPath: string = '../../../../../assets/photos/businessman-icon.svg';
   username: string | null;
   showMenu: boolean = false;
-  iconChoiceBoxes: NodeListOf<HTMLElement>
 
   constructor(private userService: UserService, private auth: AuthService) {
-
   }
 
   ngOnInit(): void {
     this.username = this.auth.getUsername()
-    if(this.username){
-      console.log(this.username)
-    }
   }
   showHideMenu() {
     let menuIcons = document.querySelector(".menu__icons");
@@ -42,6 +37,7 @@ export class LoginUserComponent implements OnInit {
     this.avatarIconPath = path;
     element?.classList.add('active__box')
     menuIcons?.classList.remove('show')
+    this.showMenu = false
   }
   logout(){
     this.auth.logout()

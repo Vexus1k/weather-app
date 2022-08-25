@@ -9,6 +9,7 @@ import {
 import {
   LoginArticleBoxComponent
 } from "./modules/login-module/components/login-article-box/login-article-box.component";
+import {AppComponent} from "./app.component";
 
 
 

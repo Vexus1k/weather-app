@@ -23,6 +23,7 @@ import {SwiperEvents} from "swiper/types";
 import ScrollReveal from "scrollreveal";
 import { ErrorService } from './core/services/error.service';
 import {first} from "rxjs";
+import {NavigationEnd, Router} from "@angular/router";
 
 
 // install Swiper modules
@@ -46,12 +47,20 @@ export class AppComponent implements OnInit{
   success: boolean;
   error: boolean;
   sub: any;
-  constructor(private errorService: ErrorService){
-
+  constructor(private errorService: ErrorService, private router: Router){
+    router.events.subscribe(s => {
+      if (s instanceof NavigationEnd) {
+        const tree = router.parseUrl(router.url);
+        if (tree.fragment) {
+          const element = document.querySelector("#" + tree.fragment);
+          if (element) { element.scrollIntoView(); }
+        }
+      }
+    });
   }
 
   ngOnInit() {
-    this.sub = this.errorService.errorStatusAndMessage.subscribe( (res: {message: string, status: any}) => {
+    this.errorService.errorStatusAndMessage.subscribe( (res: {message: string, status: any}) => {
       if(res.status === true){
         this.messageSuccess = res.message;
         this.success = res.status;
@@ -67,6 +76,7 @@ export class AppComponent implements OnInit{
         }, 3500)
       }
     });
+    // console.log(this.sub)
     ScrollReveal().reveal('#login__article', {
       delay: 300,
       scale: 1.4,

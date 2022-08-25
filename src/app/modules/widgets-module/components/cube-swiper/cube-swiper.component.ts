@@ -5,6 +5,9 @@ import { WeatherService } from 'src/app/core/services/weather.service';
 import {FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {EmailService} from "../../../../core/services/email.service";
 import {ErrorService} from "../../../../core/services/error.service";
+import {readDataFromObject} from "../../../../core/models/global-interfaces";
+import {take} from "rxjs";
+
 
 
 @Component({
@@ -17,18 +20,46 @@ export class CubeSwiperComponent implements OnInit{
   weatherStatusTitle: string;
   button: HTMLElement | null;
   newsletterEmailFormGroup: FormGroup;
+  advancedWeatherInfoObject: readDataFromObject;
+  generalWeatherInfoObject: readDataFromObject;
+  actuallyIdCity: string | null;
+  dayPartName: string;
 
   @ViewChild('cubeSwiper')cubeSwiper: any;
-  constructor(private errorService: ErrorService, private email: EmailService, private formBuilder: UntypedFormBuilder) { }
+  constructor(private errorService: ErrorService, private email: EmailService, private formBuilder: UntypedFormBuilder, private weatherService: WeatherService) { }
 
 
   ngOnInit(): void {
-
-    // this.weatherService.getWeatherInfo().subscribe(result =>
-    //   { this.weatherInfo = result; this.weatherStatusTitle = this.weatherInfo[0].weather[0].description }
-    // )
-
-
+    this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    this.weatherService.cityId.subscribe(cityId => {
+      if (cityId != this.actuallyIdCity) {
+        this.getAdvancedWeatherInfo()
+        this.getGeneralWeatherInfo()
+      }
+    })
+    this.weatherService.currentTime.subscribe(currentTime => {
+      let currentHour
+      if(Number(currentTime![0]) === 0){
+        currentHour = currentTime![1]
+      }
+      else{
+        currentHour = currentTime![0] + currentTime![1]
+      }
+      if(Number(currentHour) >= 4 && Number(currentHour) <= 11){
+        this.dayPartName = "Morning"
+      }
+      else if(Number(currentHour) >= 12 && Number(currentHour) <= 16){
+        this.dayPartName = "Afternoon"
+      }
+      else if(Number(currentHour) >= 17 && Number(currentHour) <= 20){
+        this.dayPartName = "Evening"
+      }
+      else if(Number(currentHour) >= 21 || Number(currentHour) <= 3){
+        this.dayPartName = "Night"
+      }
+    })
+    this.getAdvancedWeatherInfo()
+    this.getGeneralWeatherInfo()
     this.newsletterEmailFormGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]]
     })
@@ -59,8 +90,24 @@ export class CubeSwiperComponent implements OnInit{
     },
 
   };
-  test(){
-    console.log(this.newsletterEmailFormGroup.controls['email'].value)
+  tes(){
+    console.log(this.advancedWeatherInfoObject)
+    console.log(this.generalWeatherInfoObject)
+    console.log(this.weatherService.getCookie('cityId'), this.actuallyIdCity)
+  }
+  getAdvancedWeatherInfo(){
+    //I have had to set this timeout there because of API limit request per second
+    setTimeout(()=> this.weatherService.getAdvancedWeatherInfo().pipe(take(1)).subscribe((res)=> {
+      console.log(res)
+      this.advancedWeatherInfoObject = res.forecast[0]
+    }), 3000)
+  }
+  getGeneralWeatherInfo(){
+    //I have had to set this timeout there because of API limit request per second
+    setTimeout(()=> this.weatherService.getGeneralWeatherInfo().pipe(take(1)).subscribe((res)=> {
+      console.log(res)
+      this.generalWeatherInfoObject = res.current
+    }), 1000)
   }
   stopTuringAround(){
     this.cubeSwiper.swiperRef.autoplay.stop();
@@ -78,6 +125,5 @@ export class CubeSwiperComponent implements OnInit{
     this.email.sendMail(email).subscribe( () => {
     }, ()=>{}, ()=>{this.errorService.setErrorStatusAndMessage('Email was sent.', true)})
     this.newsletterEmailFormGroup.reset()
-
   }
 }

@@ -73,18 +73,18 @@
                   </svg>
               </div>
             </div>
-            <h2>Party Cloud</h2>
+            <h2>{{ advancedWeatherInfoObject ? advancedWeatherInfoObject.symbolPhrase : '' }}</h2>
           </div>
           <div class="parameter__temperatures">
             <div class="highest__temperature">
-              <i class="wi wi-direction-up"></i> 14 <i class="wi wi-degrees"></i>
+              <i class="wi wi-direction-up"></i>{{ advancedWeatherInfoObject ? advancedWeatherInfoObject.maxTemp : '' }}<i class="wi wi-degrees"></i>
             </div>
             <div class="lowest__temperature">
-              <i class="wi wi-direction-down"></i> 6 <i class="wi wi-degrees"></i>
+              <i class="wi wi-direction-down"></i>{{ advancedWeatherInfoObject ? advancedWeatherInfoObject.minTemp : '' }}<i class="wi wi-degrees"></i>
             </div>
           </div>
           <div class="parameter__temp">
-            23<i class="wi wi-degrees"></i>
+            {{ generalWeatherInfoObject ? generalWeatherInfoObject.temperature : '' }}<i class="wi wi-degrees"></i>
           </div>
         </div>
       </ng-template>
@@ -96,7 +96,7 @@
             <div class="wind-params-icon">
               <div class="wind-params">
                 <p>Wind</p>
-                <p>11 km/h W</p>
+                <p>{{ generalWeatherInfoObject ? generalWeatherInfoObject.windSpeed : '' }} km/h W</p>
               </div>
               <img class="wind-img" src="../../../../../assets/photos/breeze-4s-250px.svg">
             </div>
@@ -107,16 +107,15 @@
         <div class="parameter__container precipitation-part">
           <h2>Precipitations Params:</h2>
           <div class="precipitation-item">
-            <p>0%</p>
+            <p>{{ generalWeatherInfoObject ? generalWeatherInfoObject.precipProb : '' }}%</p>
             <img class="drop-water" src="../../../../../assets/photos/water-1.1s-200px.svg">
-            <p>Afternoon</p>
+            <p>{{ dayPartName }}</p>
           </div>
         </div>
-
       </ng-template>
       <ng-template swiperSlide>
         <div class="parameter__container newsletter">
-          <h2 (click)="test()">Newsletter:</h2>
+          <h2 (click)="tes()">Newsletter:</h2>
           <form class="newsletter__form" [formGroup]="newsletterEmailFormGroup" (ngSubmit)="sendEmail()">
             <div class="form__input__validation__box center">
               <input type="email" name="email" id="email-newsletter"

@@ -3,6 +3,6 @@ export interface User {
   email: string,
   password: string
 }
-export type getDataFromObject = {
+export type readDataFromObject = {
   [key: string]: any;
 };

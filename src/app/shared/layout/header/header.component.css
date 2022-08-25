@@ -76,7 +76,6 @@
   border-bottom:1px solid rgba(255,255,255,.5);
   transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
-
 .input__search:focus{
   width: 142px;
   border-radius: 0px;
@@ -90,7 +89,12 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  display: none;
+  visibility: hidden;
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.search__btn:focus ~ .location__icon, .input__search:focus ~ .location__icon{
+  visibility: visible;
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 .nav__toggle button{
    display:flex;
@@ -138,6 +142,7 @@ button{
   font-size: 1.25rem;
   font-weight: var(--font-medium);
   transition: .3s;
+  cursor: pointer;
 }
 .nav__link:hover {
   color: aquamarine;
@@ -161,6 +166,7 @@ button{
 .hidden{
   display: none;
 }
+
 .disabled{
   cursor: not-allowed!important;
 }
