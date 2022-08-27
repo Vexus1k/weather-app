@@ -79,14 +79,17 @@
   font-size: .95rem;
   display: flex;
   flex-direction: column;
-  row-gap: .65rem;
+  row-gap: .35rem;
   color: var(--text-color);
   align-items: center;
   justify-items: center;
   font-weight: var(--font-medium);
 }
+.forecast__item img {
+  width: 24px;
+}
 .forecast__item p:first-child{
-  font-size: .93rem;
+  font-size: .85rem;
   letter-spacing: 1px;
 }
 /*------------------------------------Swiper#2-----------------------*/
@@ -100,6 +103,7 @@
 .temperature__stage
 {
   width: 200px;
+  height: 38px;
   display: grid;
   grid-template-columns: 50% 20% 30%;
   grid-template-rows: 100%;
@@ -115,14 +119,8 @@
 }
 .day-name {
   grid-area: 1 / 1 / 2 / 2;
-  font-size: 1rem;
-}
-.icon {
-  display: flex;
-  justify-items: flex-start;
-  align-items: center;
-  grid-area: 1 / 2 / 2 / 3;
-  font-size: 1rem;
+  font-size: .9rem;
+  align-content: center;
 }
 .temperatures {
   display: flex;
@@ -130,8 +128,13 @@
   align-items: center;
   column-gap: .6rem;
   grid-area: 1 / 3 / 2 / 5;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-color)
+}
+.temperature__stage img{
+  position: relative;
+  margin-top: -3px;
+  width: 24px;
 }
 .temperatures p i{
   margin-left: .15rem;
@@ -186,6 +189,12 @@
   .forecast__item{
     font-size: .875rem;
   }
+  .forecast__item img {
+    width: 23px;
+  }
+  .forecast__item p:first-child{
+    font-size: .775rem;
+  }
   .next,.prev{
     top: 95px;
     width: 1.4rem;
@@ -208,12 +217,13 @@
   }
   .temperature__stage{
     width: 190px;
+    height: 37px;
   }
-  .day-name, .icon{
-    font-size: .9rem;
+  .day-name{
+    font-size: .825rem;
   }
   .temperatures{
-    font-size: 1rem;
+    font-size: .975rem;
   }
   .arrow{
     font-size: 1.45rem;
@@ -251,9 +261,14 @@
   .prev{
     left: 24px;
   }
-
   .forecast__item{
-    font-size: 1.05rem;
+    font-size: 1rem;
+  }
+  .forecast__item img {
+    width: 27px;
+  }
+  .forecast__item p:first-child{
+    font-size: .925rem;
   }
   .temperature__stages-swiper{
     width: 220px;
@@ -261,12 +276,18 @@
   }
   .temperature__stage{
     width: 210px;
+    height: 40px;
   }
-  .day-name, .icon{
-    font-size: 1.05rem;
+  .temperature__stage img{
+    position: relative;
+    margin-top: -3px;
+    width: 26px;
+  }
+  .day-name{
+    font-size: .95rem;
   }
   .temperatures{
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
   .arrow{
     font-size: 1.65rem;
@@ -304,7 +325,8 @@
     left: 26px;
   }
   .forecast__item{
-    font-size: 1.05rem;
+    font-size: 1.025rem;
+    row-gap: .43rem;
   }
   .temperature__stages-swiper{
     width: 230px;
@@ -312,12 +334,18 @@
   }
   .temperature__stage{
     width: 220px;
+    height: 40px;
   }
-  .day-name, .icon{
-    font-size: 1.05rem;
+  .temperature__stage img{
+    position: relative;
+    margin-top: -3px;
+    width: 27px;
+  }
+  .day-name{
+    font-size: 1rem;
   }
   .temperatures{
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
   .arrow{
     font-size: 1.7rem;
@@ -357,6 +385,7 @@
   }
   .forecast__item{
     font-size: 1.094rem;
+    row-gap: .45rem;
   }
   .temperature__stages-swiper{
     width: 265px;
@@ -365,8 +394,14 @@
   .temperature__stage{
     width: 255px;
     padding: .61rem .27rem;
+    height: 44px;
   }
-  .day-name, .icon{
+  .temperature__stage img{
+    position: relative;
+    margin-top: -3px;
+    width: 30px;
+  }
+  .day-name{
     font-size: 1.09rem;
   }
   .temperatures{

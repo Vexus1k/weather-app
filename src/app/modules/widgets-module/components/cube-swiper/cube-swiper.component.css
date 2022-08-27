@@ -237,6 +237,7 @@ button[type="submit"] {
   .parameter__part{
     width: 210px;
     height: 210px;
+    row-gap: .3rem;
   }
   .parameter__container{
     height: 210px;
@@ -249,13 +250,13 @@ button[type="submit"] {
     column-gap: .5rem;
   }
   .parameter__status h2{
-    font-size: 1rem;
+    font-size: .95rem;
   }
   .parameter__temperatures{
     column-gap: 1.5rem;
   }
   .highest__temperature, .lowest__temperature{
-    font-size: 1.12rem;
+    font-size: 1rem;
   }
   .highest__temperature i:first-child, .lowest__temperature i:first-child{
     margin-right: .65rem;
@@ -266,14 +267,14 @@ button[type="submit"] {
     font-size: 1.35rem;
   }
   .parameter__temp{
-    font-size: 4.2rem;
+    font-size: 3.65rem;
   }
   .parameter__temp i
   {
     margin-left: .3rem;
   }
   .wind-part{
-    row-gap: .625rem;
+    row-gap: .225rem;
   }
   .wind-part h2{
     font-size: 1rem;
@@ -283,19 +284,19 @@ button[type="submit"] {
   }
   .wind-box .windmill{
     width: 90px;
-    height: 96px;
+    height: 90px;
   }
   .wind-box .wind-img{
-    height: 34px;
+    height: 32px;
   }
   .wind-box .wind-params-icon{
     row-gap: .25rem;
   }
   .wind-box .wind-params-icon .wind-params p:first-child{
-    font-size: .82rem;
+    font-size: .72rem;
   }
   .wind-box .wind-params-icon .wind-params p:last-child{
-    font-size: .92rem;
+    font-size: .82rem;
   }
   .precipitation-part{
     row-gap: 1rem;
@@ -304,17 +305,17 @@ button[type="submit"] {
     font-size: 1rem;
   }
   .precipitation-item{
-    row-gap: .45rem;
+    row-gap: .4rem;
   }
   .precipitation-item p:first-child{
-    font-size: 1.02rem;
+    font-size: 1rem;
   }
   .precipitation-item p:last-child{
-    font-size: .92rem;
+    font-size: .9rem;
   }
   .precipitation-item .drop-water{
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
   .newsletter{
     row-gap: 1.3rem;

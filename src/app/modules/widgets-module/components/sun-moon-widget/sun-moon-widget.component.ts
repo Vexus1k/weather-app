@@ -31,34 +31,41 @@ export class SunMoonWidgetComponent implements OnInit {
         this.getAdvancedWeatherInfo()
       }
     })
+    this.midNightHourDay.setHours(0, 0, 0)
+    this.midNightHourNight.setHours(24, 0, 0)
+    this.getAdvancedWeatherInfo()
     ScrollReveal().reveal('.parameter__sun-moon', {
       distance: '60px',
       easing: 'ease-in-out',
       origin: 'bottom',
       delay: 300
     });
-    this.midNightHourDay.setHours(0, 0, 0)
-    this.midNightHourNight.setHours(24, 0, 0)
-    this.getAdvancedWeatherInfo()
 
   }
   getAdvancedWeatherInfo(){
-    this.weatherService.getAdvancedWeatherInfo().pipe(take(1)).subscribe((res) => {
+    setTimeout(()=>this.weatherService.getAdvancedWeatherInfo().pipe(take(1)).subscribe((res) => {
       console.log(res)
       this.advancedWeatherInfoObject = res.forecast[0];
       this.initializeSunriseAndSunsetHours()
       this.sunGraphStatusChanged()
-    });
+    }), 7000)
+
   }
   initializeSunriseAndSunsetHours(){
     console.log(typeof this.advancedWeatherInfoObject.sunrise, typeof this.advancedWeatherInfoObject.sunset)
     this.sunriseHour = this.advancedWeatherInfoObject.sunrise
     this.sunsetHour = this.advancedWeatherInfoObject.sunset
-    console.log(this.sunriseHour, this.sunsetHour)
     // @ts-ignore
     this.sunrise.setHours(this.sunriseHour[0] + this.sunriseHour[1], this.sunriseHour[3] + this.sunriseHour[4], this.sunriseHour[6] + this.sunriseHour[7])
     // @ts-ignore
-    this.sunset.setHours(this.sunriseHour[0] + this.sunriseHour[1], this.sunriseHour[3] + this.sunriseHour[4], this.sunriseHour[6] + this.sunriseHour[7])
+    this.sunset.setHours(this.sunsetHour[0] + this.sunsetHour[1], this.sunsetHour[3] + this.sunsetHour[4], this.sunsetHour[6] + this.sunsetHour[7])
+    let sunsetTime = this.sunset.getTime()
+    let sunriseTime = this.sunrise.getTime()
+    this.weatherService.setCookie("sunsetTime", String(sunsetTime), 30)
+  }
+
+  t(){
+    console.log(this.actuallyTime.getTime() > this.sunrise.getTime() || this.actuallyTime.getTime() < this.sunset.getTime(), this.actuallyTime.getTime() < this.sunrise.getTime() || this.actuallyTime.getTime() > this.sunset.getTime(), this.actuallyTime.getTime(), this.sunset.getTime(), this.sunrise.getTime())
   }
   sunGraphStatusChanged(){
     let sunGraphMask = document.getElementById('sunGraphMask')

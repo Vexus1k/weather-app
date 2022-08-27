@@ -58,6 +58,7 @@
     "remixicon": "^2.5.0",
     "requirejs": "^2.3.6",
     "rxjs": "^7.5.6",
+    "rxjs-compat": "^6.6.7",
     "scrollreveal": "^4.0.9",
     "stylesheet-switcher": "^3.0.0",
     "swiper": "^6.8.4",

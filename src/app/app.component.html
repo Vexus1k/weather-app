@@ -12,7 +12,7 @@
   </section>
 </main>
 <app-scroll-up-theme-switcher></app-scroll-up-theme-switcher>
-<div class="error__container">
+<div class="error__container" *ngIf="success || error">
   <div class="success" *ngIf="success">{{ messageSuccess }}</div>
   <div class="error" *ngIf="error">{{ messageError }}</div>
 </div>

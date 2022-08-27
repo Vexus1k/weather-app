@@ -37,8 +37,8 @@
   left: 50%;
   bottom: 5%;
   transform: translate(-50%, 0);
-  width: 200px;
-  height: 50px;
+  width: 175px;
+  height: 44px;
 }
 .success, .error {
   border: 1px solid;
@@ -48,7 +48,7 @@
   align-items: center;
   background-repeat: no-repeat;
   background-position: 10px center;
-  font-size: .75rem;
+  font-size: .7rem;
 }
 .success {
   color: #4F8A10;
@@ -80,6 +80,13 @@
     justify-content: center;
     grid-area: 2 / 1 / 3 / 2;
   }
+  .error__container{
+    width: 150px;
+    height: 38px;
+  }
+  .success, .error {
+    font-size: .6rem;
+  }
 }
 /* For medium devices */
 @media screen and (min-width: 576px) {
@@ -95,6 +102,13 @@
     align-content: center;
     justify-content: center;
     grid-area: 2 / 1 / 3 / 2;
+  }
+  .error__container{
+    width: 200px;
+    height: 50px;
+  }
+  .success, .error {
+    font-size: .75rem;
   }
 }
 @media screen and (min-width: 767px) {

@@ -215,7 +215,6 @@ export class HeaderComponent implements OnInit, DoCheck {
     let elements: NodeListOf<HTMLElement> = document.querySelectorAll('.nav-link')
     elements.forEach(el => el.classList.add('active-link'))
     el.classList.add('active-link')
-
   }
 }
 

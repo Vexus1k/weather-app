@@ -1,6 +1,6 @@
 <article class="article center__flex-box">
   <div class="forecast__widget">
-    <h3 class="title" (click)="getAdvancedWeatherInfo()">Forecast</h3>
+    <h3 class="title" (click)="t()">Forecast</h3>
     <a class="next" (click)="onReachEndNavigationSwiper()"></a>
     <a class="prev"></a>
     <swiper
@@ -12,66 +12,10 @@
       <ng-template swiperSlide *ngFor="let hourlyWeatherInfoObject of (hourlyWeatherInfoObjects | async)" >
         <div class="forecast__item" >
           <p>{{hourlyWeatherInfoObject.time[11] + hourlyWeatherInfoObject.time[12] + hourlyWeatherInfoObject.time[13] + hourlyWeatherInfoObject.time[14] + hourlyWeatherInfoObject.time[15] }}</p>
-          {{hourlyWeatherInfoObject.symbol}}
+          <img [src]="getWeatherIconFromStatusCode(hourlyWeatherInfoObject.symbol[1])">
           <p>{{hourlyWeatherInfoObject.temperature}}<i class="wi wi-degrees"></i></p>
         </div>
       </ng-template>
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-<!--      <ng-template swiperSlide>-->
-<!--        <div class="forecast__item">-->
-<!--          <p>11PM</p>-->
-<!--          <p><i class="wi wi-day-windy"></i></p>-->
-<!--          <p>24<i class="wi wi-degrees"></i></p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
     </swiper>
     <swiper
         #listSwiper
@@ -82,144 +26,13 @@
         <ng-template swiperSlide *ngFor="let advancedWeatherInfoObject of (advancedWeatherInfoObjects | async )">
           <div class="temperature__stage">
             <p class="day-name">{{getDayOfWeek(advancedWeatherInfoObject.date)}}</p>
-            {{advancedWeatherInfoObject.symbol}}
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
+            <img [src]="getWeatherIconFromStatusCode(advancedWeatherInfoObject.symbol[1])">
             <div class="temperatures">
               <p>{{advancedWeatherInfoObject.maxTemp}}<i class="wi wi-degrees"></i></p>
               <p>{{advancedWeatherInfoObject.minTemp}}<i class="wi wi-degrees"></i></p>
             </div>
           </div>
         </ng-template>
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--        <ng-template swiperSlide>-->
-<!--          <div class="temperature__stage">-->
-<!--            <p class="day-name">Friday</p>-->
-<!--            <i class="wi wi-day-cloudy-gusts icon"></i>-->
-<!--            <div class="temperatures">-->
-<!--              <p>24<i class="wi wi-degrees"></i></p>-->
-<!--              <p>14<i class="wi wi-degrees"></i></p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
       </swiper>
     <div class="arrow" id="arrow" (click)="onReachEndListSwiper()"><a><i class="ri-arrow-down-line"></i></a></div>
   </div>

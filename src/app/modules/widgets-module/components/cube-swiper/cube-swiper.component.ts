@@ -32,7 +32,9 @@ export class CubeSwiperComponent implements OnInit{
   ngOnInit(): void {
     this.actuallyIdCity = this.weatherService.getCookie("cityId")
     this.weatherService.cityId.subscribe(cityId => {
+      console.log(this.actuallyIdCity, cityId)
       if (cityId != this.actuallyIdCity) {
+        console.log("I do cube")
         this.getAdvancedWeatherInfo()
         this.getGeneralWeatherInfo()
       }

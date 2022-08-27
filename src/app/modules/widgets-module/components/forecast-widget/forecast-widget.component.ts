@@ -3,7 +3,7 @@ import {SwiperOptions} from "swiper";
 import ScrollReveal from "scrollreveal";
 import { WeatherService } from 'src/app/core/services/weather.service';
 import {map, take} from "rxjs";
-import {readDataFromObject} from "../../../../core/models/global-interfaces";
+import {readDataFromObject, weatherIcons} from "../../../../core/models/global-interfaces";
 
 
 @Component({
@@ -12,10 +12,12 @@ import {readDataFromObject} from "../../../../core/models/global-interfaces";
   styleUrls: ['./forecast-widget.component.css']
 })
 export class ForecastWidgetComponent implements OnInit {
+
   weatherInfo: any;
   advancedWeatherInfoObjects: any;
   hourlyWeatherInfoObjects: any;
   actuallyIdCity: string | null;
+  weatherIcons: readDataFromObject;
 
   @ViewChild('navigationSwiper') navigationTempSwiper: any;
   @ViewChild('listSwiper') listSwiper: any;
@@ -26,7 +28,10 @@ export class ForecastWidgetComponent implements OnInit {
   ngOnInit(): void {
     this.actuallyIdCity = this.weatherService.getCookie("cityId")
     this.weatherService.cityId.subscribe(cityId => {
+      console.log(this.actuallyIdCity, cityId)
       if (cityId != this.actuallyIdCity) {
+        this.actuallyIdCity = this.weatherService.getCookie("cityId")
+        console.log("I do forecast")
         this.getHourlyWeatherInfo()
         this.getAdvancedWeatherInfo()
       }
@@ -72,11 +77,90 @@ export class ForecastWidgetComponent implements OnInit {
     },
 
   }
+  getWeatherIconFromStatusCode(statusCode: string){
+    let actuallyTime: string = String(new Date().getTime());
+    let sunsetTime: string | null = this.weatherService.getCookie('sunsetTime')
+    let iconSun: string = "../../../../../assets/photos/icon-sun.svg";
+    let iconMoon: string = "../../../../../assets/photos/icon-moon.svg";
+    let iconSnow: string = "../../../../../assets/photos/icon-snow.svg";
+    let iconSnowNight: string = "../../../../../assets/photos/icon-snow-night.svg";
+    let iconPartlyCloudy: string = "../../../../../assets/photos/icon-partly-cloud.svg";
+    let iconCloudyNight: string = "../../../../../assets/photos/icon-cloudy-night.svg";
+    let iconCloud: string = "../../../../../assets/photos/icon-cloud.svg";
+    let iconFog: string = "../../../../../assets/photos/icon-fog.svg";
+    let iconFogNight: string = "../../../../../assets/photos/icon-fog-night.svg";
+    let iconRain: string = "../../../../../assets/photos/icon-rain.svg";
+    let iconStorm: string = "../../../../../assets/photos/icon-storm.svg";
+    let iconStormyNight: string = "../../../../../assets/photos/icon-stormy-night.svg";
+    switch (statusCode){
+      case '0':{
+        if(actuallyTime < sunsetTime!){
+          return iconSun
+        }
+        else{
+          return iconMoon
+        }
+      }
+      case '1':{
+        return iconPartlyCloudy
+      }
+      case '2':{
+        if(actuallyTime < sunsetTime!){
+          return iconStorm
+        }
+        else{
+          return iconStormyNight
+        }
+      }
+      case '3':{
+        return iconRain
+      }
+      case '4': {
+        if(actuallyTime < sunsetTime!){
+          return iconCloud
+        }
+        else{
+          return iconCloudyNight
+        }
+      }
+      case '5':{
+        return iconRain
+      }
+      case '6':{
+        if(actuallyTime < sunsetTime!){
+          return iconSnow
+        }
+        else{
+          return iconSnowNight
+        }
+      }
+      case '7':{
+        if(actuallyTime < sunsetTime!){
+          return iconFog
+        }
+        else{
+          return iconFogNight
+        }
+      }
+
+    }
+    return 0
+  }
+  t(){
+    let sunsetHour = this.weatherService.getCookie('sunsetHour')
+    console.log(sunsetHour)
+  }
   getHourlyWeatherInfo(){
-    this.hourlyWeatherInfoObjects = this.weatherService.getHourlyWeatherInfo().pipe(map(data => data.forecast))
+    setTimeout(()=>this.hourlyWeatherInfoObjects = this.weatherService.getHourlyWeatherInfo().pipe(
+      map(data => data.forecast)
+    ), 3000)
+
   }
   getAdvancedWeatherInfo(){
-    this.advancedWeatherInfoObjects = this.weatherService.getAdvancedWeatherInfo().pipe(map(data => data.forecast))
+    setTimeout(()=>this.advancedWeatherInfoObjects = this.weatherService.getAdvancedWeatherInfo().pipe(
+      map(data => data.forecast)
+    ), 3000)
+
   }
   getDayOfWeek(date: string) {
     const dayOfWeek = new Date(date).getDay();

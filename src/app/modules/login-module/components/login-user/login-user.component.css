@@ -56,7 +56,7 @@
 .user__greeting-box h2{
   font-size: 1.05rem;
   color: var(--text-color);
-  margin-bottom: 0;
+  margin-bottom: .2rem;
   letter-spacing: 2px;
 }
 .user__greeting-box p{
@@ -88,10 +88,11 @@
     height: 72px;
   }
   .user__greeting-box h2{
-    font-size: 1rem;
+    font-size: .95rem;
+    margin-bottom: .1rem;
   }
   .user__greeting-box p{
-    font-size: .95rem;
+    font-size: .85rem;
   }
   .edit__icon{
     height: 23px;
@@ -119,10 +120,10 @@
     row-gap: .15rem;
   }
   .user__greeting-box h2{
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
   .user__greeting-box p{
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
   .edit__icon{
     height: 28px;
@@ -146,10 +147,10 @@
     height: 93px;
   }
   .user__greeting-box h2{
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
   .user__greeting-box p{
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
   .edit__icon{
     height: 30px;
@@ -175,10 +176,10 @@
     row-gap: .15rem;
   }
   .user__greeting-box h2{
-    font-size: 1.35rem;
+    font-size: 1.2rem;
   }
   .user__greeting-box p{
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
   .edit__icon{
     height: 33px;
@@ -205,10 +206,10 @@
     row-gap: .175rem;
   }
   .user__greeting-box h2{
-    font-size: 1.45rem;
+    font-size: 1.25rem;
   }
   .user__greeting-box p{
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
   .edit__icon{
     height: 35px;

@@ -64,17 +64,16 @@
     font-size: 1.02rem;
   }
   .windmill__img{
-    width: 132px;
-    height: 132px;
+    width: 126px;
+    height: 126px;
   }
   .wind__box{
-
-    font-size: .94rem;
+    font-size: .85rem;
     column-gap: 2.05rem;
   }
   .wind__icon{
-    height: 44px;
-    width: 44px;
+    height: 38px;
+    width: 38px;
   }
 }
 /* For medium devices */
