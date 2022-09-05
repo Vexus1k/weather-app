@@ -1,5 +1,5 @@
 <div class="login__avatar-part">
-  <div class="menu__icons">
+  <div class="menu__icons" *ngIf="isLoggedIn">
     <div class="icon__choice-box" [style.cursor]="showMenu ? 'pointer' : 'auto'" (click)="showMenu ? changeAvatar(iconAstronaut.src, astronautBox) : null" #astronautBox>
       <img class="icon__choice" [src]="astronautIconPath" #iconAstronaut>
     </div>
@@ -13,7 +13,7 @@
       <img class="icon__choice" [src]="businessmanIconPath" #iconBusinessman>
     </div>
   </div>
-  <img class="avatar__icon" [src]="avatarIconPath">
+  <img class="avatar__icon" [src]="isLoggedIn ? userLogged : avatarIconPath">
   <div class="user__greeting-box">
     <h2>Hello</h2>
     <p>{{ username }}</p>

@@ -26,18 +26,18 @@ export class ForecastWidgetComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    this.weatherService.cityId.subscribe(cityId => {
-      console.log(this.actuallyIdCity, cityId)
-      if (cityId != this.actuallyIdCity) {
-        this.actuallyIdCity = this.weatherService.getCookie("cityId")
-        console.log("I do forecast")
-        this.getHourlyWeatherInfo()
-        this.getAdvancedWeatherInfo()
-      }
-    })
-    this.getHourlyWeatherInfo()
-    this.getAdvancedWeatherInfo()
+    // this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    // this.weatherService.cityId.subscribe(cityId => {
+    //   console.log(this.actuallyIdCity, cityId)
+    //   if (cityId != this.actuallyIdCity) {
+    //     this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    //     console.log("I do forecast")
+    //     this.getHourlyWeatherInfo()
+    //     this.getAdvancedWeatherInfo()
+    //   }
+    // })
+    // this.getHourlyWeatherInfo()
+    // this.getAdvancedWeatherInfo()
     ScrollReveal().reveal('.forecast__widget', {
       distance: '60px',
       easing: 'ease-in-out',

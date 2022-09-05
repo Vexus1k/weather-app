@@ -3,12 +3,14 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": [ "node" ],
+    "types": [ "node", "gapi",
+      "gapi.auth2" ],
     "typeRoots": [ "../node_modules/@types" ]
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "node_modules/@types/gapi.auth2/index.d.ts"
   ],
   "include": [
     "src/**/*.d.ts"

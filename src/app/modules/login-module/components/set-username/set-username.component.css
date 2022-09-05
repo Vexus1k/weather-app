@@ -1,0 +1,158 @@
+.username__container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 16%;
+  background-color: rgb(88,88,88, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+.username__form{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 2.2rem;
+}
+.title{
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  color: var(--text-color);
+}
+.center__alert{
+  display: flex;
+  justify-content: center;
+  margin-top: .2rem;
+  position: absolute;
+}
+.form-control, input{
+  width: 95px!important;
+  height: 24px!important;
+  font-size: .575rem!important;
+  border-radius: .7rem!important;
+}
+.svg__arrow{
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  fill: white;
+  cursor: pointer;
+  z-index: 101;
+}
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+  .username__container{
+    row-gap: 15%
+  }
+  .username__form{
+    row-gap: 2rem;
+  }
+  .title{
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  .form-group{
+    margin-bottom: .63rem!important;
+  }
+  .form-control, input{
+    width: 85px!important;
+    height: 22px!important;
+    font-size: .54rem!important;
+  }
+  .svg__arrow{
+    width: 30px;
+    height: 30px;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 576px){
+  .username__container{
+    row-gap: 17%
+  }
+  .username__form{
+    row-gap: 2.4rem;
+  }
+  .title{
+    font-size: 1.28rem;
+    letter-spacing: 2px;
+  }
+  .form-control, input{
+    width: 100px!important;
+    height: 25px!important;
+    font-size: .6rem!important;
+  }
+  .svg__arrow{
+    width: 34px;
+    height: 34px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .username__container{
+    row-gap: 18%
+  }
+  .username__form{
+    row-gap: 2.6rem;
+  }
+  .title{
+    font-size: 1.45rem;
+  }
+  .form-control, input{
+    width: 110px!important;
+    height: 27px!important;
+    font-size: .65rem!important;
+  }
+  .svg__arrow{
+    width: 36px;
+    height: 36px;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1040px) {
+  .username__container{
+    row-gap: 19%
+  }
+  .username__form{
+    row-gap: 2.8rem;
+  }
+  .title{
+    font-size: 1.51rem;
+    letter-spacing: 3px;
+  }
+
+  .form-control, input{
+    width: 112px!important;
+    height: 28px!important;
+    font-size: .675rem!important;
+  }
+  .svg__arrow{
+    width: 38px;
+    height: 38px;
+  }
+}
+@media screen and (min-width: 1600px){
+  .username__container{
+    row-gap: 20%
+  }
+  .username__form{
+    row-gap: 3rem;
+  }
+  .title{
+    font-size: 1.58rem;
+  }
+  .form-control, input{
+    width: 117px!important;
+    height: 29px!important;
+    font-size: .725rem!important;
+  }
+  .svg__arrow{
+    width: 40px;
+    height: 40px;
+  }
+}

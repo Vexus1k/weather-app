@@ -1,0 +1,13 @@
+<div class="username__container">
+  <h2 class="title">Set username:</h2>
+  <form class="username__form" [formGroup]="usernameFormGroup" (ngSubmit)="setUsername()">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Username" formControlName="username">
+      <div class="center__alert" *ngIf="(usernameFormGroup.controls['username'].touched) || usernameFormGroup.controls['username'].dirty">
+        <small *ngIf="usernameFormGroup.controls['username'].errors?.required" class="text-danger">Username is required</small>
+      </div>
+    </div>
+    <button class="button-login-register" [disabled]="!usernameFormGroup.valid" [style.cursor]="!usernameFormGroup.valid ? 'not-allowed' : 'pointer'">Login</button>
+  </form>
+  <svg (click)="logout()" [routerLink]="['/login/forms']" class="svg__arrow" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="white" d="m12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8l-8-8z"/></g></svg>
+</div>

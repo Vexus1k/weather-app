@@ -16,13 +16,13 @@ export class WindWidgetComponent implements OnInit {
 
   constructor(private weatherService: WeatherService) { }
   ngOnInit(): void {
-    this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    this.weatherService.cityId.subscribe(cityId => {
-      if (cityId != this.actuallyIdCity) {
-        this.getGeneralWeatherInfo()
-      }
-    })
-    this.getGeneralWeatherInfo()
+    // this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    // this.weatherService.cityId.subscribe(cityId => {
+    //   if (cityId != this.actuallyIdCity) {
+    //     this.getGeneralWeatherInfo()
+    //   }
+    // })
+    // this.getGeneralWeatherInfo()
     ScrollReveal().reveal('.parameter__wind', {
       distance: '60px',
       easing: 'ease-in-out',

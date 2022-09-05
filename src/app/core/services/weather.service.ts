@@ -18,7 +18,6 @@ export class WeatherService {
   setCityId (cityId: string) {
     this.cityIdBehaviour.next(cityId)
   }
-
   private currentTimeBehaviour = new BehaviorSubject<string | null>(this.getCookie('currentTime'));
   currentTime = this.currentTimeBehaviour.asObservable();
   setCurrentTime (currentTime: string) {

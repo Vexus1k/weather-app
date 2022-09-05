@@ -13,7 +13,7 @@ import {
 import {WeatherService} from "./core/services/weather.service";
 // @ts-ignore
 import { EventsParams } from 'swiper/angular';
-import {stringify} from "flatted";
+
 import { SwiperComponent } from "swiper/angular";
 
 // import Swiper core and required modules
@@ -24,6 +24,7 @@ import ScrollReveal from "scrollreveal";
 import { ErrorService } from './core/services/error.service';
 import {first} from "rxjs";
 import {NavigationEnd, Router} from "@angular/router";
+
 
 
 // install Swiper modules
@@ -47,7 +48,8 @@ export class AppComponent implements OnInit{
   success: boolean;
   error: boolean;
   sub: any;
-  constructor(private errorService: ErrorService, private router: Router){
+
+  constructor( private errorService: ErrorService, private router: Router){
     router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);

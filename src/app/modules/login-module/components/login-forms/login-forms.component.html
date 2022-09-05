@@ -11,7 +11,7 @@
   </svg>
   <form class="login__form" [formGroup]="loginFormGroup" (ngSubmit)="loginUser()">
     <div class="form-group">
-      <label class="font-weight-normal" for="loginInput">Username:</label>
+      <label class="font-weight-normal" for="loginInput" (click)="singOut()">Username:</label>
       <input type="text" class="form-control" id="loginInput" placeholder="Username" formControlName="username">
       <div class="center__alert" *ngIf="(loginFormGroup.controls['username'].touched) || loginFormGroup.controls['username'].dirty">
         <small *ngIf="loginFormGroup.controls['username'].errors?.required" class="text-danger">Username is required</small>
@@ -29,14 +29,18 @@
     <button class="button-login-register" [disabled]="!loginFormGroup.valid" [style.cursor]="!loginFormGroup.valid ? 'not-allowed' : 'pointer'">Login</button>
   </form>
   <ul class="wrapper">
-    <li class="icon facebook">
+    <li class="icon facebook" (click)="signInWithFB()">
       <span class="tooltip">Facebook</span>
       <span><i class="fab fa-facebook-f"></i></span>
+      <div id="chujje"></div>
     </li>
-    <li class="icon google">
+    <li class="icon google" (click)="loginWithGoogle()">
       <span class="tooltip">Google</span>
       <span><i class="fab fa-google fa-1x"></i></span>
+      <div id="chujj"></div>
+
     </li>
+
   </ul>
   <svg [routerLink]="['/login/buttons']" class="svg__arrow" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="white" d="m12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8l-8-8z"/></g></svg>
 </div>

@@ -1,16 +1,18 @@
 import { Observable, of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: SocialAuthService) {}
 
   setUsername(username: string): void{
     localStorage.setItem('username', username);
   }
+
   getUsername(): string | null{
     return localStorage.getItem('username')
   }
@@ -24,13 +26,14 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return this.getToken() !== null;
+    return (this.getToken() !== null  || localStorage.getItem('facebook_auth') !== null );
   }
-
+// || localStorage.getItem('google_auth') !== null
   logout() {
+    this.authService.signOut().then()
     localStorage.removeItem('token');
-    localStorage.removeItem('username')
-    this.router.navigate(['/login/forms']);
+    localStorage.removeItem('username');
+    this.router.navigateByUrl('/login/forms').then();
   }
 
 }

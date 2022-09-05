@@ -12,10 +12,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {LoginModule} from "./modules/login-module/login.module";
 import {WidgetModule} from "./modules/widgets-module/widget.module";
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 import { HttpErrorInterceptor } from './core/services/http-error.interceptor'
 import { LoginArticleBoxComponent } from './modules/login-module/components/login-article-box/login-article-box.component';
+import { SetUsernameComponent } from './modules/login-module/components/set-username/set-username.component';
 
 
 export let AppInjector: Injector;
@@ -23,22 +25,23 @@ export let AppInjector: Injector;
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     LoginModule,
     WidgetModule,
     HttpClientModule,
+    OAuthModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
 
   ],
-  providers: [ {
+  providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,
     multi: true

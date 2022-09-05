@@ -14,8 +14,9 @@ import {AppComponent} from "./app.component";
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login/buttons', pathMatch: 'full'},
-  {path: '**', redirectTo: '/login/buttons'}
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '**', redirectTo: ''}
+  // {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({

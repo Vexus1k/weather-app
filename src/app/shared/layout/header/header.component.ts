@@ -46,10 +46,10 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.isLoggedIn = this.auth.isLoggedIn()
     this.alertCondition = this.screenWidth > 1039 && this.isLoggedIn || !this.isLoggedIn
     this.getScreenSize()
-    this.getObjectWithLocationInfo()
-    this.getLocalTimeForCurrentCity()
-    setInterval(()=> this.getLocalTimeForCurrentCity(), 1000)
-    this.getLocalization()
+    // this.getObjectWithLocationInfo()
+    // this.getLocalTimeForCurrentCity()
+    // setInterval(()=> this.getLocalTimeForCurrentCity(), 1000)
+    // this.getLocalization()
     ScrollReveal().reveal('.header', {
       distance: '60px',
       easing: 'ease-in-out',

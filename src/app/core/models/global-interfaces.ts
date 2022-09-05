@@ -3,6 +3,27 @@ export interface User {
   email: string,
   password: string
 }
+export interface UserInfo {
+  info: {
+    sub: string,
+    email: string,
+    name: string,
+    picture: string
+  }
+}
+export interface isUserExist {
+  condition: boolean,
+  username?: string
+}
+export interface userFacebookDb {
+  userId: string,
+  username: string
+}
+export interface userGoogleDb {
+  email: string,
+  username: string
+}
+
 export type readDataFromObject = {
   [key: string]: any;
 };
