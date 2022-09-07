@@ -3,8 +3,7 @@ import {FormBuilder, FormGroup, UntypedFormGroup, Validators} from "@angular/for
 import {UserService} from "src/app/core/services/user.service";
 import {Router} from "@angular/router";
 import { AuthService } from 'src/app/core/services/auth.service';
-import { GoogleAuthService } from 'ng-gapi';
-import { GoogleApiService } from 'ng-gapi';
+
 import ScrollReveal from "scrollreveal";
 import {ErrorService} from "../../../../core/services/error.service";
 import {isUserExist, readDataFromObject, User, UserInfo} from "../../../../core/models/global-interfaces";
