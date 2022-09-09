@@ -19,7 +19,7 @@ export class CubeSwiperComponent implements OnInit{
   weatherInfo: any;
   weatherStatusTitle: string;
   button: HTMLElement | null;
-  newsletterEmailFormGroup: FormGroup;
+  newsletterEmailFormGroup: UntypedFormGroup;
   advancedWeatherInfoObject: readDataFromObject;
   generalWeatherInfoObject: readDataFromObject;
   actuallyIdCity: string | null;

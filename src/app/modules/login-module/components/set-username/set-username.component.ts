@@ -1,5 +1,5 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ErrorService} from "../../../../core/services/error.service";
 import {UserService} from "../../../../core/services/user.service";
 import {Router} from "@angular/router";
@@ -13,9 +13,9 @@ import {SocialAuthService} from "@abacritt/angularx-social-login";
   styleUrls: ['./set-username.component.css', "../../../../../../node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss"]
 })
 export class SetUsernameComponent implements OnInit {
-  usernameFormGroup: FormGroup
+  usernameFormGroup: UntypedFormGroup
   constructor(private weatherService: WeatherService, private ngZone: NgZone, private errorService: ErrorService,
-              private formBuilder: FormBuilder, private userService: UserService,
+              private formBuilder: UntypedFormBuilder, private userService: UserService,
               private router: Router, private auth: AuthService, private authService: SocialAuthService) { }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, UntypedFormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, FormGroup, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserService} from "src/app/core/services/user.service";
 import {Router} from "@angular/router";
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -29,13 +29,13 @@ declare const gapi: any;
   styleUrls: ['./login-forms.component.css', "../../../../../../node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss"]
 })
 export class LoginFormsComponent implements OnInit {
-  loginFormGroup: FormGroup;
+  loginFormGroup: UntypedFormGroup;
 
   user: SocialUser;
   loggedIn: boolean;
 
   constructor( private authService: SocialAuthService, private ngZone: NgZone,
-              private errorService: ErrorService, private formBuilder: FormBuilder, private userService: UserService,
+              private errorService: ErrorService, private formBuilder: UntypedFormBuilder, private userService: UserService,
               private router: Router, private auth: AuthService, private weatherService: WeatherService,
 
   ){}

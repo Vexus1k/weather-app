@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, FormGroup, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserService} from "src/app/core/services/user.service";
 import {Router} from "@angular/router";
 import ScrollReveal from "scrollreveal";
@@ -17,10 +17,10 @@ import {ErrorService} from "../../../../core/services/error.service";
 })
 export class RegisterFormsComponent implements OnInit {
   validationPasswordMessage: string;
-  registerFormGroup: FormGroup
-  validationForm: FormGroup;
+  registerFormGroup: UntypedFormGroup
+  validationForm: UntypedFormGroup;
 
-  constructor(private errorService: ErrorService, private formBuilder: FormBuilder, private usersService: UserService, private router: Router) {
+  constructor(private errorService: ErrorService, private formBuilder: UntypedFormBuilder, private usersService: UserService, private router: Router) {
   }
   ngOnInit(): void {
     this.registerFormGroup = this.formBuilder.group({
