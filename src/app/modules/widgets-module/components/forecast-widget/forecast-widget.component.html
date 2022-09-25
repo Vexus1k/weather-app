@@ -23,7 +23,7 @@
         class="temperature__stages-swiper"
         id="temperature__stages-swiper"
       >
-        <ng-template swiperSlide *ngFor="let advancedWeatherInfoObject of (advancedWeatherInfoObjects | async )">
+        <ng-template swiperSlide *ngFor="let advancedWeatherInfoObject of (advancedWeatherInfoObjects | async)">
           <div class="temperature__stage">
             <p class="day-name">{{getDayOfWeek(advancedWeatherInfoObject.date)}}</p>
             <img [src]="getWeatherIconFromStatusCode(advancedWeatherInfoObject.symbol[1])">

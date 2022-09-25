@@ -32,14 +32,14 @@
   align-items: center;
 }
 .windmill__img{
-  width: 132px;
-  height: 132px;
+  width: 124px;
+  height: 126px;
 }
 .wind__box{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .97rem;
+  font-size: .855rem;
   column-gap: 2.15rem;
   color: var(--text-color)
 }
@@ -50,8 +50,8 @@
   grid-area: 4 / 1 / 5 / 2;
 }
 .wind__icon{
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
 }
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
@@ -64,16 +64,16 @@
     font-size: 1.02rem;
   }
   .windmill__img{
-    width: 126px;
-    height: 126px;
+    width: 116px;
+    height: 118px;
   }
   .wind__box{
-    font-size: .85rem;
+    font-size: .815rem;
     column-gap: 2.05rem;
   }
   .wind__icon{
-    height: 38px;
-    width: 38px;
+    height: 36px;
+    width: 36px;
   }
 }
 /* For medium devices */
@@ -86,8 +86,8 @@
     font-size: 1.1rem;
   }
   .windmill__img{
-    width: 140px;
-    height: 140px;
+    width: 126px;
+    height: 128px;
   }
   .wind__box{
     font-size: 1rem;

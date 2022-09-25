@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'login', component: LoginArticleBoxComponent,  children: [
       {path: '', redirectTo: '/login/buttons', pathMatch: 'full'},
       {path: 'user', canActivate: [AuthGuard], component: LoginUserComponent},
-      {path: 'set-username', canActivate: [AuthGuard], component: SetUsernameComponent},
+      // {path: 'set-username', canActivate: [AuthGuard], component: SetUsernameComponent},
       {path: 'buttons', component: LoginRegisterButtonsComponent},
       {path: 'forms', component: LoginFormsComponent},
       {path: '**', redirectTo: '/login/buttons'}

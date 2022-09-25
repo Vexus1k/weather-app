@@ -1,5 +1,5 @@
 <div class="login__avatar-part">
-  <div class="menu__icons" *ngIf="isLoggedIn">
+  <div class="menu__icons">
     <div class="icon__choice-box" [style.cursor]="showMenu ? 'pointer' : 'auto'" (click)="showMenu ? changeAvatar(iconAstronaut.src, astronautBox) : null" #astronautBox>
       <img class="icon__choice" [src]="astronautIconPath" #iconAstronaut>
     </div>

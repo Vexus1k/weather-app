@@ -3,7 +3,7 @@ import ScrollReveal from "scrollreveal";
 import { PercentSignAddPipePipe } from 'src/app/core/pipes/percent-sign-add-pipe.pipe';
 import {readDataFromObject} from "../../../../core/models/global-interfaces";
 import {WeatherService} from "../../../../core/services/weather.service";
-import {take} from "rxjs";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-sun-moon-widget',

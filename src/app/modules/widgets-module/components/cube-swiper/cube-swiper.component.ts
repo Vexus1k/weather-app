@@ -6,7 +6,7 @@ import {FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Val
 import {EmailService} from "../../../../core/services/email.service";
 import {ErrorService} from "../../../../core/services/error.service";
 import {readDataFromObject} from "../../../../core/models/global-interfaces";
-import {take} from "rxjs";
+import {take} from "rxjs/operators";
 
 
 
@@ -43,7 +43,6 @@ export class CubeSwiperComponent implements OnInit{
     // this.getAdvancedWeatherInfo()
     // this.getGeneralWeatherInfo()
     // this.weatherService.currentTime.subscribe(currentTime => {
-    //   console.log(currentTime)
     //   let currentHour
     //   if(Number(currentTime![0]) === 0){
     //     currentHour = currentTime![1]
@@ -101,17 +100,22 @@ export class CubeSwiperComponent implements OnInit{
   }
   getAdvancedWeatherInfo(){
     //I have had to set this timeout there because of API limit request per second
-    setTimeout(()=> this.weatherService.getAdvancedWeatherInfo().pipe(take(1)).subscribe((res)=> {
-      console.log(res)
-      this.advancedWeatherInfoObject = res.forecast[0]
-    }), 3000)
+    setTimeout(() => {
+      this.weatherService.getAdvancedWeatherInfo().subscribe((res) => {
+        console.log(res)
+        this.advancedWeatherInfoObject = res.forecast[0]
+      })
+    }, 3000)
   }
   getGeneralWeatherInfo(){
     //I have had to set this timeout there because of API limit request per second
-    setTimeout(()=> this.weatherService.getGeneralWeatherInfo().pipe(take(1)).subscribe((res)=> {
-      console.log(res)
-      this.generalWeatherInfoObject = res.current
-    }), 1000)
+    setTimeout(() => {
+      this.weatherService.getGeneralWeatherInfo().subscribe((res) => {
+        console.log(res)
+        this.generalWeatherInfoObject = res.current
+      }
+      );
+    }, 1000)
   }
   stopTuringAround(){
     this.cubeSwiper.swiperRef.autoplay.stop();

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   DoCheck,
   HostListener, Input,
@@ -9,9 +10,10 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { ErrorService } from 'src/app/core/services/error.service';
 import {WeatherService} from "../../../core/services/weather.service";
 import {readDataFromObject} from "../../../core/models/global-interfaces";
-
+import { UntilDestroy } from '@ngneat/until-destroy';
+import {first, take, takeUntil, tap} from "rxjs/operators";
 // import NodeGeocoder from "node-geocoder";
-
+@UntilDestroy({ checkProperties: true })
 
 @Component({
   selector: 'app-header',
@@ -34,11 +36,13 @@ export class HeaderComponent implements OnInit, DoCheck {
   localTimeForCurrentCity: string;
   isAmHour: boolean = true;
   navMenu: HTMLElement | null;
+
   ngDoCheck() {
     this.isLoggedIn = this.auth.isLoggedIn()
     this.getScreenSize()
     this.alertCondition = this.screenWidth > 1039 && this.isLoggedIn || !this.isLoggedIn
   }
+
   ngOnInit() {
     this.inputValueCity = this.weatherService.getCookie("city") || "Katowice"
     this.oldValueCity = this.inputValueCity
@@ -46,10 +50,12 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.isLoggedIn = this.auth.isLoggedIn()
     this.alertCondition = this.screenWidth > 1039 && this.isLoggedIn || !this.isLoggedIn
     this.getScreenSize()
-    // this.getObjectWithLocationInfo()
-    // this.getLocalTimeForCurrentCity()
-    // setInterval(()=> this.getLocalTimeForCurrentCity(), 1000)
-    // this.getLocalization()
+    this.getObjectWithLocationInfo()
+    this.getLocalTimeForCurrentCity()
+    setInterval(()=> {
+      this.getLocalTimeForCurrentCity()
+    }, 1000)
+    this.getLocalization()
     ScrollReveal().reveal('.header', {
       distance: '60px',
       easing: 'ease-in-out',
@@ -57,12 +63,16 @@ export class HeaderComponent implements OnInit, DoCheck {
       delay: 300
     });
   }
-  constructor(private weatherService: WeatherService, private auth: AuthService, private errorService: ErrorService) {
+
+  constructor(private weatherService: WeatherService, private auth: AuthService, private errorService: ErrorService,
+              private ref : ChangeDetectorRef) {
   }
+
   @HostListener('window:resize', ['$event'])
   getScreenSize() {
     this.screenWidth = window.innerWidth;
   }
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     const scrollY = window.scrollY
@@ -99,17 +109,20 @@ export class HeaderComponent implements OnInit, DoCheck {
       }
     })
   }
-  showMenu(){
+
+  showMenu() {
     const switchersIcons = document.querySelectorAll<HTMLTableElement>('.s-icon');
     Array.from(switchersIcons).forEach((el) => { el.style.display = 'none'});
     this.navMenu?.classList.add("show-menu");
   }
-  closeMenu(){
+
+  closeMenu() {
     const switchersIcons = document.querySelectorAll<HTMLTableElement>('.s-icon');
     Array.from(switchersIcons).forEach((el) => { el.style.display = 'flex'});
     this.navMenu?.classList.remove('show-menu');
   }
-  showError(){
+
+  showError() {
     if(this.isLoggedIn && this.screenWidth > 1039){
       this.errorService.setErrorStatusAndMessage("Disabled for this resolution", false)
     }
@@ -117,7 +130,8 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.errorService.setErrorStatusAndMessage("Login to use this function", false)
     }
   }
-  getObjectWithLocationInfo(){
+
+  getObjectWithLocationInfo() {
     this.weatherService.getLocationId(this.inputValueCity).subscribe((res) => {
       if(res.locations[0]){
         this.locationInfo = res.locations[0]
@@ -129,63 +143,70 @@ export class HeaderComponent implements OnInit, DoCheck {
       }
     })
   }
-  getLocalization(){
+
+  getLocalization() {
     if(this.inputValueCity === ""){
       this.errorService.setErrorStatusAndMessage('Cannot find city', false)
+      return
     }
-    else{
-      this.weatherService.getLocationId(this.inputValueCity).subscribe((res: readDataFromObject) => {
-        if(!res || !res.locations[0]){
-          this.errorService.setErrorStatusAndMessage('City does not exist', false)
-          this.inputValueCity = ""
-        }
-        else if(res.locations[0] && res.locations[0].name){
-          if(this.oldValueCity != this.inputValueCity){
-            this.errorService.setErrorStatusAndMessage('City changed successfully', true)
-          }
-          this.weatherService.setCookie("city", res.locations[0].name, 30)
-          this.weatherService.setCookie("cityId", res.locations[0].id, 30)
-          this.locationInfo = res.locations[0]
-          this.weatherService.setCityId(res.locations[0].id)
-          this.getLocalTimeForCurrentCity()
-          this.inputValueCity = ''
-        }
-      })
-    }
+    this.weatherService.getLocationId(this.inputValueCity).subscribe((res: readDataFromObject) => {
+      if(!res || !res.locations[0]){
+        this.errorService.setErrorStatusAndMessage('City does not exist', false)
+        this.inputValueCity = ""
+        return
+      }
+      if(this.oldValueCity != this.inputValueCity){
+        this.errorService.setErrorStatusAndMessage('City changed successfully', true)
+      }
+      this.weatherService.setCookie("city", res.locations[0].name, 30)
+      this.weatherService.setCookie("cityId", res.locations[0].id, 30)
+      this.locationInfo = res.locations[0]
+      this.weatherService.setCityId(res.locations[0].id)
+      this.getLocalTimeForCurrentCity()
+      this.inputValueCity = ''
+    })
+
   }
+
   getLocalTimeForCurrentCity() {
-    this.weatherService.getLocalTimeForCurrentCity(this.locationInfo?.timezone || 'Europe/Warsaw').subscribe((res: readDataFromObject)=> {
-      this.localTimeForCurrentCity = JSON.stringify(res.datetime)
-      let keys = Object.values(this.localTimeForCurrentCity);
-      let hour: string | undefined;
-      let value: string | undefined;
-      for (let i = 0; i < keys.length; i++) {
-        value = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13] +
-          this.localTimeForCurrentCity[14] + this.localTimeForCurrentCity[15] + this.localTimeForCurrentCity[16];
-        hour = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13]
-      }
-      if(Number(hour) >= 12){
-        this.isAmHour = false;
-      }
-      if(Number(hour) === 4 || Number(hour) === 12 || Number(hour) === 17 || Number(hour) === 21){
-        this.weatherService.setCookie("currentTime", value as string, 30)
-        this.weatherService.setCurrentTime(value as string)
-      }
-      this.sendCurrentTimeOnTheStartingApp(value as string)
-      this.localTimeForCurrentCity = value as string
+    let subscription = this.weatherService.getLocalTimeForCurrentCity(this.locationInfo?.timezone || 'Europe/Warsaw')
+      .pipe()
+      .subscribe((res: readDataFromObject)=> {
+        this.localTimeForCurrentCity = JSON.stringify(res.datetime)
+        let keys = Object.values(this.localTimeForCurrentCity);
+        let hour: string | undefined;
+        let value: string | undefined;
+        for (let i = 0; i < keys.length; i++) {
+          value = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13] +
+            this.localTimeForCurrentCity[14] + this.localTimeForCurrentCity[15] + this.localTimeForCurrentCity[16];
+          hour = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13]
+        }
+        if(Number(hour) >= 12){
+          this.isAmHour = false;
+        }
+        if(Number(hour) === 4 || Number(hour) === 12 || Number(hour) === 17 || Number(hour) === 21){
+          this.weatherService.setCookie("currentTime", value as string, 30)
+          this.weatherService.setCurrentTime(value as string)
+        }
+        this.sendCurrentTimeToInitializeApp(value as string)
+        this.localTimeForCurrentCity = value as string
       }
     )
+    setTimeout( () => {subscription.unsubscribe()}, 1000)
   }
-  sendCurrentTimeOnTheStartingApp(value: string){
-    this.sendCurrentTimeOnTheStartingApp = function(){};
+
+  sendCurrentTimeToInitializeApp(value: string) {
+    this.sendCurrentTimeToInitializeApp = function(){};
     this.weatherService.setCookie("currentTime", value, 30)
     this.weatherService.setCurrentTime(value)
   };
-  holdElementOnView(event: MouseEvent){
+
+  holdElementOnView(event: MouseEvent) {
     event.preventDefault();
     return false;
   }
-  getCityFromCoords(){
+
+  getCityFromCoords() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -193,13 +214,12 @@ export class HeaderComponent implements OnInit, DoCheck {
           let longitude = String(position.coords.longitude)
           console.log('latitude', position.coords.latitude,
             'longitude', position.coords.longitude);
-          this.weatherService.getCityFromCoords(latitude, longitude).subscribe((res: readDataFromObject) => {
+          let a = this.weatherService.getCityFromCoords(latitude, longitude).subscribe((res: readDataFromObject) => {
             this.weatherService.setCookie("city", res.city, 30)
             this.inputValueCity = this.weatherService.getCookie("city")!
             this.errorService.setErrorStatusAndMessage('City changed successfully', true)
             this.getLocalization()
           })
-          console.log()
         },
         () => {
           this.errorService.setErrorStatusAndMessage('Allow localization to use this option.', false)
@@ -209,6 +229,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.errorService.setErrorStatusAndMessage('This option is unavailable for this browser.', false)
   }
   }
+
   scrollToElement(id: string, el: HTMLElement) {
     this.navMenu?.classList.remove('show-menu');
     document.getElementById(id)?.scrollIntoView()

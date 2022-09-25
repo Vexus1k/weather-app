@@ -4,7 +4,6 @@ import {UserService} from "src/app/core/services/user.service";
 import ScrollReveal from "scrollreveal";
 
 import {readDataFromObject, UserInfo} from "../../../../core/models/global-interfaces";
-import {SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 
 declare var FB: any;
 
@@ -26,7 +25,7 @@ export class LoginUserComponent implements OnInit {
   isLoggedIn: boolean;
 
   constructor( private userService: UserService, private auth: AuthService,
-              private authService: SocialAuthService)
+              )
   {
 
   }
@@ -85,17 +84,17 @@ export class LoginUserComponent implements OnInit {
   }
 
   singOut(): void {
-    this.authService.authState.subscribe((user) => {
-      console.log(user);
-    });
+    // this.authService.authState.subscribe((user) => {
+    //   console.log(user);
+    // });
   }
   logout(){
-    this.singOut()
-    FB.getLoginStatus((res:any)=>{
-      if(res.status == 'connected'){
-        FB.logout();
-      }
-    });
+    // this.singOut()
+    // FB.getLoginStatus((res:any)=>{
+    //   if(res.status == 'connected'){
+    //     FB.logout();
+    //   }
+    // });
     this.auth.logout()
   }
 }

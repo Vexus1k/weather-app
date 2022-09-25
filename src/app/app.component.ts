@@ -22,7 +22,7 @@ import Swiper, {Autoplay} from "swiper";
 import {SwiperEvents} from "swiper/types";
 import ScrollReveal from "scrollreveal";
 import { ErrorService } from './core/services/error.service';
-import {first} from "rxjs";
+
 import {NavigationEnd, Router} from "@angular/router";
 
 
@@ -68,14 +68,14 @@ export class AppComponent implements OnInit{
         this.success = res.status;
         setTimeout(() => {
           this.success = false
-        }, 3500)
+        }, 2500)
       }
       else if(res.status === false){
         this.messageError = res.message;
         this.error = true;
         setTimeout(() =>  {
           this.error = false
-        }, 3500)
+        }, 2500)
       }
     });
     // console.log(this.sub)

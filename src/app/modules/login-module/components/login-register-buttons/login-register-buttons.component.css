@@ -35,7 +35,7 @@
   backdrop-filter: blur(2px);
   cursor: pointer;
   border-radius: .67rem;
-  font-size: .65rem;
+  font-size: .55rem;
   font-family: 'Raleway', sans-serif;
   font-weight: var(--font-medium);
   letter-spacing: 1px;
@@ -78,7 +78,7 @@
   }
   .login__button{
     width: 95px;
-    font-size: .57rem;
+    font-size: .48rem;
     height: 32px;
   }
   .login h2, .register h2{
@@ -93,7 +93,7 @@
   .login__button{
     width: 120px;
     height: 40px;
-    font-size: .7rem;
+    font-size: .62rem;
   }
   .login h2, .register h2{
     font-size: 1.15rem;
@@ -106,7 +106,7 @@
   .login__button{
     width: 125px;
     height: 42px;
-    font-size: .72rem;
+    font-size: .69rem;
   }
   .login h2, .register h2{
     font-size: 1.25rem;
@@ -120,7 +120,7 @@
   .login__button{
     width: 130px;
     height: 44px;
-    font-size: .842rem;
+    font-size: .76rem;
   }
   .login h2, .register h2{
     font-size: 1.3rem;
@@ -130,6 +130,5 @@
   .buttons__container{
     row-gap: 3.35rem;
   }
-
 }
 

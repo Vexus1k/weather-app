@@ -45,6 +45,17 @@ label{
   flex-direction: column;
   row-gap: 0;
 }
+.center__alert{
+  display: flex;
+  justify-content: center;
+  margin-top: .2rem;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
 /*Icons*/
 .wrapper {
   display: inline-flex;
@@ -68,7 +79,6 @@ label{
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
 .wrapper .tooltip {
   position: absolute;
   top: 0;

@@ -3,7 +3,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": [ "node", "gapi",
+    "types": [ "gapi",
       "gapi.auth2" ],
     "typeRoots": [ "../node_modules/@types" ]
   },

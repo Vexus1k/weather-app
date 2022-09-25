@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import ScrollReveal from "scrollreveal";
 import { WeatherService } from 'src/app/core/services/weather.service';
 import {readDataFromObject} from "../../../../core/models/global-interfaces";
-import {take} from "rxjs";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-wind-widget',

@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {SwiperOptions} from "swiper";
 import ScrollReveal from "scrollreveal";
 import { WeatherService } from 'src/app/core/services/weather.service';
-import {map, take} from "rxjs";
+import {map, take} from "rxjs/operators";
 import {readDataFromObject, weatherIcons} from "../../../../core/models/global-interfaces";
 
 
@@ -151,13 +151,15 @@ export class ForecastWidgetComponent implements OnInit {
     console.log(sunsetHour)
   }
   getHourlyWeatherInfo(){
+    //I have had to set this timeout there because of API limit request per second
     setTimeout(()=>this.hourlyWeatherInfoObjects = this.weatherService.getHourlyWeatherInfo().pipe(
       map(data => data.forecast)
     ), 3000)
 
   }
   getAdvancedWeatherInfo(){
-    setTimeout(()=>this.advancedWeatherInfoObjects = this.weatherService.getAdvancedWeatherInfo().pipe(
+    //I have had to set this timeout there because of API limit request per second
+    setTimeout(()=> this.advancedWeatherInfoObjects = this.weatherService.getAdvancedWeatherInfo().pipe(
       map(data => data.forecast)
     ), 3000)
 

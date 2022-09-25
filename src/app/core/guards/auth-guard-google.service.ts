@@ -1,5 +1,5 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
-import {SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
+
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {tap, map} from "rxjs/operators";
@@ -7,22 +7,10 @@ import {tap, map} from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService {
 
   constructor(private router: Router,
-              private socialAuthService: SocialAuthService) {
+              ) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.socialAuthService.authState.pipe(
-      map((socialUser: SocialUser) => !!socialUser),
-      tap((isLoggedIn: boolean) => {
-        if (!isLoggedIn) {
-          this.router.navigate(['/login/user']);
-        }
-      })
-    );
-
-
-  }
 }

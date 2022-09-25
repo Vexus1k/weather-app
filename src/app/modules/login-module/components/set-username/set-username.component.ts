@@ -5,7 +5,7 @@ import {UserService} from "../../../../core/services/user.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../../core/services/auth.service";
 import { WeatherService } from 'src/app/core/services/weather.service';
-import {SocialAuthService} from "@abacritt/angularx-social-login";
+
 
 @Component({
   selector: 'app-set-username',
@@ -16,7 +16,7 @@ export class SetUsernameComponent implements OnInit {
   usernameFormGroup: UntypedFormGroup
   constructor(private weatherService: WeatherService, private ngZone: NgZone, private errorService: ErrorService,
               private formBuilder: UntypedFormBuilder, private userService: UserService,
-              private router: Router, private auth: AuthService, private authService: SocialAuthService) { }
+              private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.usernameFormGroup = this.formBuilder.group({

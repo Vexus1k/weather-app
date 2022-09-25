@@ -37,7 +37,6 @@ export class UserService {
     let emailObject = {email: email}
     return this.http.post<isUserExist>(this.rootUrl + "/checkUserExistInGoogleDb", JSON.stringify(emailObject), {headers})
   }
-
   checkFacebookUserAlreadyExists(email: string): Observable<isUserExist>{
     const headers = {'Content-Type': "application/json"}
     let emailObject = {email: email}
