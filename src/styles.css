@@ -69,6 +69,7 @@ p{
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 101;
 }
 .button-login-register:hover {
   box-shadow: rgba(0, 255, 255, .2) 0 -25px 18px -14px inset,rgba(0, 255, 255,.25) 0 1px 2px,rgba(0, 255, 255,.25) 0 2px 4px,rgba(0, 255, 255,.25) 0 4px 8px,rgba(0, 255, 255,.25) 0 8px 16px,rgba(0, 255, 255,.25) 0 16px 32px;
@@ -87,10 +88,10 @@ img {
 }
 @media screen and (max-width: 320px) {
   .button-login-register{
-    margin-top: .4rem!important;
-    font-size: .55rem!important;
-    width: 64px;
-    height: 26px;
+    margin-top: .375rem!important;
+    font-size: .525rem!important;
+    width: 56px;
+    height: 24px;
   }
   .text-danger{
     font-size: .6rem!important;
@@ -109,10 +110,10 @@ img {
 }
 @media screen and (min-width: 767px) {
   .button-login-register{
-    margin-top: .5rem!important;
-    font-size: .65rem!important;
-    width: 76px;
-    height: 32px;
+    margin-top: .475rem!important;
+    font-size: .625rem!important;
+    width: 74px;
+    height: 31px;
   }
   .text-danger{
     font-size: .56rem!important;
@@ -123,10 +124,10 @@ img {
     padding: 0;
   }
   .button-login-register{
-    margin-top: .55rem!important;
-    font-size: .7rem!important;
-    width: 83px;
-    height: 35px;
+    margin-top: .525rem!important;
+    font-size: .675rem!important;
+    width: 78px;
+    height: 33px;
   }
   .text-danger{
     font-size: .58rem!important;
@@ -134,11 +135,10 @@ img {
 }
 @media screen and (min-width: 1600px) {
   .button-login-register{
-    margin-top: .6rem!important;
-    font-size: .73rem!important;
-    width: 85px;
-    height: 37px;
-
+    margin-top: .55rem!important;
+    font-size: .7rem!important;
+    width: 80px;
+    height: 34px;
   }
   .text-danger{
     font-size: .6rem!important;

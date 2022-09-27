@@ -42,27 +42,7 @@ export class RegisterFormsComponent implements OnInit {
     this.registerFormGroup.reset()
     this.router.navigate(['/login/forms'])
   })}
-  checkPasswordValidation(value: string) {
-    const isWhitespace = /^(?=.*\s)/;
-    if (isWhitespace.test(value)) {
-      return "Must not contain whitespaces.";
-    }
-    const isContainsUppercase = /^(?=.*[A-Z]).*$/;
-    if (!isContainsUppercase.test(value)) {
-      return "One uppercase character.";
-    }
-    const isContainsLowercase = /^(?=.*[a-z])/;
-    if (!isContainsLowercase.test(value)) {
-      return "One lowercase character.";
-    }
-    const isContainsNumber = /^(?=.*[0-9])/;
-    if (!isContainsNumber.test(value)) {
-      return "One digit.";
-    }
-    const isValidLength = /^.{10,16}$/;
-    if (!isValidLength.test(value)) {
-      return "8-16 Characters Long.";
-    }
-    return ""
+  checkPasswordValidation(password: string){
+    return this.usersService.checkPasswordValidation(password)
   }
 }

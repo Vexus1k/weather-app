@@ -25,9 +25,12 @@ export let AppInjector: Injector;
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     LoginModule,
     WidgetModule,
     HttpClientModule,

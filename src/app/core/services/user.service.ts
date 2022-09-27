@@ -20,13 +20,13 @@ export class UserService {
   setIsFacebookOrGoogleCall (cityId: string) {
     this.isFacebookOrGoogleBehaviour.next(cityId)
   }
-  addUserToGoogleDb(user: userGoogleDb){
+  addUserToGoogleDb(user: userGoogleDb) {
     console.log(user)
     const headers = {'Content-Type': "application/json"}
     let userObject = {email: user.email, username: user.username}
     return this.http.post<readDataFromObject>(this.rootUrl + "/addUserToGoogleDb", JSON.stringify(userObject), {headers})
   }
-  addUserToFacebookDb(user: userFacebookDb){
+  addUserToFacebookDb(user: userFacebookDb) {
     console.log(user)
     const headers = {'Content-Type': "application/json"}
     let userObject = {id: user.userId, username: user.username}
@@ -37,12 +37,12 @@ export class UserService {
     let emailObject = {email: email}
     return this.http.post<isUserExist>(this.rootUrl + "/checkUserExistInGoogleDb", JSON.stringify(emailObject), {headers})
   }
-  checkFacebookUserAlreadyExists(email: string): Observable<isUserExist>{
+  checkFacebookUserAlreadyExists(email: string): Observable<isUserExist> {
     const headers = {'Content-Type': "application/json"}
     let emailObject = {email: email}
     return this.http.post<isUserExist>(this.rootUrl + "/checkUserExistInFacebookDb", JSON.stringify(emailObject), {headers})
   }
-  checkUsernameExistInAllDbs(username: string){
+  checkUsernameExistInAllDbs(username: string) {
     const headers = {'Content-Type': "application/json"}
     let usernameObject = {username: username}
     return this.http.post<boolean>(this.rootUrl + "/checkUsernameExistInAllDbs", JSON.stringify(usernameObject), {headers})
@@ -53,9 +53,44 @@ export class UserService {
     return this.http.post<Observable<User>>(this.rootUrl + "/registerUser", JSON.stringify(user), {headers})
   }
 
-  loginUser(user: User):Observable<Observable<User>>{
+  loginUser(user: User):Observable<Observable<User>> {
     const headers = {'Content-Type': "application/json"}
     return this.http.post<Observable<User>>(this.rootUrl + "/loginUser", JSON.stringify(user), {headers})
+  }
+
+  changeUsername(username: string, oldUsername: string): Observable<isUserExist>{
+    const headers = {'Content-Type': "application/json"}
+    let usernameObject = {username: username, oldUsername: oldUsername}
+    console.log(usernameObject.username, usernameObject.oldUsername)
+    return this.http.post<isUserExist>(this.rootUrl + "/changeUsername", JSON.stringify(usernameObject), {headers})
+  }
+  changePassword(username: string, password: string){
+    const headers = {'Content-Type': "application/json"}
+    let object = {username: username, password: password}
+    return this.http.post<isUserExist>(this.rootUrl + "/changePassword", JSON.stringify(object), {headers})
+  }
+  checkPasswordValidation(value: string) {
+    const isWhitespace = /^(?=.*\s)/;
+    if (isWhitespace.test(value)) {
+      return "Must not contain whitespaces.";
+    }
+    const isContainsUppercase = /^(?=.*[A-Z]).*$/;
+    if (!isContainsUppercase.test(value)) {
+      return "One uppercase character.";
+    }
+    const isContainsLowercase = /^(?=.*[a-z])/;
+    if (!isContainsLowercase.test(value)) {
+      return "One lowercase character.";
+    }
+    const isContainsNumber = /^(?=.*[0-9])/;
+    if (!isContainsNumber.test(value)) {
+      return "One digit.";
+    }
+    const isValidLength = /^.{10,16}$/;
+    if (!isValidLength.test(value)) {
+      return "8-16 Characters Long.";
+    }
+    return ""
   }
 }
 

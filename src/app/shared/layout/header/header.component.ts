@@ -21,11 +21,6 @@ import {first, take, takeUntil, tap} from "rxjs/operators";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, DoCheck {
-  @Input() homeRef: HTMLElement | null
-  @Input() forecastRef: HTMLElement | null
-  @Input() windRef: HTMLElement | null
-  @Input() precipitationRef: HTMLElement | null
-  @Input() sunMoonRef: HTMLElement | null
   locationIconPath: string = '../../../../../assets/photos/location-icon.svg';
   screenWidth: number;
   isLoggedIn: boolean;
@@ -54,7 +49,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.getLocalTimeForCurrentCity()
     setInterval(()=> {
       this.getLocalTimeForCurrentCity()
-    }, 1000)
+    }, 2000)
     this.getLocalization()
     ScrollReveal().reveal('.header', {
       distance: '60px',

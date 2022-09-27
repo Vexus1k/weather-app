@@ -10,7 +10,8 @@
   "files": [
     "src/main.ts",
     "src/polyfills.ts",
-    "node_modules/@types/gapi.auth2/index.d.ts"
+    "node_modules/@types/gapi.auth2/index.d.ts",
+    "node_modules/@types/core-js/index.d.ts"
   ],
   "include": [
     "src/**/*.d.ts"

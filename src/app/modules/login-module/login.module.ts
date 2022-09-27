@@ -14,6 +14,9 @@ import { LoginRoutingModule } from "./login-routing-module";
 import { LoginArticleBoxComponent } from "./components/login-article-box/login-article-box.component";
 import { WidgetModule } from "../widgets-module/widget.module";
 import { SetUsernameComponent } from "./components/set-username/set-username.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserModule } from "@angular/platform-browser";
+import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
 
 // import {
 //   GoogleApiModule,
@@ -52,6 +55,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     LoginUserComponent,
     LoginArticleBoxComponent,
     SetUsernameComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

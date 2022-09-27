@@ -1,7 +1,7 @@
-import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnInit, VERSION} from '@angular/core';
 import {UntypedFormBuilder, FormGroup, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserService} from "src/app/core/services/user.service";
-import {Router} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import { AuthService } from 'src/app/core/services/auth.service';
 // import {GoogleAuthService} from "ng-gapi";
 import ScrollReveal from "scrollreveal";
@@ -12,10 +12,12 @@ import { WeatherService } from 'src/app/core/services/weather.service';
 import { ViewChild,ElementRef } from '@angular/core'
 import {ChatService} from "../../../../core/services/chat.service";
 
+import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {transform} from "lodash";
+
 
 declare var FB: any;
 declare const gapi: any;
-
 
 
 @Component({
@@ -28,6 +30,7 @@ export class LoginFormsComponent implements OnInit {
   userr: gapi.auth2.GoogleUser | null
   userInfo?: UserInfo
   loggedIn: boolean;
+
 
   constructor( private ngZone: NgZone,
               private errorService: ErrorService, private formBuilder: UntypedFormBuilder, private userService: UserService,
@@ -42,8 +45,8 @@ export class LoginFormsComponent implements OnInit {
       this.userInfo = info
     })
     this.loginFormGroup = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     })
   }
   signIn() {
@@ -54,6 +57,7 @@ export class LoginFormsComponent implements OnInit {
       () => {
       this.auth.setToken(Math.random().toString(36).substr(2));
       this.auth.setUsername(this.loginFormGroup.controls['username'].value)
+        console.log(this.loginFormGroup.controls['username'].value)
       this.errorService.setErrorStatusAndMessage('Login Successfully.', true)
       this.router.navigate(['/login/user'])
     })

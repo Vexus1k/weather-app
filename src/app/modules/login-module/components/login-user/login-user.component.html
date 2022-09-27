@@ -15,11 +15,39 @@
   </div>
   <img class="avatar__icon" [src]="isLoggedIn ? userLogged : avatarIconPath">
   <div class="user__greeting-box">
-    <h2>Hello</h2>
-    <p>{{ username }}</p>
+    <h2 *ngIf="!isEditMode">Hello</h2>
+    <p *ngIf="!isEditMode">{{ username }}</p>
+    <img class="icon__edit" [src]="editIconPath" *ngIf="!isEditMode else editWindow" (click)="switchEditMode()">
+    <ng-template #editWindow>
+      <form class="change-username__form" [formGroup]="changeUsernameFormGroup" (ngSubmit)="changeUsername()">
+        <div class="form-group">
+          <label class="font-weight-normal" for="usernameInput">Username:</label>
+          <input maxlength="20" type="text" class="form-control" id="usernameInput" placeholder="Username" formControlName="username">
+          <div class="center__alert" *ngIf="(changeUsernameFormGroup.controls['username'].touched) || changeUsernameFormGroup.controls['username'].dirty">
+            <small *ngIf="changeUsernameFormGroup.controls['username'].errors?.required" class="text-danger">Username is required</small>
+          </div>
+        </div>
+        <div class="buttons__container">
+          <img class="icon__accept" [src]="acceptIconPath" (click)="changeUsername()">
+          <img class="icon__decline" [src]="declineIconPath" (click)="switchEditMode()">
+        </div>
+      </form>
+    </ng-template>
   </div>
   <button (click)="logout()" class="button-login-register">Logout</button>
-  <img (click)="showHideMenu()" class="edit__icon" [src]="editIconPath">
+  <img (click)="showHideMenu()" class="icon__settings" [src]="settingsIconPath">
+  <ul class="squares">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </div>
 
 
