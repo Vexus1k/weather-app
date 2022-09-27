@@ -12,7 +12,7 @@
   </svg>
   <form class="login__form" [formGroup]="loginFormGroup" (ngSubmit)="signIn()">
     <div class="form-group">
-      <label class="font-weight-normal" for="loginInput">Username:</label>
+      <label maxlength="20" class="font-weight-normal" for="loginInput">Username:</label>
       <input type="text" class="form-control" id="loginInput" placeholder="Username" formControlName="username">
       <div class="center__alert" *ngIf="(loginFormGroup.controls['username'].touched) || loginFormGroup.controls['username'].dirty">
         <small *ngIf="loginFormGroup.controls['username'].errors?.required" class="text-danger">Username is required</small>

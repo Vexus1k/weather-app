@@ -6,7 +6,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 // import {GoogleAuthService} from "ng-gapi";
 import ScrollReveal from "scrollreveal";
 import {ErrorService} from "../../../../core/services/error.service";
-import {isUserExist, readDataFromObject, User, UserInfo} from "../../../../core/models/global-interfaces";
+import {
+  isUserExist,
+  readDataFromObject,
+  User,
+  userFacebookDb,
+  UserInfo
+} from "../../../../core/models/global-interfaces";
 import { Observable } from 'rxjs';
 import { WeatherService } from 'src/app/core/services/weather.service';
 import { ViewChild,ElementRef } from '@angular/core'
@@ -14,6 +20,7 @@ import {ChatService} from "../../../../core/services/chat.service";
 
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {transform} from "lodash";
+import {FacebookLoginProvider, SocialAuthService} from "angularx-social-login";
 
 
 declare var FB: any;
@@ -27,19 +34,23 @@ declare const gapi: any;
 })
 export class LoginFormsComponent implements OnInit {
   loginFormGroup: UntypedFormGroup;
+  user: any;
   userr: gapi.auth2.GoogleUser | null
   userInfo?: UserInfo
-  loggedIn: boolean;
+
 
 
   constructor( private ngZone: NgZone,
               private errorService: ErrorService, private formBuilder: UntypedFormBuilder, private userService: UserService,
               private router: Router, private auth: AuthService, private weatherService: WeatherService,
-               private signInService: ChatService,
+               private signInService: ChatService, private authService: SocialAuthService,
                private ref : ChangeDetectorRef
 
   ){}
   ngOnInit(): void {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+    });
     this.signInService.userProfileSubject.subscribe( (info: UserInfo) => {
       console.log(info)
       this.userInfo = info
@@ -57,36 +68,29 @@ export class LoginFormsComponent implements OnInit {
       () => {
       this.auth.setToken(Math.random().toString(36).substr(2));
       this.auth.setUsername(this.loginFormGroup.controls['username'].value)
-        console.log(this.loginFormGroup.controls['username'].value)
       this.errorService.setErrorStatusAndMessage('Login Successfully.', true)
       this.router.navigate(['/login/user'])
     })
   }
   signInWithFB(): void {
-    this.errorService.setErrorStatusAndMessage("Work in progress", true)
-    // this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then();
-    // this.authService.authState.subscribe((user) => {
-    //   if(!user){return}
-    //   let isUserExist: boolean
-    //   console.log(user.email)
-    //   this.userService.checkFacebookUserAlreadyExists(user.email).subscribe(
-    //     (res) => {
-    //       console.log(res)
-    //       isUserExist = res.condition
-    //       if(isUserExist){
-    //         this.auth.setToken(Math.random().toString(36).substr(2));
-    //         this.auth.setUsername(res.username!)
-    //         this.errorService.setErrorStatusAndMessage('Login Successfully.', true)
-    //         this.router.navigate(['/login/user'])
-    //       }
-    //       else{
-    //         this.auth.setToken(Math.random().toString(36).substr(2));
-    //         this.router.navigate(['/login/set-username'])
-    //       }
-    //     }
-    //   )
-    // });
-  }
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then( () => {
+      console.log(this.user)
+      this.userService.checkFacebookUserAlreadyExists(this.user.email).subscribe( (res) => {
+        let isUserExist: boolean = res.condition
+        console.log(res)
+        if(isUserExist){
+          this.auth.setFacebookToken(Math.random().toString(36).substr(2));
+          this.auth.setToken(Math.random().toString(36).substr(2));
+          this.auth.setUsername(res.username!)
+          this.errorService.setErrorStatusAndMessage('Login Successfully.', true)
+          this.router.navigate(['/login/user'])
+          return
+        }
+        this.userService.setIsFacebookOrGoogleCall('facebook')
+        this.router.navigate(['/login/set-username'])
+        this.errorService.setErrorStatusAndMessage("Set your nickname.", true)
+      })
+    });  }
   signInWithGoogle(): void {
     this.errorService.setErrorStatusAndMessage("Work in progress", true)
     // gapi.load('auth2', () => {

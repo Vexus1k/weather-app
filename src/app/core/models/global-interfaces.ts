@@ -17,7 +17,10 @@ export interface isUserExist {
 }
 export interface userFacebookDb {
   userId: string,
-  username: string
+  username: string,
+  email: string,
+  firstName: string,
+  lastName: string
 }
 export interface userGoogleDb {
   email: string,

@@ -2,7 +2,7 @@
   <h2 class="title">Set username:</h2>
   <form class="username__form" [formGroup]="usernameFormGroup" (ngSubmit)="setUsername()">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Username" formControlName="username">
+      <input maxlength="20" type="text" class="form-control" placeholder="Username" formControlName="username">
       <div class="center__alert" *ngIf="(usernameFormGroup.controls['username'].touched) || usernameFormGroup.controls['username'].dirty">
         <small *ngIf="usernameFormGroup.controls['username'].errors?.required" class="text-danger">Username is required</small>
       </div>

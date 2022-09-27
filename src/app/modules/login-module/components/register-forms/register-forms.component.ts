@@ -34,14 +34,21 @@ export class RegisterFormsComponent implements OnInit {
 
   registerUser(){
     let user: User = this.registerFormGroup.value
-    this.usersService.registerUser(user).subscribe(
-  (user) => { console.log(user) },
-  () => {},
-  () => {
-    this.errorService.setErrorStatusAndMessage('Account has been created.', true)
-    this.registerFormGroup.reset()
-    this.router.navigate(['/login/forms'])
-  })}
+    this.usersService.checkUsernameExistInAllDbs(user.username).subscribe( (res) => {
+      if(res){
+        this.usersService.registerUser(user).subscribe(
+          (user) => { console.log(user) },
+          () => {},
+          () => {
+            this.errorService.setErrorStatusAndMessage('Account has been created.', true)
+            this.registerFormGroup.reset()
+            this.router.navigate(['/login/forms'])
+          })
+        return
+      }
+      this.errorService.setErrorStatusAndMessage("Username is busy", false)
+    })
+    }
   checkPasswordValidation(password: string){
     return this.usersService.checkPasswordValidation(password)
   }

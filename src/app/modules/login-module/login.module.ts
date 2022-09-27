@@ -7,7 +7,13 @@ import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { SwiperModule } from "swiper/angular";
 
-
+import {
+  SocialAuthServiceConfig,
+  SocialAuthService
+} from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+} from 'angularx-social-login';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER } from "ngx-ui-loader";
 import { LoginUserComponent } from "./components/login-user/login-user.component";
 import { LoginRoutingModule } from "./login-routing-module";
@@ -67,7 +73,24 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     LoginRoutingModule,
     WidgetModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('2035970956791547'),
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        },
+      } as SocialAuthServiceConfig,
+    },
+    SocialAuthService,
+  ],
   exports: [
     LoginRegisterButtonsComponent,
     LoginArticleBoxComponent

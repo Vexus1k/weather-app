@@ -13,7 +13,7 @@
       <img class="icon__choice" [src]="businessmanIconPath" #iconBusinessman>
     </div>
   </div>
-  <img class="avatar__icon" [src]="isLoggedIn ? userLogged : avatarIconPath">
+  <img class="avatar__icon" [src]="avatarIconPath">
   <div class="user__greeting-box">
     <h2 *ngIf="!isEditMode">Hello</h2>
     <p *ngIf="!isEditMode">{{ username }}</p>
@@ -36,6 +36,7 @@
   </div>
   <button (click)="logout()" class="button-login-register">Logout</button>
   <img (click)="showHideMenu()" class="icon__settings" [src]="settingsIconPath">
+
   <ul class="squares">
     <li></li>
     <li></li>

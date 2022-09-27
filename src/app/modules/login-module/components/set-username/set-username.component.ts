@@ -5,6 +5,8 @@ import {UserService} from "../../../../core/services/user.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../../core/services/auth.service";
 import { WeatherService } from 'src/app/core/services/weather.service';
+import {SocialAuthService} from "angularx-social-login";
+import {userFacebookDb} from "../../../../core/models/global-interfaces";
 
 
 @Component({
@@ -14,39 +16,49 @@ import { WeatherService } from 'src/app/core/services/weather.service';
 })
 export class SetUsernameComponent implements OnInit {
   usernameFormGroup: UntypedFormGroup
+  user: any;
+  loggedIn!: boolean;
   constructor(private weatherService: WeatherService, private ngZone: NgZone, private errorService: ErrorService,
               private formBuilder: UntypedFormBuilder, private userService: UserService,
-              private router: Router, private auth: AuthService) { }
+              private router: Router, private auth: AuthService, private authService: SocialAuthService) { }
 
   ngOnInit(): void {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+
+      this.loggedIn = user != null;
+    });
     this.usernameFormGroup = this.formBuilder.group({
       username: ['', Validators.required]
     })
   }
+
   setUsername(){
     let username: string = this.usernameFormGroup.controls['username'].value
-    let isUsernameFree: boolean;
+    let isUsernameReadyToUse: boolean;
     this.userService.checkUsernameExistInAllDbs(username).subscribe(
     (res)=> {
         this.ngZone.run(()=> {
-            isUsernameFree = res
-            console.log(isUsernameFree)
-            if (isUsernameFree) {
-              let userId = this.weatherService.getCookie("userId")
-              let googleEmail = this.weatherService.getCookie('googleEmail')
+          isUsernameReadyToUse = res
+            console.log(isUsernameReadyToUse)
+            if (isUsernameReadyToUse) {
               this.userService.isFacebookOrGoogleCall.subscribe((res) => {
                 console.log(res)
-                if(res == 'google'){
-                  this.userService.addUserToGoogleDb({email: googleEmail!, username: username}).subscribe()
+                if(res == 'facebook'){
+                  console.log(this.user)
+                  let user: userFacebookDb = {
+                    userId: String(this.user.id),
+                    username: String(username),
+                    email: String(this.user.email),
+                    firstName: String(this.user.firstName),
+                    lastName: String(this.user.lastName)
+                  }
+                  this.userService.addUserToFacebookDb(user).subscribe()
                   return
                 }
-                else if(res == 'facebook'){
-                  this.userService.addUserToFacebookDb({userId: userId!, username: username}).subscribe()
-                  return
-                }
-                return
-                }
-                )
+              })
+              this.auth.setFacebookToken(Math.random().toString(36).substr(2));
+              this.auth.setToken(Math.random().toString(36).substr(2));
               this.usernameFormGroup.reset()
               this.auth.setUsername(username)
               this.errorService.setErrorStatusAndMessage('Login Successfully.', true)

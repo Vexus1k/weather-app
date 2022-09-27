@@ -12,6 +12,7 @@ import {WeatherService} from "../../../core/services/weather.service";
 import {readDataFromObject} from "../../../core/models/global-interfaces";
 import { UntilDestroy } from '@ngneat/until-destroy';
 import {first, take, takeUntil, tap} from "rxjs/operators";
+import {interval} from "rxjs";
 // import NodeGeocoder from "node-geocoder";
 @UntilDestroy({ checkProperties: true })
 
@@ -46,10 +47,10 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.alertCondition = this.screenWidth > 1039 && this.isLoggedIn || !this.isLoggedIn
     this.getScreenSize()
     this.getObjectWithLocationInfo()
-    this.getLocalTimeForCurrentCity()
-    setInterval(()=> {
-      this.getLocalTimeForCurrentCity()
-    }, 2000)
+    // this.getLocalTimeForCurrentCity()
+    // setInterval(()=> {
+    //   this.getLocalTimeForCurrentCity()
+    // }, 2000)
     this.getLocalization()
     ScrollReveal().reveal('.header', {
       distance: '60px',
@@ -157,13 +158,14 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.weatherService.setCookie("cityId", res.locations[0].id, 30)
       this.locationInfo = res.locations[0]
       this.weatherService.setCityId(res.locations[0].id)
-      this.getLocalTimeForCurrentCity()
+      // this.getLocalTimeForCurrentCity()
       this.inputValueCity = ''
     })
 
   }
 
   getLocalTimeForCurrentCity() {
+    console.log("123")
     let subscription = this.weatherService.getLocalTimeForCurrentCity(this.locationInfo?.timezone || 'Europe/Warsaw')
       .pipe()
       .subscribe((res: readDataFromObject)=> {

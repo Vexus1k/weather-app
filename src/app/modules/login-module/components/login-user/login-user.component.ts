@@ -6,6 +6,7 @@ import ScrollReveal from "scrollreveal";
 import {readDataFromObject, UserInfo} from "../../../../core/models/global-interfaces";
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ErrorService} from "../../../../core/services/error.service";
+import {SocialAuthService} from "angularx-social-login";
 
 declare var FB: any;
 
@@ -26,17 +27,18 @@ export class LoginUserComponent implements OnInit {
   businessmanIconPath: string = '../../../../../assets/photos/businessman-icon.svg';
   username: string | null;
   showMenu: boolean = false;
-  userLogged: readDataFromObject;
-  isLoggedIn: boolean;
+  isLoggedInByFacebook: boolean;
   isEditMode: boolean = false;
   changeUsernameFormGroup: UntypedFormGroup;
 
   constructor(private errorService: ErrorService, private formBuilder: UntypedFormBuilder,
-              private userService: UserService, private auth: AuthService)
+              private userService: UserService, private auth: AuthService, private authService: SocialAuthService)
   {
   }
 
   ngOnInit(): void {
+    this.isLoggedInByFacebook = this.auth.isLoggedInByFacebook()
+
     this.changeUsernameFormGroup = this.formBuilder.group({
       username: [this.auth.getUsername(), [Validators.required]]
     })
@@ -65,25 +67,33 @@ export class LoginUserComponent implements OnInit {
       this.errorService.setErrorStatusAndMessage('Enter the username.', false)
       return
     }
+    let database: string = "users"
     let oldUsername: string = this.username!
     let username: string = this.changeUsernameFormGroup.value.username
+    if(this.isLoggedInByFacebook){
+      database = 'users_facebook'
+    }
     if(username == oldUsername){
       this.errorService.setErrorStatusAndMessage('Change username.', false)
       return
     }
-    console.log(username, oldUsername)
-    this.userService.changeUsername(username, oldUsername).subscribe( (res) => {
-      if(res.condition){
-        this.errorService.setErrorStatusAndMessage('Username changed.', true)
-        this.auth.setUsername(this.changeUsernameFormGroup.controls['username'].value)
-        this.username = this.changeUsernameFormGroup.controls['username'].value
-        this.changeUsernameFormGroup.reset()
-        this.isEditMode =! this.isEditMode
+    this.userService.checkUsernameExistInAllDbs(username).subscribe((res) => {
+      if(!res){
+        this.errorService.setErrorStatusAndMessage('Username already exist.', false)
         return
       }
-      this.errorService.setErrorStatusAndMessage('Something went wrong. Try again.', false)
+      this.userService.changeUsername(username, oldUsername, database).subscribe( (res) => {
+        if(res.condition){
+          this.errorService.setErrorStatusAndMessage('Username changed.', true)
+          this.auth.setUsername(this.changeUsernameFormGroup.controls['username'].value)
+          this.username = this.changeUsernameFormGroup.controls['username'].value
+          this.changeUsernameFormGroup.reset()
+          this.isEditMode =! this.isEditMode
+          return
+        }
+        this.errorService.setErrorStatusAndMessage('Something went wrong. Try again.', false)
+      })
     })
-
   }
   switchEditMode() {
     this.isEditMode =! this.isEditMode
@@ -91,18 +101,7 @@ export class LoginUserComponent implements OnInit {
     console.log(this.auth.getUsername())
   }
 
-  singOut(): void {
-    // this.authService.authState.subscribe((user) => {
-    //   console.log(user);
-    // });
-  }
   logout() {
-    // this.singOut()
-    // FB.getLoginStatus((res:any)=>{
-    //   if(res.status == 'connected'){
-    //     FB.logout();
-    //   }
-    // });
     this.auth.logout()
   }
 }

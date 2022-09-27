@@ -7,7 +7,7 @@ import {LoginArticleBoxComponent} from "./components/login-article-box/login-art
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import {AuthGuard} from "../../core/guards/auth.guard";
 import {SetUsernameComponent} from "./components/set-username/set-username.component";
-import {AuthGuardService} from "../../core/guards/auth-guard-google.service";
+import {SocialAuthGuard} from "../../core/guards/auth-social-guard";
 import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
 
 
@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'login', component: LoginArticleBoxComponent,  children: [
       {path: '', redirectTo: '/login/buttons', pathMatch: 'full'},
       {path: 'user', canActivate: [AuthGuard], component: LoginUserComponent},
-      // {path: 'set-username', canActivate: [AuthGuard], component: SetUsernameComponent},
+      {path: 'set-username', canActivate: [SocialAuthGuard], component: SetUsernameComponent},
       {path: 'buttons', component: LoginRegisterButtonsComponent},
       {path: 'forms', component: LoginFormsComponent},
       {path: 'forgot-password', component: ForgotPasswordComponent},

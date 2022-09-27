@@ -3,7 +3,7 @@
   <form class="registration__form" [formGroup]="registerFormGroup" (ngSubmit)="registerUser()" >
     <div class="form-group">
       <label class="font-weight-normal" for="loginInput">Username:</label>
-      <input type="text" class="form-control"
+      <input maxlength="20" type="text" class="form-control"
              formControlName="username" id="loginInput" placeholder="Username">
       <div class="center__alert" *ngIf="(registerFormGroup.controls['username'].invalid &&
       registerFormGroup.controls['username'].touched) || registerFormGroup.controls['username'].dirty">

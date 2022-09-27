@@ -17,9 +17,10 @@ export class UserService {
 
   private isFacebookOrGoogleBehaviour = new BehaviorSubject<string>('');
   isFacebookOrGoogleCall = this.isFacebookOrGoogleBehaviour.asObservable();
-  setIsFacebookOrGoogleCall (cityId: string) {
-    this.isFacebookOrGoogleBehaviour.next(cityId)
+  setIsFacebookOrGoogleCall (platformName: string) {
+    this.isFacebookOrGoogleBehaviour.next(platformName)
   }
+
   addUserToGoogleDb(user: userGoogleDb) {
     console.log(user)
     const headers = {'Content-Type': "application/json"}
@@ -29,7 +30,7 @@ export class UserService {
   addUserToFacebookDb(user: userFacebookDb) {
     console.log(user)
     const headers = {'Content-Type': "application/json"}
-    let userObject = {id: user.userId, username: user.username}
+    let userObject: userFacebookDb = {userId: user.userId, username: user.username, email: user.email, firstName: user.firstName, lastName: user.lastName}
     return this.http.post<readDataFromObject>(this.rootUrl + "/addUserToFacebookDb", JSON.stringify(userObject), {headers})
   }
   checkGoogleUserAlreadyExists(email: string): Observable<isUserExist> {
@@ -58,9 +59,9 @@ export class UserService {
     return this.http.post<Observable<User>>(this.rootUrl + "/loginUser", JSON.stringify(user), {headers})
   }
 
-  changeUsername(username: string, oldUsername: string): Observable<isUserExist>{
+  changeUsername(username: string, oldUsername: string, database: string): Observable<isUserExist>{
     const headers = {'Content-Type': "application/json"}
-    let usernameObject = {username: username, oldUsername: oldUsername}
+    let usernameObject = {username: username, oldUsername: oldUsername, database: database}
     console.log(usernameObject.username, usernameObject.oldUsername)
     return this.http.post<isUserExist>(this.rootUrl + "/changeUsername", JSON.stringify(usernameObject), {headers})
   }
