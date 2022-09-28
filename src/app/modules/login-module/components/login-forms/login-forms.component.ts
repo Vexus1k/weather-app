@@ -16,7 +16,7 @@ import {
 import { Observable } from 'rxjs';
 import { WeatherService } from 'src/app/core/services/weather.service';
 import { ViewChild,ElementRef } from '@angular/core'
-import {ChatService} from "../../../../core/services/chat.service";
+
 
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {transform} from "lodash";
@@ -43,7 +43,7 @@ export class LoginFormsComponent implements OnInit {
   constructor( private ngZone: NgZone,
               private errorService: ErrorService, private formBuilder: UntypedFormBuilder, private userService: UserService,
               private router: Router, private auth: AuthService, private weatherService: WeatherService,
-               private signInService: ChatService, private authService: SocialAuthService,
+                private authService: SocialAuthService,
                private ref : ChangeDetectorRef
 
   ){}
@@ -51,10 +51,6 @@ export class LoginFormsComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.user = user;
     });
-    this.signInService.userProfileSubject.subscribe( (info: UserInfo) => {
-      console.log(info)
-      this.userInfo = info
-    })
     this.loginFormGroup = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]

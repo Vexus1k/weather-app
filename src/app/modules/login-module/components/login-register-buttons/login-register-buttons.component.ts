@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import ScrollReveal from "scrollreveal";
-import {ChatService} from "../../../../core/services/chat.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,12 +9,7 @@ import {Router} from "@angular/router";
 })
 export class LoginRegisterButtonsComponent implements OnInit {
 
-  constructor(private googleSignUpService: ChatService, router: Router) {
-    console.log("2222", googleSignUpService.isLoggedIn())
-    if(googleSignUpService.isLoggedIn()){
-      console.log("1111", googleSignUpService.isLoggedIn())
-      router.navigate(['/login/user']).then()
-    }
+  constructor(router: Router) {
   }
 
   ngOnInit(): void {
