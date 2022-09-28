@@ -1,5 +1,9 @@
 {
   "name": "weather-app",
+  "engines": {
+    "npm" : ">=8.0.0 <9.0.0",
+    "node" : ">=16.0.0 <17.0.0"
+  },
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,9 +15,6 @@
     "startB": "browserify src/assets/scripts/send-email.js > ./bundle.js -d"
   },
   "private": true,
-  "engines": {
-    "node": "^8 || ^10"
-  },
   "dependencies": {
     "@angular/animations": "^14.2.3",
     "@angular/cdk": "^14.2.1",
