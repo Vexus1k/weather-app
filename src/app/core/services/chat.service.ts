@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, ReplaySubject, Subject} from 'rxjs-compat/Rx';
 import { WebsocketService } from './websocket.service';
-import { environment } from '../environments/environment'
+import { environment } from '../../../environments/environment'
 import {AuthConfig, OAuthService} from "angular-oauth2-oidc";
 import {UserInfo} from "../models/global-interfaces";
 
