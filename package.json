@@ -76,7 +76,7 @@
     "path-browserify": "^1.0.1",
     "remixicon": "^2.5.0",
     "requirejs": "^2.3.6",
-    "rxjs": "^6.6.7",
+    "rxjs": "^7.5.7",
     "rxjs-compat": "^6.6.7",
     "rxjs-compatibility": "0.0.3",
     "scrollreveal": "^4.0.9",
