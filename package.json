@@ -1,8 +1,8 @@
 {
   "name": "weather-app",
   "engines": {
-    "npm" : ">=8.0.0 <9.0.0",
-    "node" : ">=16.0.0 <17.0.0"
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
   },
   "version": "0.0.0",
   "scripts": {
@@ -58,7 +58,7 @@
     "google-maps": "^4.3.3",
     "google-signin-button": "^2.0.0",
     "gsap": "^3.11.2",
-    "gulp": "^4.0.2",
+    "gulp": "^3.9.1",
     "hammerjs": "^2.0.8",
     "html-loader": "^3.1.2",
     "iconify": "^1.4.0",
