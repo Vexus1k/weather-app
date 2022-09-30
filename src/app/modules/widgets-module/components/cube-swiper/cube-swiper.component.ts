@@ -27,36 +27,16 @@ export class CubeSwiperComponent implements OnInit{
   constructor(private errorService: ErrorService, private email: EmailService, private formBuilder: UntypedFormBuilder, private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    // this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    // this.weatherService.cityId.subscribe(cityId => {
-    //   if (cityId != this.actuallyIdCity) {
-    //     this.getAdvancedWeatherInfo()
-    //     this.getGeneralWeatherInfo()
-    //   }
-    // })
-    // this.getAdvancedWeatherInfo()
-    // this.getGeneralWeatherInfo()
-    this.weatherService.currentTime.subscribe((currentTime) => {
-      let currentHour
-      if(Number(currentTime![0]) === 0){
-        currentHour = currentTime![1]
-      }
-      else{
-        currentHour = currentTime![0] + currentTime![1]
-      }
-      if(Number(currentHour) >= 4 && Number(currentHour) <= 11){
-        this.dayPartName = "Morning"
-      }
-      else if(Number(currentHour) >= 12 && Number(currentHour) <= 16){
-        this.dayPartName = "Afternoon"
-      }
-      else if(Number(currentHour) >= 17 && Number(currentHour) <= 20){
-        this.dayPartName = "Evening"
-      }
-      else if(Number(currentHour) >= 21 || Number(currentHour) <= 3){
-        this.dayPartName = "Night"
+    this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    this.weatherService.cityId.subscribe(cityId => {
+      if (cityId != this.actuallyIdCity) {
+        this.getAdvancedWeatherInfo()
+        this.getGeneralWeatherInfo()
       }
     })
+    this.getAdvancedWeatherInfo()
+    this.getGeneralWeatherInfo()
+    this.initializeDayPart()
     this.newsletterEmailFormGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]]
     })
@@ -126,5 +106,29 @@ export class CubeSwiperComponent implements OnInit{
     this.email.sendMail(email).subscribe( () => {
     }, ()=>{}, ()=>{this.errorService.setErrorStatusAndMessage('Email was sent.', true)})
     this.newsletterEmailFormGroup.reset()
+  }
+
+  initializeDayPart(){
+    this.weatherService.currentTime.subscribe((currentTime) => {
+      let currentHour
+      if(Number(currentTime![0]) === 0){
+        currentHour = currentTime![1]
+      }
+      else{
+        currentHour = currentTime![0] + currentTime![1]
+      }
+      if(Number(currentHour) >= 4 && Number(currentHour) <= 11){
+        this.dayPartName = "Morning"
+      }
+      else if(Number(currentHour) >= 12 && Number(currentHour) <= 16){
+        this.dayPartName = "Afternoon"
+      }
+      else if(Number(currentHour) >= 17 && Number(currentHour) <= 20){
+        this.dayPartName = "Evening"
+      }
+      else if(Number(currentHour) >= 21 || Number(currentHour) <= 3){
+        this.dayPartName = "Night"
+      }
+    })
   }
 }
