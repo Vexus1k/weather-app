@@ -8,7 +8,7 @@
       <img alt="" class="location__icon" [src]="locationIconPath" (mousedown)="holdElementOnView($event)" (click)="getCityFromCoords()">
     </div>
     <div class="nav__title">
-      <h2>{{ locationInfo?.name || 'Katowice' }}</h2>
+      <h2>{{ locationInfo?.name }}</h2>
       <p>{{this.localTimeForCurrentCity + ' ' + (isAmHour ? 'AM' : '')}}</p>
     </div>
     <div class="nav__toggle">

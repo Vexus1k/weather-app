@@ -25,7 +25,7 @@ export class WeatherService {
     this.sunsetTimeBehaviour.next(sunsetTime)
   }
 
-  private currentTimeBehaviour = new BehaviorSubject<string | null>(this.getCookie('currentTime'));
+  private currentTimeBehaviour = new BehaviorSubject<string>('');
   currentTime = this.currentTimeBehaviour.asObservable();
   setCurrentTime (currentTime: string) {
     this.currentTimeBehaviour.next(currentTime)

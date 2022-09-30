@@ -27,15 +27,15 @@ export class CubeSwiperComponent implements OnInit{
   constructor(private errorService: ErrorService, private email: EmailService, private formBuilder: UntypedFormBuilder, private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    this.weatherService.cityId.subscribe(cityId => {
-      if (cityId != this.actuallyIdCity) {
-        this.getAdvancedWeatherInfo()
-        this.getGeneralWeatherInfo()
-      }
-    })
-    this.getAdvancedWeatherInfo()
-    this.getGeneralWeatherInfo()
+    // this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    // this.weatherService.cityId.subscribe(cityId => {
+    //   if (cityId != this.actuallyIdCity) {
+    //     this.getAdvancedWeatherInfo()
+    //     this.getGeneralWeatherInfo()
+    //   }
+    // })
+    // this.getAdvancedWeatherInfo()
+    // this.getGeneralWeatherInfo()
     this.weatherService.currentTime.subscribe((currentTime) => {
       let currentHour
       if(Number(currentTime![0]) === 0){

@@ -51,7 +51,6 @@ export class SunMoonWidgetComponent implements OnInit {
       this.initializeSunriseAndSunsetHours()
       this.sunGraphStatusChanged()
     }), 7000)
-
   }
 
   initializeSunriseAndSunsetHours(){
@@ -62,9 +61,7 @@ export class SunMoonWidgetComponent implements OnInit {
     // @ts-ignore
     this.sunset.setHours(this.sunsetHour[0] + this.sunsetHour[1], this.sunsetHour[3] + this.sunsetHour[4], this.sunsetHour[6] + this.sunsetHour[7])
     let sunsetTime = this.sunset.getTime()
-    let sunriseTime = this.sunrise.getTime()
     this.weatherService.setSunsetTime(String(sunsetTime))
-    this.weatherService.setCookie("sunsetTime", String(sunsetTime), 30)
   }
 
   sunGraphStatusChanged(){

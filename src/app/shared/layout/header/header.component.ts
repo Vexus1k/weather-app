@@ -30,8 +30,8 @@ export class HeaderComponent implements OnInit, DoCheck {
   locationInfo: readDataFromObject | undefined;
   inputValueCity: string;
   oldValueCity: string;
-  localTimeForCurrentCity: string;
-  isAmHour: boolean = true;
+  localTimeForCurrentCity: string = "";
+  isAmHour: boolean;
   navMenu: HTMLElement | null;
   timeInterval: any;
 
@@ -42,14 +42,13 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    this.inputValueCity = this.weatherService.getCookie("city") || "Katowice"
+    this.inputValueCity = this.weatherService.getCookie("city") || "";
     this.oldValueCity = this.inputValueCity
     this.navMenu = document.getElementById('nav-menu');
     this.isLoggedIn = this.auth.isLoggedIn()
     this.alertCondition = this.screenWidth > 1039 && this.isLoggedIn || !this.isLoggedIn
     this.getScreenSize()
     this.getObjectWithLocationInfo()
-    this.getLocalTimeForCurrentCity()
     this.getLocalization()
     ScrollReveal().reveal('.header', {
       distance: '60px',
@@ -159,12 +158,10 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.getLocalTimeForCurrentCity()
       this.inputValueCity = ''
     })
-
   }
 
   getLocalTimeForCurrentCity() {
-    let subscription = this.weatherService.getLocalTimeForCurrentCity(this.locationInfo?.timezone || 'Europe/Warsaw')
-      .pipe()
+    let subscription = this.weatherService.getLocalTimeForCurrentCity(this.locationInfo?.timezone)
       .subscribe((res: readDataFromObject)=> {
         if(this.timeInterval){
           clearInterval(this.timeInterval);
@@ -201,7 +198,7 @@ export class HeaderComponent implements OnInit, DoCheck {
             countHour += 1
             countMinutes = 0
           }
-          value = countHour + ':' + (countMinutes < 10 ? `0${countMinutes}` : countMinutes)
+          value = countHour + ':' + (countMinutes < 10 ? `0${countMinutes}` : countMinutes);
           this.localTimeForCurrentCity = value as string
         }, 1000)
       }
@@ -243,7 +240,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   scrollToElement(id: string, el: HTMLElement) {
-    this.navMenu?.classList.remove('show-menu');
+    this.closeMenu()
     document.getElementById(id)?.scrollIntoView()
     let elements: NodeListOf<HTMLElement> = document.querySelectorAll('.nav-link')
     elements.forEach(el => el.classList.add('active-link'))
