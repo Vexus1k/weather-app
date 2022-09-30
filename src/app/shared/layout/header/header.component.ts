@@ -2,7 +2,7 @@ import {
   ChangeDetectorRef,
   Component,
   DoCheck,
-  HostListener, Input,
+  HostListener,
   OnInit
 } from '@angular/core';
 import ScrollReveal from "scrollreveal";
@@ -12,7 +12,7 @@ import {WeatherService} from "../../../core/services/weather.service";
 import {readDataFromObject} from "../../../core/models/global-interfaces";
 import { UntilDestroy } from '@ngneat/until-destroy';
 import {first, take, takeUntil, tap} from "rxjs/operators";
-import {interval} from "rxjs";
+import {interval, TimeInterval} from "rxjs";
 // import NodeGeocoder from "node-geocoder";
 @UntilDestroy({ checkProperties: true })
 
@@ -21,6 +21,7 @@ import {interval} from "rxjs";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit, DoCheck {
   locationIconPath: string = '../../../../../assets/photos/location-icon.svg';
   screenWidth: number;
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   localTimeForCurrentCity: string;
   isAmHour: boolean = true;
   navMenu: HTMLElement | null;
+  timeInterval: any;
 
   ngDoCheck() {
     this.isLoggedIn = this.auth.isLoggedIn()
@@ -47,10 +49,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.alertCondition = this.screenWidth > 1039 && this.isLoggedIn || !this.isLoggedIn
     this.getScreenSize()
     this.getObjectWithLocationInfo()
-    // this.getLocalTimeForCurrentCity()
-    // setInterval(()=> {
-    //   this.getLocalTimeForCurrentCity()
-    // }, 2000)
+    this.getLocalTimeForCurrentCity()
     this.getLocalization()
     ScrollReveal().reveal('.header', {
       distance: '60px',
@@ -134,7 +133,6 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.weatherService.setCookie("cityId", res.locations[0].id, 30)
       }
       else{
-        console.log(res)
         this.errorService.setErrorStatusAndMessage('Cannot find city', false)
       }
     })
@@ -158,35 +156,54 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.weatherService.setCookie("cityId", res.locations[0].id, 30)
       this.locationInfo = res.locations[0]
       this.weatherService.setCityId(res.locations[0].id)
-      // this.getLocalTimeForCurrentCity()
+      this.getLocalTimeForCurrentCity()
       this.inputValueCity = ''
     })
 
   }
 
   getLocalTimeForCurrentCity() {
-    console.log("123")
     let subscription = this.weatherService.getLocalTimeForCurrentCity(this.locationInfo?.timezone || 'Europe/Warsaw')
       .pipe()
       .subscribe((res: readDataFromObject)=> {
+        if(this.timeInterval){
+          clearInterval(this.timeInterval);
+        }
         this.localTimeForCurrentCity = JSON.stringify(res.datetime)
         let keys = Object.values(this.localTimeForCurrentCity);
-        let hour: string | undefined;
-        let value: string | undefined;
+        let hour!: string;
+        let minutes!: string;
+        let seconds!: string;
+        let value!: string;
         for (let i = 0; i < keys.length; i++) {
-          value = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13] +
-            this.localTimeForCurrentCity[14] + this.localTimeForCurrentCity[15] + this.localTimeForCurrentCity[16];
-          hour = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13]
+          hour = this.localTimeForCurrentCity[12] + this.localTimeForCurrentCity[13];
+          minutes = this.localTimeForCurrentCity[15] + this.localTimeForCurrentCity[16];
+          seconds = this.localTimeForCurrentCity[18] + this.localTimeForCurrentCity[19];
+          value = hour + this.localTimeForCurrentCity[14] + minutes;
         }
         if(Number(hour) >= 12){
           this.isAmHour = false;
         }
-        if(Number(hour) === 4 || Number(hour) === 12 || Number(hour) === 17 || Number(hour) === 21){
-          this.weatherService.setCookie("currentTime", value as string, 30)
-          this.weatherService.setCurrentTime(value as string)
-        }
+        this.weatherService.setCookie("currentTime", value as string, 30)
+        this.weatherService.setCurrentTime(value as string)
         this.sendCurrentTimeToInitializeApp(value as string)
         this.localTimeForCurrentCity = value as string
+        let countSeconds = Number(seconds)
+        let countMinutes = Number(minutes)
+        let countHour = Number(hour)
+        this.timeInterval = setInterval(() => {
+          countSeconds += 1
+          if(countSeconds == 60){
+            countMinutes += 1
+            countSeconds = 0
+          }
+          if(countMinutes == 60){
+            countHour += 1
+            countMinutes = 0
+          }
+          value = countHour + ':' + (countMinutes < 10 ? `0${countMinutes}` : countMinutes)
+          this.localTimeForCurrentCity = value as string
+        }, 1000)
       }
     )
     setTimeout( () => {subscription.unsubscribe()}, 1000)
@@ -209,8 +226,6 @@ export class HeaderComponent implements OnInit, DoCheck {
         (position) => {
           let latitude = String(position.coords.latitude)
           let longitude = String(position.coords.longitude)
-          console.log('latitude', position.coords.latitude,
-            'longitude', position.coords.longitude);
           let a = this.weatherService.getCityFromCoords(latitude, longitude).subscribe((res: readDataFromObject) => {
             this.weatherService.setCookie("city", res.city, 30)
             this.inputValueCity = this.weatherService.getCookie("city")!

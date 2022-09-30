@@ -18,11 +18,19 @@ export class WeatherService {
   setCityId (cityId: string) {
     this.cityIdBehaviour.next(cityId)
   }
+
+  private sunsetTimeBehaviour = new BehaviorSubject<string | null>(this.getCookie('sunsetTime'));
+  sunsetTime = this.sunsetTimeBehaviour.asObservable();
+  setSunsetTime (sunsetTime: string) {
+    this.sunsetTimeBehaviour.next(sunsetTime)
+  }
+
   private currentTimeBehaviour = new BehaviorSubject<string | null>(this.getCookie('currentTime'));
   currentTime = this.currentTimeBehaviour.asObservable();
   setCurrentTime (currentTime: string) {
     this.currentTimeBehaviour.next(currentTime)
   }
+
   getHourlyWeatherInfo(){
     const headers = {'Content-Type': "application/json"}
     let cityId: string = this.getCookie('cityId')!
@@ -35,20 +43,24 @@ export class WeatherService {
     let id = {id: cityId}
     return this.http.post<readDataFromObject>(this.rootUrl + "/getAdvancedWeatherInfo", JSON.stringify(id), {headers})
   }
+
   getGeneralWeatherInfo(){
     const headers = {'Content-Type': "application/json"}
     let cityId: string = this.getCookie('cityId')!
     let id = {id: cityId}
     return this.http.post<readDataFromObject>(this.rootUrl + "/getGeneralWeatherInfo", JSON.stringify(id), {headers})
   }
+
   getLocationId(city: any){
     const headers = {'Content-Type': "application/json"}
     let location = {city: city}
     return this.http.post<readDataFromObject>(this.rootUrl + "/getLocationId", JSON.stringify(location), {headers})
   }
+
   getLocalTimeForCurrentCity(timezone: string){
     return this.http.get(this.timeZoneApiURL + timezone)
   }
+
   getCityFromCoords(lat: string, lon: string){
     const headers = {'Content-Type': "application/json"}
     let coords = {lat: lat, lon: lon}
@@ -64,6 +76,7 @@ export class WeatherService {
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
   }
+
   getCookie(name: string) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -74,5 +87,4 @@ export class WeatherService {
     }
     return null;
   }
-
 }

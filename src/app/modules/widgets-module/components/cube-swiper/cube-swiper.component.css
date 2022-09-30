@@ -7,11 +7,11 @@
 .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal .swiper-pagination-bullets {
   bottom: 0;
 }
-.swiper-container-horizontal .swiper-pagination .swiper-pagination-bullet {
+.swiper-container-horizontal >>> .swiper-pagination >>> .swiper-pagination-bullet {
   opacity: 0.45;
   background: #FFF!important;
 }
-.swiper-container-horizontal .swiper-pagination .swiper-pagination-bullet-active {
+.swiper-container-horizontal >>> .swiper-pagination >>> .swiper-pagination-bullet-active {
   background: white!important;
   opacity: 1;
 }

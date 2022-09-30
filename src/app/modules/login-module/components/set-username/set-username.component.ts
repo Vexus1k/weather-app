@@ -1,26 +1,28 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {ErrorService} from "../../../../core/services/error.service";
-import {UserService} from "../../../../core/services/user.service";
-import {Router} from "@angular/router";
-import {AuthService} from "../../../../core/services/auth.service";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { ErrorService } from "../../../../core/services/error.service";
+import { UserService } from "../../../../core/services/user.service";
+import { Router } from "@angular/router";
+import { AuthService } from "../../../../core/services/auth.service";
 import { WeatherService } from 'src/app/core/services/weather.service';
-import {SocialAuthService} from "angularx-social-login";
-import {userFacebookDb} from "../../../../core/models/global-interfaces";
-
+import { SocialAuthService } from "angularx-social-login";
+import { userFacebookDb } from "../../../../core/models/global-interfaces";
 
 @Component({
   selector: 'app-set-username',
   templateUrl: './set-username.component.html',
   styleUrls: ['./set-username.component.css', "../../../../../../node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss"]
 })
+
 export class SetUsernameComponent implements OnInit {
   usernameFormGroup: UntypedFormGroup
   user: any;
   loggedIn!: boolean;
+
   constructor(private weatherService: WeatherService, private ngZone: NgZone, private errorService: ErrorService,
               private formBuilder: UntypedFormBuilder, private userService: UserService,
-              private router: Router, private auth: AuthService, private authService: SocialAuthService) { }
+              private router: Router, private auth: AuthService, private authService: SocialAuthService)
+  { }
 
   ngOnInit(): void {
     this.authService.authState.subscribe((user) => {
@@ -40,12 +42,9 @@ export class SetUsernameComponent implements OnInit {
     (res)=> {
         this.ngZone.run(()=> {
           isUsernameReadyToUse = res
-            console.log(isUsernameReadyToUse)
             if (isUsernameReadyToUse) {
               this.userService.isFacebookOrGoogleCall.subscribe((res) => {
-                console.log(res)
                 if(res == 'facebook'){
-                  console.log(this.user)
                   let user: userFacebookDb = {
                     userId: String(this.user.id),
                     username: String(username),
@@ -71,6 +70,7 @@ export class SetUsernameComponent implements OnInit {
       }
     )
   }
+
   logout(){
     this.auth.logout()
   }

@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import ScrollReveal from "scrollreveal";
 
 @Component({
@@ -7,8 +7,8 @@ import ScrollReveal from "scrollreveal";
   styleUrls: ['./precipitations-widget.component.css'],
 
 })
+
 export class PrecipitationsWidgetComponent implements OnInit {
-  dropOfWaterPath: string = "../../../../../assets/photos/water-1.1s-200px.svg";
   constructor() { }
 
   ngOnInit(): void {

@@ -1,20 +1,16 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import {UserService} from "src/app/core/services/user.service";
-import ScrollReveal from "scrollreveal";
-
-import {readDataFromObject, UserInfo} from "../../../../core/models/global-interfaces";
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {ErrorService} from "../../../../core/services/error.service";
-import {SocialAuthService} from "angularx-social-login";
-
-declare var FB: any;
+import { UserService } from "src/app/core/services/user.service";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { ErrorService } from "../../../../core/services/error.service";
+import { SocialAuthService } from "angularx-social-login";
 
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
   styleUrls: ['./login-user.component.css', "../../../../../../node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss"]
 })
+
 export class LoginUserComponent implements OnInit {
   declineIconPath: string = '../../../../../assets/photos/decline-icon.svg';
   acceptIconPath: string = '../../../../../assets/photos/accept-icon.svg';
@@ -38,17 +34,14 @@ export class LoginUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedInByFacebook = this.auth.isLoggedInByFacebook()
-
     this.changeUsernameFormGroup = this.formBuilder.group({
       username: [this.auth.getUsername(), [Validators.required]]
     })
-    console.log("123")
     this.username = this.auth.getUsername()
-    console.log(localStorage.getItem('google_auth'))
   }
+
   showHideMenu() {
     let menuIcons = document.querySelector(".menu__icons");
-    console.log(menuIcons)
     menuIcons?.classList.toggle('show')
     this.showMenu =! this.showMenu
   }
@@ -61,9 +54,9 @@ export class LoginUserComponent implements OnInit {
     menuIcons?.classList.remove('show')
     this.showMenu = false
   }
+
   changeUsername() {
     if(this.changeUsernameFormGroup.value.username == ''){
-      console.log("dasdsad")
       this.errorService.setErrorStatusAndMessage('Enter the username.', false)
       return
     }
@@ -95,10 +88,10 @@ export class LoginUserComponent implements OnInit {
       })
     })
   }
+
   switchEditMode() {
     this.isEditMode =! this.isEditMode
     this.changeUsernameFormGroup.value.username = this.auth.getUsername()
-    console.log(this.auth.getUsername())
   }
 
   logout() {

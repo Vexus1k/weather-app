@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import ScrollReveal from "scrollreveal";
 import { PercentSignAddPipePipe } from 'src/app/core/pipes/percent-sign-add-pipe.pipe';
-import {readDataFromObject} from "../../../../core/models/global-interfaces";
-import {WeatherService} from "../../../../core/services/weather.service";
-import {take} from "rxjs/operators";
+import { readDataFromObject } from "../../../../core/models/global-interfaces";
+import { WeatherService } from "../../../../core/services/weather.service";
+import { take } from "rxjs/operators";
 
 @Component({
   selector: 'app-sun-moon-widget',
   templateUrl: './sun-moon-widget.component.html',
   styleUrls: ['./sun-moon-widget.component.css']
 })
+
 export class SunMoonWidgetComponent implements OnInit {
   sunriseHour: string;
   sunsetHour: string;
@@ -20,18 +21,20 @@ export class SunMoonWidgetComponent implements OnInit {
   midNightHourDay: Date = new Date();
   advancedWeatherInfoObject: readDataFromObject;
   actuallyIdCity: string | null;
-
+  timeInterval: any;
+  secondTimeInterval: any;
+  thirdTimeInterval: any;
 
   constructor(private percentSignPipe: PercentSignAddPipePipe, private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    // this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    // this.weatherService.cityId.subscribe(cityId => {
-    //   if (cityId != this.actuallyIdCity) {
-    //     this.getAdvancedWeatherInfo()
-    //   }
-    // })
-    // this.getAdvancedWeatherInfo()
+    this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    this.weatherService.cityId.subscribe(cityId => {
+      if (cityId != this.actuallyIdCity) {
+        this.getAdvancedWeatherInfo()
+      }
+    })
+    this.getAdvancedWeatherInfo()
     this.midNightHourDay.setHours(0, 0, 0)
     this.midNightHourNight.setHours(24, 0, 0)
     ScrollReveal().reveal('.parameter__sun-moon', {
@@ -40,19 +43,18 @@ export class SunMoonWidgetComponent implements OnInit {
       origin: 'bottom',
       delay: 300
     });
-
   }
+
   getAdvancedWeatherInfo(){
     setTimeout(()=>this.weatherService.getAdvancedWeatherInfo().pipe(take(1)).subscribe((res) => {
-      console.log(res)
       this.advancedWeatherInfoObject = res.forecast[0];
       this.initializeSunriseAndSunsetHours()
       this.sunGraphStatusChanged()
     }), 7000)
 
   }
+
   initializeSunriseAndSunsetHours(){
-    console.log(typeof this.advancedWeatherInfoObject.sunrise, typeof this.advancedWeatherInfoObject.sunset)
     this.sunriseHour = this.advancedWeatherInfoObject.sunrise
     this.sunsetHour = this.advancedWeatherInfoObject.sunset
     // @ts-ignore
@@ -61,13 +63,16 @@ export class SunMoonWidgetComponent implements OnInit {
     this.sunset.setHours(this.sunsetHour[0] + this.sunsetHour[1], this.sunsetHour[3] + this.sunsetHour[4], this.sunsetHour[6] + this.sunsetHour[7])
     let sunsetTime = this.sunset.getTime()
     let sunriseTime = this.sunrise.getTime()
+    this.weatherService.setSunsetTime(String(sunsetTime))
     this.weatherService.setCookie("sunsetTime", String(sunsetTime), 30)
   }
 
-  t(){
-    console.log(this.actuallyTime.getTime() > this.sunrise.getTime() || this.actuallyTime.getTime() < this.sunset.getTime(), this.actuallyTime.getTime() < this.sunrise.getTime() || this.actuallyTime.getTime() > this.sunset.getTime(), this.actuallyTime.getTime(), this.sunset.getTime(), this.sunrise.getTime())
-  }
   sunGraphStatusChanged(){
+    if(this.timeInterval || this.secondTimeInterval || this.thirdTimeInterval){
+      clearInterval(this.timeInterval)
+      clearInterval(this.secondTimeInterval)
+      clearInterval(this.thirdTimeInterval)
+    }
     let sunGraphMask = document.getElementById('sunGraphMask')
     let firstPoint = -83.165;
     let secondPoint = -46.86;
@@ -80,7 +85,7 @@ export class SunMoonWidgetComponent implements OnInit {
       let partToAddPerMinute = ((firstPoint * timeToSunsetInPercents) / 100) / (dayTime * (timeToSunsetInPercents / 100))
       // @ts-ignore
       sunGraphMask!.style.x = this.percentSignPipe.transform(amountToAddToFirstPoint);
-      setInterval(() => {
+      this.timeInterval = setInterval(() => {
         amountToAddToFirstPoint += partToAddPerMinute;
         // @ts-ignore
         sunGraphMask!.style.x = this.percentSignPipe.transform(amountToAddToFirstPoint);
@@ -100,7 +105,7 @@ export class SunMoonWidgetComponent implements OnInit {
         let partAddPerMinute = ((firstPoint * timeToMidNightInPercents) / 100) / (nightTime * (timeToMidNightInPercents / 100)) / 2
         // @ts-ignore
         sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
-        setInterval(() => {
+        this.secondTimeInterval = setInterval(() => {
           setGraphStatus += partAddPerMinute;
           // @ts-ignore
           sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
@@ -114,7 +119,7 @@ export class SunMoonWidgetComponent implements OnInit {
         let partAddPerMinute = ((firstPoint * timeToSunriseInPercents) / 100) / (nightTime * (timeToSunriseInPercents / 100)) / 2
         // @ts-ignore
         sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
-        setInterval(() => {
+        this.thirdTimeInterval = setInterval(() => {
           setGraphStatus += partAddPerMinute;
           // @ts-ignore
           sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);

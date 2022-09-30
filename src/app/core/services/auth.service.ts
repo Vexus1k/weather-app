@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   constructor(private router: Router) {}
 
@@ -40,13 +41,11 @@ export class AuthService {
   isLoggedInByFacebook() {
     return this.getFacebookToken() !== null;
   }
-// || localStorage.getItem('google_auth') !== null
+
   logout() {
-    // this.authService.signOut().then()
     localStorage.removeItem('facebookToken');
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     this.router.navigateByUrl('/login/forms').then();
   }
-
 }

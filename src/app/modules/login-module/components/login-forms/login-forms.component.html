@@ -12,8 +12,8 @@
   </svg>
   <form class="login__form" [formGroup]="loginFormGroup" (ngSubmit)="signIn()">
     <div class="form-group">
-      <label maxlength="20" class="font-weight-normal" for="loginInput">Username:</label>
-      <input type="text" class="form-control" id="loginInput" placeholder="Username" formControlName="username">
+      <label class="font-weight-normal" for="loginInput">Username:</label>
+      <input maxlength="20" type="text" class="form-control" id="loginInput" placeholder="Username" formControlName="username">
       <div class="center__alert" *ngIf="(loginFormGroup.controls['username'].touched) || loginFormGroup.controls['username'].dirty">
         <small *ngIf="loginFormGroup.controls['username'].errors?.required" class="text-danger">Username is required</small>
       </div>
@@ -33,16 +33,14 @@
     <li class="icon facebook" (click)="signInWithFB()">
       <span class="tooltip">Facebook</span>
       <span><i class="fab fa-facebook-f"></i></span>
-      <div id="chujje"></div>
     </li>
     <li class="icon google" (click)="signInWithGoogle()">
       <span class="tooltip">Google</span>
       <span><i class="fab fa-google fa-1x"></i></span>
-      <div id="chujj"></div>
     </li>
   </ul>
   <svg [routerLink]="['/login/buttons']" class="svg__arrow" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="white" d="m12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8l-8-8z"/></g></svg>
-  <p class="forgot-password__button"[routerLink]="['/login/forgot-password']">Forgot password?</p>
+  <p class="forgot-password__button" [routerLink]="['/login/forgot-password']">Forgot password?</p>
   <ul class="squares">
     <li></li>
     <li></li>

@@ -23,6 +23,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     SunMoonWidgetComponent,
     CubeSwiperComponent,
     ScrollUpThemeSwitcherComponent,
+    PercentSignAddPipePipe
   ],
   imports: [
     CommonModule,
@@ -36,6 +37,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     SunMoonWidgetComponent,
     CubeSwiperComponent,
     ScrollUpThemeSwitcherComponent,
+
   ]
 })
 export class WidgetModule { }

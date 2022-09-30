@@ -1,18 +1,18 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {SwiperOptions} from "swiper";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SwiperOptions } from "swiper";
 import ScrollReveal from "scrollreveal";
 import { WeatherService } from 'src/app/core/services/weather.service';
-import {map, take} from "rxjs/operators";
-import {readDataFromObject, weatherIcons} from "../../../../core/models/global-interfaces";
-
+import { map } from "rxjs/operators";
+import { readDataFromObject } from "../../../../core/models/global-interfaces";
 
 @Component({
   selector: 'app-forecast-widget',
   templateUrl: './forecast-widget.component.html',
   styleUrls: ['./forecast-widget.component.css']
 })
-export class ForecastWidgetComponent implements OnInit {
 
+export class ForecastWidgetComponent implements OnInit {
+  dayOfWeek: string;
   weatherInfo: any;
   advancedWeatherInfoObjects: any;
   hourlyWeatherInfoObjects: any;
@@ -24,20 +24,17 @@ export class ForecastWidgetComponent implements OnInit {
 
   constructor(private weatherService: WeatherService) { }
 
-
   ngOnInit(): void {
-    // this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    // this.weatherService.cityId.subscribe(cityId => {
-    //   console.log(this.actuallyIdCity, cityId)
-    //   if (cityId != this.actuallyIdCity) {
-    //     this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    //     console.log("I do forecast")
-    //     this.getHourlyWeatherInfo()
-    //     this.getAdvancedWeatherInfo()
-    //   }
-    // })
-    // this.getHourlyWeatherInfo()
-    // this.getAdvancedWeatherInfo()
+    this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    this.weatherService.cityId.subscribe(cityId => {
+      if (cityId != this.actuallyIdCity) {
+        this.actuallyIdCity = this.weatherService.getCookie("cityId")
+        this.getHourlyWeatherInfo()
+        this.getAdvancedWeatherInfo()
+      }
+    })
+    this.getHourlyWeatherInfo()
+    this.getAdvancedWeatherInfo()
     ScrollReveal().reveal('.forecast__widget', {
       distance: '60px',
       easing: 'ease-in-out',
@@ -45,6 +42,7 @@ export class ForecastWidgetComponent implements OnInit {
       delay: 300
     });
   }
+
   navigationConfig: SwiperOptions = {
     slidesPerView: 4,
     spaceBetween: 12,
@@ -54,6 +52,7 @@ export class ForecastWidgetComponent implements OnInit {
 
     }
   };
+
   temperatureListConfig: SwiperOptions = {
     init: false,
     direction: "vertical",
@@ -77,9 +76,13 @@ export class ForecastWidgetComponent implements OnInit {
     },
 
   }
+
   getWeatherIconFromStatusCode(statusCode: string){
     let actuallyTime: string = String(new Date().getTime());
-    let sunsetTime: string | null = this.weatherService.getCookie('sunsetTime')
+    let sunsetTime: string | null;
+    this.weatherService.sunsetTime.subscribe((res) => {
+      sunsetTime = res
+    })
     let iconSun: string = "../../../../../assets/photos/icon-sun.svg";
     let iconMoon: string = "../../../../../assets/photos/icon-moon.svg";
     let iconSnow: string = "../../../../../assets/photos/icon-snow.svg";
@@ -146,10 +149,7 @@ export class ForecastWidgetComponent implements OnInit {
     }
     return 0
   }
-  t(){
-    let sunsetHour = this.weatherService.getCookie('sunsetHour')
-    console.log(sunsetHour)
-  }
+
   getHourlyWeatherInfo(){
     //I have had to set this timeout there because of API limit request per second
     setTimeout(()=>this.hourlyWeatherInfoObjects = this.weatherService.getHourlyWeatherInfo().pipe(
@@ -157,6 +157,7 @@ export class ForecastWidgetComponent implements OnInit {
     ), 3000)
 
   }
+
   getAdvancedWeatherInfo(){
     //I have had to set this timeout there because of API limit request per second
     setTimeout(()=> this.advancedWeatherInfoObjects = this.weatherService.getAdvancedWeatherInfo().pipe(
@@ -164,11 +165,13 @@ export class ForecastWidgetComponent implements OnInit {
     ), 3000)
 
   }
+
   getDayOfWeek(date: string) {
     const dayOfWeek = new Date(date).getDay();
     return isNaN(dayOfWeek) ? null :
       ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
   }
+
   onReachEndNavigationSwiper(){
     if(this.navigationTempSwiper.swiperRef.isEnd){
       this.navigationTempSwiper.swiperRef.allowSlideNext = false
@@ -177,6 +180,7 @@ export class ForecastWidgetComponent implements OnInit {
       setTimeout(() => this.navigationTempSwiper.swiperRef.allowSlideNext = true, 200)
     }
   }
+
   onReachEndListSwiper(){
     if (this.listSwiper.swiperRef.isEnd) {
       this.listSwiper.swiperRef.allowSlideNext = false

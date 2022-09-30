@@ -22,36 +22,38 @@ export class UserService {
   }
 
   addUserToGoogleDb(user: userGoogleDb) {
-    console.log(user)
     const headers = {'Content-Type': "application/json"}
     let userObject = {email: user.email, username: user.username}
     return this.http.post<readDataFromObject>(this.rootUrl + "/addUserToGoogleDb", JSON.stringify(userObject), {headers})
   }
+
   addUserToFacebookDb(user: userFacebookDb) {
-    console.log(user)
     const headers = {'Content-Type': "application/json"}
     let userObject: userFacebookDb = {userId: user.userId, username: user.username, email: user.email, firstName: user.firstName, lastName: user.lastName}
     return this.http.post<readDataFromObject>(this.rootUrl + "/addUserToFacebookDb", JSON.stringify(userObject), {headers})
   }
+
   checkGoogleUserAlreadyExists(email: string): Observable<isUserExist> {
     const headers = {'Content-Type': "application/json"}
     let emailObject = {email: email}
     return this.http.post<isUserExist>(this.rootUrl + "/checkUserExistInGoogleDb", JSON.stringify(emailObject), {headers})
   }
+
   checkFacebookUserAlreadyExists(email: string): Observable<isUserExist> {
     const headers = {'Content-Type': "application/json"}
     let emailObject = {email: email}
     return this.http.post<isUserExist>(this.rootUrl + "/checkUserExistInFacebookDb", JSON.stringify(emailObject), {headers})
   }
+
   checkUsernameExistInAllDbs(username: string) {
     const headers = {'Content-Type': "application/json"}
     let usernameObject = {username: username}
     return this.http.post<boolean>(this.rootUrl + "/checkUsernameExistInAllDbs", JSON.stringify(usernameObject), {headers})
   }
 
-  registerUser(user: User):Observable<Observable<User>> {
+  registerUser(user: User) {
     const headers = {'Content-Type': "application/json"}
-    return this.http.post<Observable<User>>(this.rootUrl + "/registerUser", JSON.stringify(user), {headers})
+    return this.http.post<boolean>(this.rootUrl + "/registerUser", JSON.stringify(user), {headers})
   }
 
   loginUser(user: User):Observable<Observable<User>> {
@@ -62,14 +64,15 @@ export class UserService {
   changeUsername(username: string, oldUsername: string, database: string): Observable<isUserExist>{
     const headers = {'Content-Type': "application/json"}
     let usernameObject = {username: username, oldUsername: oldUsername, database: database}
-    console.log(usernameObject.username, usernameObject.oldUsername)
     return this.http.post<isUserExist>(this.rootUrl + "/changeUsername", JSON.stringify(usernameObject), {headers})
   }
+
   changePassword(username: string, password: string){
     const headers = {'Content-Type': "application/json"}
     let object = {username: username, password: password}
     return this.http.post<isUserExist>(this.rootUrl + "/changePassword", JSON.stringify(object), {headers})
   }
+
   checkPasswordValidation(value: string) {
     const isWhitespace = /^(?=.*\s)/;
     if (isWhitespace.test(value)) {

@@ -1,5 +1,4 @@
-import {Component, DoCheck, HostListener, OnInit} from '@angular/core';
-import ScrollReveal from "scrollreveal";
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ErrorService } from 'src/app/core/services/error.service';
 
@@ -8,6 +7,7 @@ import { ErrorService } from 'src/app/core/services/error.service';
   templateUrl: './scroll-up-theme-switcher.component.html',
   styleUrls: ['./scroll-up-theme-switcher.component.css']
 })
+
 export class ScrollUpThemeSwitcherComponent implements OnInit, DoCheck {
   darkStatus: boolean = true;
   optionStatus: string = "theme_1";
@@ -18,9 +18,11 @@ export class ScrollUpThemeSwitcherComponent implements OnInit, DoCheck {
   isLoggedIn: boolean;
 
   constructor(private auth: AuthService, private errorService: ErrorService) { }
+
   ngDoCheck() {
     this.isLoggedIn = this.auth.isLoggedIn();
   }
+
   ngOnInit(): void {
     this.isLoggedIn = this.auth.isLoggedIn();
     this.scrollUp = document.getElementById('scroll-up');
@@ -31,6 +33,7 @@ export class ScrollUpThemeSwitcherComponent implements OnInit, DoCheck {
       this.darkStatus = !this.darkStatus
     }
   }
+
   @HostListener('window:scroll', ['$event'])
   showScrollUpArrow($event: any) {
     if(scrollY >= 490) this.scrollUp?.classList.add('show-scroll'); else this.scrollUp?.classList.remove('show-scroll')
@@ -38,12 +41,15 @@ export class ScrollUpThemeSwitcherComponent implements OnInit, DoCheck {
       document.querySelector('.style-switchers-container')?.classList.remove("open")
     }
   }
+
   scrollToStartWebsite(){
     window.scrollTo(0,0)
   }
+
   showHideThemeSwitcher(){
     this.styleSwitchersContainer?.classList.toggle('open')
   }
+
   changeDayStatusForBackground(){
     this.darkStatus = !this.darkStatus
     if(this.darkStatus && this.pageBody){
@@ -53,50 +59,46 @@ export class ScrollUpThemeSwitcherComponent implements OnInit, DoCheck {
       this.pageBody.style.backgroundImage = "url(../assets/photos/night-option.jpg)"
     }
   }
+
   changeBackgroundOption(className: string){
     if(className == "option-1"){
       this.pageBody!.style.backgroundImage = "url(../assets/photos/option-1.jpg)"
       this.optionStatus = "option-1"
       this.darkStatus = true
       document.querySelector('.style-switchers-container')?.classList.remove('open')
-      console.log("1")
     }
     else if(className == "option-2"){
       this.pageBody!.style.backgroundImage = "url(../assets/photos/option-2.jpg)"
       this.optionStatus = "option-2"
       this.darkStatus = true
       document.querySelector('.style-switchers-container')?.classList.remove('open')
-      console.log("2")
     }
     else if(className == "option-3"){
       this.pageBody!.style.backgroundImage = "url(../assets/photos/option-3.jpg)"
       this.optionStatus = "option-3"
       this.darkStatus = true
       document.querySelector('.style-switchers-container')?.classList.remove('open')
-      console.log("3")
     }
     else if(className == "option-4"){
       this.pageBody!.style.backgroundImage = "url(../assets/photos/option-4.jpg)"
       this.optionStatus = "option-4"
       this.darkStatus = true
       document.querySelector('.style-switchers-container')?.classList.remove('open')
-      console.log("4")
     }
     else if(className == "option-5"){
       this.pageBody!.style.backgroundImage = "url(../assets/photos/option-5.jpg)"
       this.optionStatus = "option-5"
       this.darkStatus = true
       document.querySelector('.style-switchers-container')?.classList.remove('open')
-      console.log("4")
     }
     else if(className == "default-option"){
       this.pageBody!.style.backgroundImage = "url(../assets/photos/theme_1.jpg)"
       this.optionStatus = "theme_1"
       this.darkStatus = true
       document.querySelector('.style-switchers-container')?.classList.remove('open')
-      console.log("4")
     }
   }
+
   showError(){
     this.errorService.setErrorStatusAndMessage("Login to use this function", false)
   }

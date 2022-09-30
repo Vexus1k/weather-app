@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {ErrorService} from "../../../../core/services/error.service";
-import {UserService} from "../../../../core/services/user.service";
-import {Router} from "@angular/router";
-import {User} from "../../../../core/models/global-interfaces";
-import {AuthService} from "../../../../core/services/auth.service";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { ErrorService } from "../../../../core/services/error.service";
+import { UserService } from "../../../../core/services/user.service";
+import { Router } from "@angular/router";
+import { AuthService } from "../../../../core/services/auth.service";
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,6 +11,7 @@ import {AuthService} from "../../../../core/services/auth.service";
   styleUrls: ['./forgot-password.component.css',
     "./../../../../../../node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss"]
 })
+
 export class ForgotPasswordComponent implements OnInit {
   validationPasswordMessage: string;
   changePasswordFormGroup: UntypedFormGroup
@@ -40,13 +40,19 @@ export class ForgotPasswordComponent implements OnInit {
     this.usersService.changePassword(username!, password).subscribe( (res) => {
       if(res.condition) {
         this.changePasswordFormGroup.reset()
-        this.errorService.setErrorStatusAndMessage('Password was changed succefully.', true)
+        this.errorService.setErrorStatusAndMessage('Password was changed successfully.', true)
         this.router.navigate(['/login/forms'])
+        return
       }
+      if(res.message){
+        this.errorService.setErrorStatusAndMessage(res.message, false)
+        return
+      }
+      this.errorService.setErrorStatusAndMessage('Username does not exist.', false)
     })
   }
+
   checkPasswordValidation(password: string){
     return this.usersService.checkPasswordValidation(password)
   }
-
 }

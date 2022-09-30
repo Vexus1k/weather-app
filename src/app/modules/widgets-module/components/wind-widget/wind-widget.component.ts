@@ -9,6 +9,7 @@ import {take} from "rxjs/operators";
   templateUrl: './wind-widget.component.html',
   styleUrls: ['./wind-widget.component.css']
 })
+
 export class WindWidgetComponent implements OnInit {
   windmillIconPath: string = "../../../../../assets/photos/windmill.png";
   generalWeatherInfoObject: readDataFromObject;
@@ -16,13 +17,13 @@ export class WindWidgetComponent implements OnInit {
 
   constructor(private weatherService: WeatherService) { }
   ngOnInit(): void {
-    // this.actuallyIdCity = this.weatherService.getCookie("cityId")
-    // this.weatherService.cityId.subscribe(cityId => {
-    //   if (cityId != this.actuallyIdCity) {
-    //     this.getGeneralWeatherInfo()
-    //   }
-    // })
-    // this.getGeneralWeatherInfo()
+    this.actuallyIdCity = this.weatherService.getCookie("cityId")
+    this.weatherService.cityId.subscribe(cityId => {
+      if (cityId != this.actuallyIdCity) {
+        this.getGeneralWeatherInfo()
+      }
+    })
+    this.getGeneralWeatherInfo()
     ScrollReveal().reveal('.parameter__wind', {
       distance: '60px',
       easing: 'ease-in-out',
@@ -33,7 +34,6 @@ export class WindWidgetComponent implements OnInit {
   getGeneralWeatherInfo(){
     setTimeout(()=> this.weatherService.getGeneralWeatherInfo().pipe(take(1)).subscribe((res)=>
       {
-        console.log(res)
         this.generalWeatherInfoObject = res.current
       }
     ), 4000)

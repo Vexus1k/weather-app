@@ -43,7 +43,7 @@
 .success, .error {
   border: 1px solid;
   display: flex;
-  padding: 0 10px 0 45px;
+  padding: 0 10px 0 48px;
   justify-content: center;
   align-items: center;
   background-repeat: no-repeat;

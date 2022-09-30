@@ -90,7 +90,7 @@ label{
   z-index: 101;
   display: inline-flex;
   list-style: none;
-  margin: .8rem 0 0;
+  margin: .65rem 0 0;
 }
 .wrapper .icon {
   z-index: 101;
@@ -129,8 +129,8 @@ label{
   z-index: 101;
   position: absolute;
   content: "";
-  height: 8px;
-  width: 8px;
+  height: 6px;
+  width: 6px;
   background: #ffffff;
   bottom: -3px;
   left: 50%;
@@ -294,6 +294,9 @@ label{
     width: 30px;
     height: 30px;
   }
+  .wrapper {
+    margin-top: .6rem;
+  }
   .wrapper .icon {
     padding: 13px;
     margin: 5px 10px 0;
@@ -305,6 +308,10 @@ label{
   }
   .wrapper .icon:hover .tooltip {
     top: -20px;
+  }
+  .wrapper .tooltip::before {
+    height: 5px;
+    width: 5px;
   }
   .forgot-password__button{
     font-size: .55rem;
@@ -338,9 +345,12 @@ label{
     width: 34px;
     height: 34px;
   }
+  .wrapper {
+    margin-top: .675rem;
+  }
   .wrapper .icon {
     padding: 15px;
-    margin: 7px 10px 0;
+    margin: 7px 11px 0;
     width: 26px;
     height: 26px;
     font-size: .75rem;
@@ -384,14 +394,22 @@ label{
     width: 36px;
     height: 36px;
   }
+  .wrapper {
+    margin-top: .7rem;
+  }
+  .wrapper .tooltip::before {
+    height: 7px;
+    width: 7px;
+  }
   .wrapper .icon {
-    margin: 10px 10px 0;
-    width: 30px;
-    height: 30px;
-    font-size: .8rem;
+    padding: 16px;
+    margin: 9px 12px 0;
+    width: 28px;
+    height: 28px;
+    font-size: .78rem;
   }
   .wrapper .tooltip {
-    font-size: .55rem;
+    font-size: .6rem;
     padding: 3px 7px;
   }
   .wrapper .icon:hover .tooltip {
@@ -429,10 +447,19 @@ label{
     width: 38px;
     height: 38px;
   }
+  .wrapper {
+    margin-top: .725rem;
+  }
+  .wrapper .tooltip::before {
+    height: 8px;
+    width: 8px;
+  }
   .wrapper .icon {
-    width: 34px;
-    height: 34px;
-    font-size: .9rem;
+    margin: 10px 13px;
+    padding: 17px;
+    width: 32px;
+    height: 32px;
+    font-size: .84rem;
   }
   .wrapper .tooltip {
     font-size: .6rem;
@@ -470,10 +497,11 @@ label{
     height: 27px!important;
     font-size: .675rem!important;
   }
+  .wrapper {
+    margin-top: .75rem;
+  }
   .wrapper .icon {
-    margin: 12px 12px 0;
-    width: 36px;
-    height: 36px;
+    margin: 12px 14px 0;
   }
   .svg__arrow{
     width: 40px;
