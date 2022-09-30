@@ -6,9 +6,6 @@ import {AuthService} from "../services/auth.service";
   providedIn: 'root'
 })
 export class SocialAuthGuard implements CanActivate {
-  user: any;
-  loggedIn!: boolean;
-
   constructor(private router: Router, private auth: AuthService
               ) {
   }
