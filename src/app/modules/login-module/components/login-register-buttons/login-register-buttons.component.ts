@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login-forms-register-buttons',
@@ -9,7 +8,7 @@ import { Router } from "@angular/router";
 
 export class LoginRegisterButtonsComponent implements OnInit {
 
-  constructor(router: Router) {
+  constructor() {
   }
 
   ngOnInit(): void {

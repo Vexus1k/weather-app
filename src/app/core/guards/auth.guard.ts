@@ -1,4 +1,4 @@
-import {AuthService} from "../services/auth.service";
+import { AuthService } from "../services/auth.service";
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -7,7 +7,6 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 
-// import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 
 @Injectable({

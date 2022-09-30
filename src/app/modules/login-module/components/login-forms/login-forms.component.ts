@@ -27,6 +27,9 @@ export class LoginFormsComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    if(this.auth.isLoggedIn() || this.auth.isLoggedInByFacebook()){
+      this.router.navigate(['login/user'])
+    }
     this.authService.authState.subscribe((user) => {
       this.user = user;
     });
@@ -61,7 +64,6 @@ export class LoginFormsComponent implements OnInit {
           this.router.navigate(['/login/user'])
           return
         }
-        this.auth.setFacebookToken(Math.random().toString(36).substr(2))
         this.userService.setIsFacebookOrGoogleCall('facebook')
         this.router.navigate(['/login/set-username']).then()
         this.errorService.setErrorStatusAndMessage("Set your nickname.", true)

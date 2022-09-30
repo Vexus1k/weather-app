@@ -1,15 +1,11 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
-
-import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
-import {tap, map} from "rxjs/operators";
-import {SocialAuthService} from "angularx-social-login";
 import {AuthService} from "../services/auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SocialAuthGuard {
+export class SocialAuthGuard implements CanActivate {
   user: any;
   loggedIn!: boolean;
 
