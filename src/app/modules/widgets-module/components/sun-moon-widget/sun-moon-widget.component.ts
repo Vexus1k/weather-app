@@ -35,6 +35,7 @@ export class SunMoonWidgetComponent implements OnInit {
       }
     })
     this.getAdvancedWeatherInfo()
+
     this.midNightHourDay.setHours(0, 0, 0)
     this.midNightHourNight.setHours(24, 0, 0)
     ScrollReveal().reveal('.parameter__sun-moon', {
@@ -48,8 +49,34 @@ export class SunMoonWidgetComponent implements OnInit {
   getAdvancedWeatherInfo(){
     setTimeout(()=>this.weatherService.getAdvancedWeatherInfo().pipe(take(1)).subscribe((res) => {
       this.advancedWeatherInfoObject = res.forecast[0];
-      this.initializeSunriseAndSunsetHours()
-      this.sunGraphStatusChanged()
+      this.weatherService.currentTime.subscribe((res) => {
+        if(res){
+          if(res[0] == "0"){
+            let actuallyHour: number;
+            let actuallyMinutes: number;
+            if(Number(res[3]) == 0){
+              actuallyMinutes = Number(res[4])
+            }
+            else{actuallyMinutes = Number(res[3] + res[4])}
+            actuallyHour = Number(res[1])
+            this.actuallyTime.setHours(actuallyHour, actuallyMinutes)
+            this.initializeSunriseAndSunsetHours()
+            this.sunGraphStatusChanged()
+          }
+          else{
+            let actuallyHour: number;
+            let actuallyMinutes: number;
+            if(Number(res[3]) == 0){
+              actuallyMinutes = Number(res[4])
+            }
+            else{actuallyMinutes = Number(res[3] + res[4])}
+            actuallyHour = Number(res[0] + res[1])
+            this.actuallyTime.setHours(actuallyHour, actuallyMinutes)
+            this.initializeSunriseAndSunsetHours()
+            this.sunGraphStatusChanged()
+          }
+        }
+      })
     }), 7000)
   }
 

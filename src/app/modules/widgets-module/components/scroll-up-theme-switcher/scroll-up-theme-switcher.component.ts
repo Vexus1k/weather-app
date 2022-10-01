@@ -31,10 +31,10 @@ export class ScrollUpThemeSwitcherComponent implements OnInit, DoCheck {
     this.styleSwitchersContainer = document.querySelector('.style-switchers-container');
     this.weatherService.currentTime.subscribe((res) => {
       if(res){
-        if(res[1] == ":"){
-          this.actuallyTime = Number(res[0])
+        if(res[0] == "0"){
+          this.actuallyTime = Number(res[1])
         }
-        else if(Number(res[1]) < 10){
+        else{
           this.actuallyTime = Number(res[0] + res[1])
           if(this.actuallyTime >= 18 || this.actuallyTime <= 6){
             this.pageBody!.style.backgroundImage = "url(../assets/photos/night-option.jpg)"

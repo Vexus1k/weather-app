@@ -198,7 +198,7 @@ export class HeaderComponent implements OnInit, DoCheck {
             countHour += 1
             countMinutes = 0
           }
-          value = countHour + ':' + (countMinutes < 10 ? `0${countMinutes}` : countMinutes);
+          value = (countHour < 10 ? `0${countHour}` : countHour) + ':' + (countMinutes < 10 ? `0${countMinutes}` : countMinutes);
           this.localTimeForCurrentCity = value as string
         }, 1000)
       }

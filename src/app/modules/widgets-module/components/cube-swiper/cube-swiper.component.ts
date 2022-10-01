@@ -109,13 +109,13 @@ export class CubeSwiperComponent implements OnInit{
   }
 
   initializeDayPart(){
-    this.weatherService.currentTime.subscribe((currentTime) => {
+    this.weatherService.currentTime.subscribe((res) => {
       let currentHour
-      if(Number(currentTime![0]) === 0){
-        currentHour = currentTime![1]
+      if(Number(res![0]) === 0){
+        currentHour = res![1]
       }
       else{
-        currentHour = currentTime![0] + currentTime![1]
+        currentHour = res![0] + res![1]
       }
       if(Number(currentHour) >= 4 && Number(currentHour) <= 11){
         this.dayPartName = "Morning"
