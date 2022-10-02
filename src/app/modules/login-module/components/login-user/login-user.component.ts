@@ -45,6 +45,7 @@ export class LoginUserComponent implements OnInit {
     menuIcons?.classList.toggle('show')
     this.showMenu =! this.showMenu
   }
+
   changeAvatar(path: string, element: HTMLElement) {
     let menuIcons = document.querySelector(".menu__icons");
     let boxes: NodeListOf<HTMLElement> = document.querySelectorAll('.icon__choice-box')
