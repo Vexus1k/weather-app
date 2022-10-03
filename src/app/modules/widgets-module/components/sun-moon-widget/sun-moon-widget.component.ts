@@ -109,6 +109,7 @@ export class SunMoonWidgetComponent implements OnInit {
       let partToAddPerMinute = ((firstPoint * timeToSunsetInPercents) / 100) / (dayTime * (timeToSunsetInPercents / 100))
       // @ts-ignore
       sunGraphMask!.style.x = this.percentSignPipe.transform(amountToAddToFirstPoint);
+      this.setDayStylesForWidget()
       this.timeInterval = setInterval(() => {
         amountToAddToFirstPoint += partToAddPerMinute;
         // @ts-ignore
@@ -116,11 +117,6 @@ export class SunMoonWidgetComponent implements OnInit {
       } ,60000)
     }
     if(this.actuallyTime.getTime() < this.sunrise.getTime() || this.actuallyTime.getTime() > this.sunset.getTime()){
-      document.getElementById('moon-icon')?.style.setProperty('display', 'block')
-      document.getElementById('Sun')?.style.setProperty('display', 'none')
-      document.getElementById('Bg-path')?.style.setProperty('fill', 'purple')
-      const points = document.querySelectorAll<HTMLTableElement>('.Points')
-      Array.from(points).forEach((el) => { el.style.fill = '#6495ed'});
       if(this.actuallyTime <= this.midNightHourNight && this.actuallyTime > this.sunset){
         let nightTime = (this.midNightHourNight.getTime() - this.sunset.getTime()) / 60000;
         let partTimeBeforeMidNightInPercents = 50 - ((((this.midNightHourNight.getTime() - this.actuallyTime.getTime()) / 60000) / nightTime * 100) / 2)
@@ -129,6 +125,7 @@ export class SunMoonWidgetComponent implements OnInit {
         let partAddPerMinute = ((firstPoint * timeToMidNightInPercents) / 100) / (nightTime * (timeToMidNightInPercents / 100)) / 2
         // @ts-ignore
         sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
+        this.setNightStylesForWidget()
         this.secondTimeInterval = setInterval(() => {
           setGraphStatus += partAddPerMinute;
           // @ts-ignore
@@ -143,6 +140,7 @@ export class SunMoonWidgetComponent implements OnInit {
         let partAddPerMinute = ((firstPoint * timeToSunriseInPercents) / 100) / (nightTime * (timeToSunriseInPercents / 100)) / 2
         // @ts-ignore
         sunGraphMask!.style.x = this.percentSignPipe.transform(setGraphStatus);
+        this.setNightStylesForWidget()
         this.thirdTimeInterval = setInterval(() => {
           setGraphStatus += partAddPerMinute;
           // @ts-ignore
@@ -150,5 +148,21 @@ export class SunMoonWidgetComponent implements OnInit {
         } ,60000)
       }
     }
+  }
+
+  setNightStylesForWidget(){
+    document.getElementById('moon-icon')?.style.setProperty('display', 'block')
+    document.getElementById('Sun')?.style.setProperty('display', 'none')
+    document.getElementById('Bg-path')?.style.setProperty('fill', 'purple')
+    const points = document.querySelectorAll<HTMLTableElement>('.Points')
+    Array.from(points).forEach((el) => { el.style.fill = '#6495ed'});
+  }
+
+  setDayStylesForWidget(){
+    document.getElementById('moon-icon')?.style.setProperty('display', 'none')
+    document.getElementById('Sun')?.style.setProperty('display', 'block')
+    document.getElementById('Bg-path')?.style.setProperty('fill', 'yellow')
+    const points = document.querySelectorAll<HTMLTableElement>('.Points')
+    Array.from(points).forEach((el) => { el.style.fill = '#FFD233'});
   }
 }
