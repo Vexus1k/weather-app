@@ -3,36 +3,35 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "strictPropertyInitialization": false,
+    "outDir": "./dist/",
+    "noImplicitAny": false,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "strict": true,
     "sourceMap": true,
     "declaration": false,
+    "skipLibCheck": true,
+    "importHelpers": true,
+    "esModuleInterop" : true,
+    "strictNullChecks": false,
+    "resolveJsonModule": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "esModuleInterop" : true,
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "target": "esnext",
-    "module": "commonjs",
-    "jsx": "react",
-    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "importHelpers": true,
+    "target": "es2020",
+    "module": "es2020",
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
     ]
   },
-
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "enableIvy": true,
-    "compilationMode": "partial"
+    "strictTemplates": true
   }
 }

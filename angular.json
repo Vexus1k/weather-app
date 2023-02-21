@@ -6,8 +6,16 @@
     "weather-app": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -27,18 +35,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/fonts.css",
-              "src/fonts/remix-icon/remixicon.css",
-              "src/fonts/weather-icons-master/css/weather-icons.min.css",
-              "src/fonts/weather-icons-master/css/weather-icons-wind.min.css",
-              "node_modules/swiper/swiper-bundle.min.css"
+              "src/styles.scss",
+              "./node_modules/leaflet/dist/leaflet.css",
+              "./node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.js",
-              "src/assets/scripts/script.js",
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/scrollreveal/dist/scrollreveal.js"
             ]
           },
           "configurations": {
@@ -46,20 +47,22 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "4mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "150kb",
-                  "maximumError": "150kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "fileReplacements": [{
                 "replace": "src/environments/environment.ts",
                 "with": "src/environments/environment.prod.ts"
               }],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             },
             "development": {
               "buildOptimizer": false,
@@ -68,6 +71,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "test": {
+              "fileReplacements": []
             }
           },
           "defaultConfiguration": "production"
@@ -80,6 +86,9 @@
             },
             "development": {
               "browserTarget": "weather-app:build:development"
+            },
+            "test": {
+              "browserTarget": "weather-app:build:test"
             }
           },
           "defaultConfiguration": "development"
@@ -97,12 +106,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }

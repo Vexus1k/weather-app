@@ -1,19 +1,21 @@
-<app-header></app-header>
-<main class="main">
-  <section class="login__section" id="home">
-    <app-login-article-box id="login__article"></app-login-article-box>
-    <app-cube-swiper></app-cube-swiper>
-  </section>
-  <section class="widgets__section">
-    <app-forecast-widget class="forecast__widget"  id="forecast"></app-forecast-widget>
-    <app-wind-widget class="windSpeed__widget"></app-wind-widget>
-    <app-precipitations-widget class="precipitations__widget"></app-precipitations-widget>
-    <app-sun-moon-widget class="sun-moon__widget"></app-sun-moon-widget>
-  </section>
-</main>
-<app-scroll-up-theme-switcher></app-scroll-up-theme-switcher>
-<div class="error__container" *ngIf="success || error">
-  <div class="success" *ngIf="success">{{ messageSuccess }}</div>
-  <div class="error" *ngIf="error">{{ messageError }}</div>
-</div>
 <router-outlet></router-outlet>
+
+<div class="loader-box">
+  <div class="loader">
+    <div>
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+  </div>
+</div>
+
