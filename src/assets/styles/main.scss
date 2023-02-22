@@ -1,0 +1,22 @@
+@import "elements/loader";
+@import "settings/typography";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*, button {
+  box-sizing: border-box;
+}
+
+html {
+  hyphens: auto;
+  word-break: break-word;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: $font-family sans-serif;
+}

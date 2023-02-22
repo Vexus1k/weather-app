@@ -1,10 +1,11 @@
-import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { BaseLayoutComponent } from "./layouts/base-layout/base-layout.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: null,
+    component: BaseLayoutComponent,
     children: [
       {
         path: 'login',
